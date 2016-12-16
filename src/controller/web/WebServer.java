@@ -9,6 +9,7 @@ import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import exception.WebServerException;
 
@@ -16,12 +17,14 @@ public class WebServer implements Runnable {
 	controller.ObjectProvider provider;
 	int overloadTime = 1000;	// in Milisekunden
 	String webpage="<html><h1>ERROR 500 - internal server error</h1></html>";
+	HashMap<String, String> additionalWebContend;
 	ArrayList<Thread> threads = new ArrayList<>();
 	ServerSocket ss;
 	boolean enabled = false;
 	
 	public WebServer(controller.ObjectProvider provider){
 		this.provider = provider;
+		additionalWebContend = new HashMap<>();
 	}
 	
 	public void autostart(){
@@ -33,21 +36,22 @@ public class WebServer implements Runnable {
 		
 		if (provider.getWebConf().getPort() == 0 && provider.getWebConf().getMaxConnections() == 0)
 			throw new WebServerException();
-		readWebpage();
+		webpage = readFile(provider.getConfPath() + "/webpage/index.html");
 		
 	}
 	
-	private void readWebpage() throws WebServerException{
+	private String readFile(String path) throws WebServerException{
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(provider.getConfPath() + "/webpage.html"));
-			webpage = "";
+			BufferedReader br = new BufferedReader(new FileReader(path));
+			String file = "";
 			String line = br.readLine();
 			while (line != null){
-				webpage+=line + "\n";
+				file+=line + "\n";
 				line = br.readLine();
 			}
 			
 			br.close();
+			return file;
 		} catch (FileNotFoundException e) {
 			System.out.println("Didn't find webpage");
 			// TODO Auto-generated catch block
@@ -93,6 +97,8 @@ public class WebServer implements Runnable {
 			try {
 				System.out.println("Stopping webserver...");				
 				ss.close();
+				webpage = "<html><h1>ERROR 500 - internal server error</h1></html>";
+				additionalWebContend.clear();
 			} catch (IOException e) {
 				System.out.println("Error stopping webserver");
 			}
@@ -125,11 +131,11 @@ public class WebServer implements Runnable {
 			String input=isr.readLine();
 			boolean run=true;
 			while (input!=null && run) {
-				run=HandleOutput(input);
+				run=HandleOutput(input, osw);
 				input=isr.readLine();
 			}
 			
-			osw.write(webpage);
+			//osw.write(webpage);
 			osw.flush();
 			
 			isr.close();
@@ -141,16 +147,33 @@ public class WebServer implements Runnable {
 		}
 	}
 
-	private boolean HandleOutput(String input) {
+	private boolean HandleOutput(String input, OutputStreamWriter output) throws IOException {
 		if (input.contains("GET ")){
-			input = input.substring(input.indexOf("GET /") + 5, input.indexOf("HTTP") -1);
-			if (input.startsWith("controle/")){
-				input = input.substring("controle/".length());
+			input = input.substring(input.indexOf("GET ") + 4, input.indexOf("HTTP") -1);
+			if (input.startsWith("/controle/")){
+				input = input.substring("controle/".length() + 1);
 				System.out.println("web: " + input);
 				provider.getHandler().handle(input);
+			} else if(input.equals("/") || input.startsWith("//")){
+				output.write(webpage);
+			} else{
+				output.write(getAdditionalWebContend(input));		// Mysterious bug!
 			}
 			return false;
 		}
 		return true;
 	}
+	
+	private String getAdditionalWebContend(String input){
+		if (!additionalWebContend.containsKey(input)){
+			try {
+				readFile(provider.getConfPath() + "/webpage" + input);
+			} catch (WebServerException e) {
+				System.out.println("Can't read file " + provider.getConfPath() + input);
+				// TODO Auto-generated catch block
+			}
+		}
+		return additionalWebContend.get(input);
+	}
+
 }
