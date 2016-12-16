@@ -60,7 +60,7 @@ public class WebServer implements Runnable {
 		} catch (IOException e) {
 			System.out.println("Cannot read webpage");
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 			throw new WebServerException();
 		}
 	}
@@ -157,7 +157,7 @@ public class WebServer implements Runnable {
 			} else if(input.equals("/") || input.startsWith("//")){
 				output.write(webpage);
 			} else{
-				output.write(getAdditionalWebContend(input));		// Mysterious bug!
+				output.write(getAdditionalWebContend(input));
 			}
 			return false;
 		}
@@ -165,15 +165,18 @@ public class WebServer implements Runnable {
 	}
 	
 	private String getAdditionalWebContend(String input){
-		if (!additionalWebContend.containsKey(input)){
+		if (additionalWebContend.containsKey(input)){
+			return additionalWebContend.get(input);
+		} else {
 			try {
-				readFile(provider.getConfPath() + "/webpage" + input);
+				additionalWebContend.put(input, readFile(provider.getConfPath() + "/webpage" + input));
+				return additionalWebContend.get(input);
 			} catch (WebServerException e) {
 				System.out.println("Can't read file " + provider.getConfPath() + input);
+				return "";
 				// TODO Auto-generated catch block
 			}
 		}
-		return additionalWebContend.get(input);
 	}
 
 }
