@@ -2,7 +2,7 @@
 
 ## basic usage
 
-1. Download the latest Version of VLC
+1. Download the latest Version of VLCController (just look upside ;) )
 2. Extract it
 3. run VLC media player
 4. change config of VLC media player as shown in the docs folder of your extracted file
