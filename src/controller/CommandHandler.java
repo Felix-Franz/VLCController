@@ -1,7 +1,5 @@
 package controller;
 
-import exception.TelnetException;
-
 public class CommandHandler{
 	ObjectProvider provider;
 	
