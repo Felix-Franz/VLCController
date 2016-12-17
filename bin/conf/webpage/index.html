@@ -1,47 +1,34 @@
+<!-- 
+look at index-simple.html (or even change it to index.html) to see a simple version of this file
+
+use the console commands as links to controle vlc
+e.g. <a href="/controle-play">Start playing!!!</a>
+-->
+
 
 <html lang="de">
         <head>
                 <meta charset="utf-8">
-                <meta name="description" content="Felix's Website">
-				<title>Felix's Website</title>
-                <meta name="description" content="Webseite von Felix Franz | felix-franz.sytes.net | Webservices und mehr">
-                <meta name="keywords" content="felix,Franz,felix-franz.sytes.net,FF,FelixFranz,Kontakt,E-Mail,Projekte,Website,Copyright,Fotos,Franz,Felix">
+				<title>Awesome VLC Controller</title>
+                <meta name="description" content="Controle multiple instances of vlc remote">
                 <meta name="author" content="Felix Franz">
-                <meta name="audience" content="alle">
-        <link href="styles.css" rel="stylesheet" type="text/css">
-
-        <!--favicon-->
-        <link rel="apple-touch-icon" sizes="57x57" href="extern/img/favicon/apple-touch-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="extern/img/favicon/apple-touch-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="extern/img/favicon/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="extern/img/favicon/apple-touch-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="extern/img/favicon/apple-touch-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="extern/img/favicon/apple-touch-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="extern/img/favicon/apple-touch-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="extern/img/favicon/apple-touch-icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="extern/img/favicon/apple-touch-icon-180x180.png">
-        <link rel="icon" type="image/png" href="extern/img/favicon/favicon-32x32.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="extern/img/favicon/android-chrome-192x192.png" sizes="192x192">
-        <link rel="icon" type="image/png" href="extern/img/favicon/favicon-96x96.png" sizes="96x96">
-        <link rel="icon" type="image/png" href="extern/img/favicon/favicon-16x16.png" sizes="16x16">
-        <link rel="manifest" href="extern/img/favicon/manifest.json">
-        <link rel="mask-icon" href="extern/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-        <link rel="shortcut icon" href="extern/img/favicon/favicon.ico">
-        <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="msapplication-TileImage" content="extern/img/favicon/mstile-144x144.png">
-        <meta name="msapplication-config" content="extern/img/favicon/browserconfig.xml">
-        <meta name="theme-color" content="#ffffff">
-
-                <meta http-equiv="refresh" content="5; URL=/extern">
+                <meta name="audience" content="all">
+				
+				<link href="styles.css" rel="stylesheet" type="text/css">
         </head>
         <body>
-        <div class="panel1" id panel1>
-                <a class="intern" href="intern/">zum internen Bereich</a>
-                <h1 class="message">❤-lich Wilkommen...</h1>
-				<p class="bottom">Pictures by <a class="bottom" href="/extern/impressum.html">Felix Franz</a></p>
-                <!-- <p class="bottom">Pictures by <a class="bottom" href="https://www.pexels.com/photo/landscape-mountains-nature-clouds-1029/">www.pexels.com</a></p> -->
-                <!-- <p class="bottom">Pictures by https://wallpaperscraft.com</p> -->
-        </div>
+			<div class="panel1" id panel1>
+				<div class="controle">
+					<p class="play"><a href="/controle-play">Play</a></p>
+					<p class="prev"><a href="/controle-prev">Previous</a></p>
+					<p class="next"><a href="/controle-next">Next</a></p>
+					<p class="pause"><a href="/controle-pause">Pause</a></p>
+					<p class="stop"><a href="/controle-stop">Stop</a></p>
+					<p class="shuffle"><a href="/controle-shuffle">Shuffle</a></p>
+					<p class="loop"><a href="/controle-loop">Loop</a></p>
+				</div>
+				<p class="bottom">Pictures by <a class="bottom" href="https://wallpaperscraft.com">wallpaperscraft</a></p>
+			</div>
         </body>
 </html>
 

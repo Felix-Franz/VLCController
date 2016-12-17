@@ -53,10 +53,11 @@ public class WebServer implements Runnable {
 			br.close();
 			return file;
 		} catch (FileNotFoundException e) {
-			System.out.println("Didn't find webpage");
+			System.out.println("Webserver: Didn't find " + path);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw new WebServerException();
+			//e.printStackTrace();
+			return "";
+			//throw new WebServerException();
 		} catch (IOException e) {
 			System.out.println("Cannot read webpage");
 			// TODO Auto-generated catch block
@@ -150,10 +151,10 @@ public class WebServer implements Runnable {
 	private boolean HandleOutput(String input, OutputStreamWriter output) throws IOException {
 		if (input.contains("GET ")){
 			input = input.substring(input.indexOf("GET ") + 4, input.indexOf("HTTP") -1);
-			if (input.startsWith("/controle/")){
-				input = input.substring("controle/".length() + 1);
-				System.out.println("web: " + input);
+			if (input.startsWith("/controle-")){
+				input = input.substring("controle-".length() + 1);
 				provider.getHandler().handle(input);
+				output.write(webpage);
 			} else if(input.equals("/") || input.startsWith("//")){
 				output.write(webpage);
 			} else{
