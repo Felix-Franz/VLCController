@@ -157,6 +157,7 @@ public class WebServer implements Runnable {
 			input = input.substring(input.indexOf("GET ") + 4, input.indexOf("HTTP") -1);
 			if (input.startsWith("/controle-")){
 				input = input.substring("controle-".length() + 1);
+				System.out.println("web: " + input);
 				provider.getHandler().handle(input);
 				return webpage;
 			} else if(input.equals("/") || input.startsWith("//")){
