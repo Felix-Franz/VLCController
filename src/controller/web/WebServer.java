@@ -155,8 +155,8 @@ public class WebServer implements Runnable {
 	private String HandleOutput(String input, OutputStreamWriter output) throws IOException {
 		if (input.contains("GET ")){
 			input = input.substring(input.indexOf("GET ") + 4, input.indexOf("HTTP") -1);
-			if (input.startsWith("/controle-")){
-				input = input.substring("controle-".length() + 1);
+			if (input.contains("?control=")){
+				input = input.substring("?controle-".length());
 				System.out.println("web: " + input);
 				provider.getHandler().handle(input);
 				return webpage;
