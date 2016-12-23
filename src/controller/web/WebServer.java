@@ -21,6 +21,7 @@ public class WebServer implements Runnable {
 	ArrayList<Thread> threads = new ArrayList<>();
 	ServerSocket ss;
 	boolean enabled = false;
+	String httpResponse = "HTTP/1.1 200 OK\r\n\r\n";
 	
 	public WebServer(controller.ObjectProvider provider){
 		this.provider = provider;
@@ -130,13 +131,16 @@ public class WebServer implements Runnable {
 			BufferedReader isr = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			
 			String input=isr.readLine();
-			boolean run=true;
-			while (input!=null && run) {
-				run=HandleOutput(input, osw);
+			String out = HandleOutput(input, osw);
+			while (input!=null && out == null) {
+				out=HandleOutput(input, osw);
 				input=isr.readLine();
 			}
 			
-			//osw.write(webpage);
+			if (out != null && out != "")
+				osw.write(httpResponse + out);
+			else
+				osw.write(httpResponse +  "<html><h1>ERROR 404 - not found!</h1></html>");
 			osw.flush();
 			
 			isr.close();
@@ -148,21 +152,20 @@ public class WebServer implements Runnable {
 		}
 	}
 
-	private boolean HandleOutput(String input, OutputStreamWriter output) throws IOException {
+	private String HandleOutput(String input, OutputStreamWriter output) throws IOException {
 		if (input.contains("GET ")){
 			input = input.substring(input.indexOf("GET ") + 4, input.indexOf("HTTP") -1);
 			if (input.startsWith("/controle-")){
 				input = input.substring("controle-".length() + 1);
 				provider.getHandler().handle(input);
-				output.write(webpage);
+				return webpage;
 			} else if(input.equals("/") || input.startsWith("//")){
-				output.write(webpage);
+				return  webpage;
 			} else{
-				output.write(getAdditionalWebContend(input));
+				return getAdditionalWebContend(input);
 			}
-			return false;
 		}
-		return true;
+		return null;
 	}
 	
 	private String getAdditionalWebContend(String input){
