@@ -40,6 +40,8 @@ public class ConfigReader {
 	}
 
 	private void extractOutput(String aktServer) throws TelnetException {
+		aktServer = aktServer.replaceAll("\\s+", "");
+		
 		if(aktServer.indexOf('#')!=-1)
 			aktServer=aktServer.substring(0, aktServer.indexOf('#')); 	// split config
 		
