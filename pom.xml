@@ -37,7 +37,7 @@
                     <assembleDirectory>target</assembleDirectory>
                     <programs>
                         <program>
-                            <mainClass>Start</mainClass>
+                            <mainClass>StartWebserver</mainClass>
                             <name>webapp</name>
                         </program>
                     </programs>
@@ -121,5 +121,13 @@
             <artifactId>okhttp</artifactId>
             <version>3.7.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.2</version>
+        </dependency>
+
+
     </dependencies>
 </project>
