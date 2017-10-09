@@ -1,13 +1,5 @@
 package backend.general.tools;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
 /**
  * Created by Felix on 08.10.2017.
  */

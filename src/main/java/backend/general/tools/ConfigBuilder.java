@@ -1,15 +1,11 @@
 package backend.general.tools;
 
-import backend.general.abstractTools.*;
+
 import backend.general.abstractTools.Config;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 /**
  * Created by Felix on 09.10.2017.

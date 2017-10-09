@@ -8,6 +8,6 @@ import backend.general.abstractTools.Config;
 public class Factory {
 
     public static Config getConfig(){
-        return backend.general.tools.Config.getInstance();
+        return backend.general.abstractTools.Config.getInstance();
     }
 }
