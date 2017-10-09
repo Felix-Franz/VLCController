@@ -12,7 +12,7 @@ import java.io.FileReader;
  */
 public class SettingsBuilder implements backend.general.settings.SettingsBuilder {
 
-    String CONFIG_PATH= "conf/settings.json";
+    private final String CONFIG_PATH= "conf/settings.json";
 
     @Override
     public Settings build() {
