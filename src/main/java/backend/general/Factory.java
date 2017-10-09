@@ -5,11 +5,9 @@ import backend.general.abstractTools.Config;
 /**
  * Created by Felix on 08.10.2017.
  */
-public class Builder {
-    private static Config config;
+public class Factory {
 
     public static Config getConfig(){
-        if (config==null) config = new backend.general.tools.Config();
-        return config;
+        return backend.general.tools.Config.getInstance();
     }
 }

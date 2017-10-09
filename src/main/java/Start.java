@@ -1,10 +1,10 @@
-import backend.general.Builder;
+import backend.general.Factory;
 
 /**
  * Created by Felix on 08.10.2017.
  */
 public class Start {
     public static void main(String[] args) {
-        Builder.getConfig();
+        System.out.println(Factory.getConfig().getMaxVLCConnectionThreads());
     }
 }
