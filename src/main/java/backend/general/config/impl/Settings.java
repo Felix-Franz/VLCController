@@ -4,13 +4,11 @@ package backend.general.config.impl;
  * Created by Felix on 08.10.2017.
  */
 
-public class Config extends backend.general.config.Config {
-
-    String CONFIG_PATH= "conf/controller.json";
+public class Settings extends backend.general.config.Settings {
 
     private int maxVLCConnectionThreads;
 
-    protected Config(){
+    protected Settings(){
     }
 
     @Override
