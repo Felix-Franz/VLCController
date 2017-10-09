@@ -1,6 +1,6 @@
 package backend.general;
 
-import backend.general.config.Settings;
+import backend.general.settings.Settings;
 
 /**
  * Created by Felix on 08.10.2017.

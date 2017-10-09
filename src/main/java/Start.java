@@ -5,6 +5,6 @@ import backend.general.Factory;
  */
 public class Start {
     public static void main(String[] args) {
-        System.out.println(Factory.getConfig().getMaxVLCConnectionThreads());
+        System.out.println(Factory.getConfig().getPort());
     }
 }

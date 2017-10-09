@@ -1,4 +1,4 @@
-package backend.general.config;
+package backend.general.settings;
 
 /**
  * Created by Felix on 09.10.2017.

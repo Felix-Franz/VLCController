@@ -1,7 +1,7 @@
-package backend.general.config.impl;
+package backend.general.settings.impl;
 
 
-import backend.general.config.Settings;
+import backend.general.settings.Settings;
 import com.google.gson.Gson;
 
 import java.io.FileNotFoundException;
@@ -10,7 +10,7 @@ import java.io.FileReader;
 /**
  * Created by Felix on 09.10.2017.
  */
-public class SettingsBuilder implements backend.general.config.SettingsBuilder {
+public class SettingsBuilder implements backend.general.settings.SettingsBuilder {
 
     String CONFIG_PATH= "conf/settings.json";
 
@@ -19,7 +19,7 @@ public class SettingsBuilder implements backend.general.config.SettingsBuilder {
         try {
             FileReader reader = new FileReader(CONFIG_PATH);
             Gson gson = new Gson();
-            return gson.fromJson(reader, backend.general.config.impl.Settings.class);
+            return gson.fromJson(reader, backend.general.settings.impl.Settings.class);
         } catch (FileNotFoundException e) {
             e.printStackTrace(); //ToDo handle exception
         }
