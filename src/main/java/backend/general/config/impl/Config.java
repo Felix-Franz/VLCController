@@ -1,10 +1,10 @@
-package backend.general.tools;
+package backend.general.config.impl;
 
 /**
  * Created by Felix on 08.10.2017.
  */
 
-public class Config extends backend.general.abstractTools.Config {
+public class Config extends backend.general.config.Config {
 
     String CONFIG_PATH= "conf/controller.json";
 
