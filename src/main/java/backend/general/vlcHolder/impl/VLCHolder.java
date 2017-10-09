@@ -12,4 +12,10 @@ public class VLCHolder extends backend.general.vlcHolder.VLCHolder {
     protected VLCHolder(VLC[] vlcs){
         this.vlcs = vlcs;
     }
+
+    public void connect(){
+        for (VLC vlc : vlcs){
+            vlc.connect();
+        }
+    }
 }

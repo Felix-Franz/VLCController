@@ -11,4 +11,6 @@ public abstract class VLCHolder {
         if (instance==null) instance = new backend.general.vlcHolder.impl.VLCHolderBuilder().build();
         return instance;
     }
+
+    public abstract void connect();
 }
