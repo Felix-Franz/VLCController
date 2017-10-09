@@ -9,8 +9,4 @@ public class VLC {
     private int port;
     private String password;
 
-    @Override
-    public String toString() {
-        return name + host + port + password;
-    }
 }
