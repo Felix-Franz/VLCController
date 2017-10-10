@@ -15,4 +15,8 @@ public class Factory {
     public static VLCHolder getVLCHolder(){
         return VLCHolder.getInstance();
     }
+
+    public static Logger getLogger(){
+        return Logger.getInstance();
+    }
 }
