@@ -30,10 +30,20 @@ public class Logger {
         log.setLevel(Level.CONFIG);
     }
 
+    /**
+     * sets log level, which messages will be logged
+     *
+     * @param level
+     */
     public void setLevel(Level level){
         log.setLevel(level);
     }
 
+    /**
+     * sets log level, which messages will be logged
+     *
+     * @param level OFF, SEVERE (highest), WARNING, INFO, CONFIG, FINE, FINER,FINEST (lowest), ALL
+     */
     public void setLevel(String level){
         switch (level){
             case "OFF":
@@ -69,6 +79,11 @@ public class Logger {
         }
     }
 
+    /**
+     * creates a log
+     * @param level log level
+     * @param message log message
+     */
     public void log(Level level, String message){
         log.log(level, message);
     }
