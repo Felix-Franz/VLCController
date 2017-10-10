@@ -35,4 +35,8 @@ public class VLC {
         }
         return false;
     }
+
+    public String getName(){
+        return name;
+    }
 }
