@@ -10,10 +10,11 @@ public class Start {
     public static void main(String[] args) {
         Factory.getLogger().setLevel(Factory.getSettings().getLoggingLevel());
         Factory.getVLCHolder().connect();
+        StartWebserver.startWebserver();
 
         Factory.getLogger().log(Level.INFO, "Started everything!");
 
         //Testing area
-        Factory.getVLCHolder().runCommand(Command.PLAY);
+        //Factory.getVLCHolder().runCommand(Command.PLAY);
     }
 }
