@@ -20,6 +20,11 @@ public class VLC {
     protected VLC(){
     }
 
+    /**
+     * Connects to a VLC instance
+     *
+     * @return true: connection established, false: any exception
+     */
     public boolean connect(){
         try {
             connection = new Socket(host, port);
@@ -36,6 +41,28 @@ public class VLC {
         return false;
     }
 
+    /**
+     * Runs a command on this VLC instance
+     *
+     * @param command
+     * @return true: command was successful, false: any exception
+     */
+    public boolean runCommand(Command command){
+        try {
+            out.println(command.getCommand());
+            out.flush();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+
+    }
+
+    /**
+     *
+     * @return Name of VLC instance
+     */
     public String getName(){
         return name;
     }
