@@ -1,6 +1,6 @@
 package backend.general.vlcHolder;
 
-import backend.general.vlc.Command;
+import backend.general.vlc.VLCCommand;
 
 /**
  * Created by Felix on 09.10.2017.
@@ -23,5 +23,5 @@ public abstract class VLCHolder {
      * Runs a command on all VLC instances
      * @param command
      */
-    public abstract void runCommand(Command command);
+    public abstract void runCommand(VLCCommand command);
 }

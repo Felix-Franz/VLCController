@@ -1,5 +1,6 @@
 package backend.rest.core;
 
+import backend.rest.services.ControllerService;
 import backend.rest.services.DispatcherService;
 import backend.rest.services.UserService;
 import com.owlike.genson.GensonBuilder;
@@ -40,6 +41,7 @@ public class Application extends ResourceConfig
 		Set<Class<?>> returnValue = new HashSet<>( );
 
 		returnValue.add(DispatcherService.class);
+		returnValue.add(ControllerService.class);
 
 		return returnValue;
 	}

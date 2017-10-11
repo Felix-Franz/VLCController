@@ -4,16 +4,16 @@ package backend.general.vlc;
  * Created by Felix on 09.10.2017.
  */
 
-//Command.PLAY.getCommand() --> play
+//VLCCommand.PLAY.getCommand() --> play
 
-public enum Command {
+public enum VLCCommand {
     PLAY("play"),
     PAUSE("pause"),
     STOP("stop");
 
     private String value;
 
-    Command(String value){
+    VLCCommand(String value){
         this.value = value;
     }
 

@@ -13,10 +13,7 @@ import javax.ws.rs.core.UriInfo;
  */
 
 @Path("")
-public class DispatcherService {
-
-    @Context
-    protected UriInfo uriInfo;
+public class DispatcherService extends AbstractService {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)

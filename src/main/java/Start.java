@@ -1,6 +1,7 @@
 import backend.general.Factory;
-import backend.general.vlc.Command;
+import backend.general.vlc.VLCCommand;
 
+import java.util.Scanner;
 import java.util.logging.Level;
 
 /**
@@ -15,6 +16,6 @@ public class Start {
         Factory.getLogger().log(Level.INFO, "Started everything!");
 
         //Testing area
-        //Factory.getVLCHolder().runCommand(Command.PLAY);
+        //Factory.getVLCHolder().runCommand(VLCCommand.PLAY);
     }
 }

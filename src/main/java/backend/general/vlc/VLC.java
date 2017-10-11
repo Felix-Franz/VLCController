@@ -47,7 +47,7 @@ public class VLC {
      * @param command
      * @return true: command was successful, false: any exception
      */
-    public boolean runCommand(Command command){
+    public boolean runCommand(VLCCommand command){
         try {
             out.println(command.getCommand());
             out.flush();

@@ -1,7 +1,7 @@
 package backend.general.vlcHolder.impl;
 
 import backend.general.Factory;
-import backend.general.vlc.Command;
+import backend.general.vlc.VLCCommand;
 import backend.general.vlc.VLC;
 
 import java.util.logging.Level;
@@ -24,9 +24,9 @@ public class VLCHolder extends backend.general.vlcHolder.VLCHolder {
         }
     }
 
-    public void runCommand(Command command){
+    public void runCommand(VLCCommand command){
         for (VLC vlc : vlcs){
-            //TODO run everything simulanious! (multithreading)
+            //TODO run everything simulanious! (multithreading) --> use vlc as worker and submit command using generic submit function
             if (!vlc.runCommand(command))
                 Factory.getLogger().log(Level.WARNING, "Failed to run " + command.getCommand() + " on " + vlc.getName());
         }
