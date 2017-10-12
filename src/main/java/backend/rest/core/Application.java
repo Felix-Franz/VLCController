@@ -1,5 +1,6 @@
 package backend.rest.core;
 
+import backend.Init;
 import backend.rest.services.ControllerService;
 import backend.rest.services.DispatcherService;
 import backend.rest.services.UserService;
@@ -34,6 +35,13 @@ public class Application extends ResourceConfig
 								.useDateAsTimestamp( false )
 								.useDateFormat( new SimpleDateFormat( "yyyy-MM-dd'T'HH:mm:ss" ) )
 								.create( ) ) );
+
+		runInit();
+	}
+
+	private void runInit(){
+		Thread thread = new Thread(new Init());
+		thread.start();
 	}
 
 	protected Set<Class<?>> getServiceClasses( )

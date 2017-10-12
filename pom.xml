@@ -37,7 +37,7 @@
                     <assembleDirectory>target</assembleDirectory>
                     <programs>
                         <program>
-                            <mainClass>StartWebserver</mainClass>
+                            <mainClass>Start</mainClass>
                             <name>webapp</name>
                         </program>
                     </programs>
