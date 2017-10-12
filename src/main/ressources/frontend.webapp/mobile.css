@@ -1,0 +1,19 @@
+
+.fa {
+    font-size: 300%;
+}
+
+.btn {
+    padding: 4%;
+    padding-left: 7%;
+    padding-right: 7%;
+    margin-top: 3%;
+}
+
+#controlBackward {
+    margin-right: 3%;
+}
+
+#controlForward {
+    margin-left: 3%;
+}

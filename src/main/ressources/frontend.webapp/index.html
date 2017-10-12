@@ -18,7 +18,8 @@
 		<link rel="stylesheet" href="resources/font-awesome-4.7.0/css/font-awesome.min.css">
 		
 		<!-- Own stuff -->
-		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" media="(max-width: 1023px)" href="mobile.css" />
+		<link rel="stylesheet" media="(min-width: 1024px)" href="desktop.css" />
 		<script src="script.js"></script >
 		
 	</head>
@@ -27,7 +28,7 @@
 			<div class="panel panel-default" style="text-align: center;">
 				<div class="panel-heading" title="Admin Area, Access restricted">
 					<a data-toggle="collapse" href="#control">
-						<h2>Control all VLC instances</h2>
+						<h1>Control all VLC instances</h1>
 					</a>
 				</div>
 				<div id="control" class="panel-collapse collapse in">
@@ -36,10 +37,10 @@
 						<button onclick="controlPause()" type="button" class="btn btn-primary"><i class="fa fa-pause"></i></button>
 						<button onclick="controlStop()" type="button" class="btn btn-primary"><i class="fa fa-stop"></i></button>
 						<br />
-						<button onclick="controlBackward()" type="button" class="btn btn-primary"><i class="fa fa-step-backward"></i></button>
+						<button onclick="controlBackward()" id="controlBackward" type="button" class="btn btn-primary"><i class="fa fa-step-backward"></i></button>
 						<button onclick="controlShuffle()" type="button" class="btn btn-primary"><i class="fa fa-random" aria-hidden="true"></i></button>
 						<button onclick="controlRepeat()" type="button" class="btn btn-primary"><i class="fa fa-repeat" aria-hidden="true"></i></button>
-						<button onclick="controlForward()" type="button" class="btn btn-primary"><i class="fa fa-step-forward"></i></button>
+						<button onclick="controlForward()" id="controlForward" type="button" class="btn btn-primary"><i class="fa fa-step-forward"></i></button>
 					</div>
 				</div>
 			</div>
