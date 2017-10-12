@@ -9,7 +9,11 @@ package backend.general.vlc;
 public enum VLCCommand {
     PLAY("play"),
     PAUSE("pause"),
-    STOP("stop");
+    STOP("stop"),
+    BACKWARD("prev"),
+    SHUFFLE("random"),
+    REPEAT("loop"),
+    FORWARD("next");
 
     private String value;
 

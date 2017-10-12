@@ -30,10 +30,17 @@ public class ControllerService extends AbstractService {
         return Response
                 .ok("Visit https://github.com/Felix-Franz/VLCController for more information!")
                 .link(uriInfo.getAbsolutePathBuilder().replacePath("api").build(), "start point of the api")
-                .link(uriInfo.getAbsolutePathBuilder().path("play").build(), "uses the play control on all vlc instances")  //ToDo add more links
+                .link(uriInfo.getAbsolutePathBuilder().path("play").build(), "plays media on all vlc instances")
+                .link(uriInfo.getAbsolutePathBuilder().path("pause").build(), "pauses playing media on all vlc instances")
+                .link(uriInfo.getAbsolutePathBuilder().path("stop").build(), "stops playing media on all vlc instances")
+                .link(uriInfo.getAbsolutePathBuilder().path("backward").build(), "plays the previous item of the playlist on all vlc instances")
+                .link(uriInfo.getAbsolutePathBuilder().path("shuffle").build(), "toggles shuffle on all vlc instances")
+                .link(uriInfo.getAbsolutePathBuilder().path("repeat").build(), "toggles repeat the playlist on all vlc instances")
+                .link(uriInfo.getAbsolutePathBuilder().path("forward").build(), "plays the next item of the playlist on all vlc instances")
                 .build();
     }
 
+    //POST http://127.0.0.1:8080/api/control/play
     @POST
     @Path("play")
     @Produces(MediaType.TEXT_PLAIN)
@@ -41,4 +48,53 @@ public class ControllerService extends AbstractService {
         Factory.getVLCHolder().runCommand(VLCCommand.PLAY);
         return createResponse();
     }
+
+    @POST
+    @Path("pause")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response pauseVLC(){
+        Factory.getVLCHolder().runCommand(VLCCommand.PAUSE);
+        return createResponse();
+    }
+
+    @POST
+    @Path("stop")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response stopVLC(){
+        Factory.getVLCHolder().runCommand(VLCCommand.STOP);
+        return createResponse();
+    }
+
+    @POST
+    @Path("backward")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response backwardVLC(){
+        Factory.getVLCHolder().runCommand(VLCCommand.BACKWARD);
+        return createResponse();
+    }
+
+    @POST
+    @Path("shuffle")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response shuffleVLC(){
+        Factory.getVLCHolder().runCommand(VLCCommand.SHUFFLE);
+        return createResponse();
+    }
+
+    @POST
+    @Path("repeat")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response repeatVLC(){
+        Factory.getVLCHolder().runCommand(VLCCommand.REPEAT);
+        return createResponse();
+    }
+
+    @POST
+    @Path("forward")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response forwardVLC(){
+        Factory.getVLCHolder().runCommand(VLCCommand.FORWARD);
+        return createResponse();
+    }
+
 }
