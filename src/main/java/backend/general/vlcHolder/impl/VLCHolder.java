@@ -25,6 +25,7 @@ public class VLCHolder extends backend.general.vlcHolder.VLCHolder {
     }
 
     public void runCommand(VLCCommand command){
+        Factory.getLogger().log(Level.INFO,"used command " + command + " on all vlc instances!");
         for (VLC vlc : vlcs){
             //TODO run everything simulanious! (multithreading) --> use vlc as worker and submit command using generic submit function
             if (!vlc.runCommand(command))
