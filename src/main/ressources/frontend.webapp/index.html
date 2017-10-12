@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<title>VLCController</title>
+	
+		<!-- Imports -->
+		
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="resources/bootstrap3.3.7.min.css">
 
@@ -15,24 +19,25 @@
 		
 		<!-- Own stuff -->
 		<link rel="stylesheet" href="styles.css">
+		<script src="script.js"></script >
 		
-		<title>VLCController</title>
 	</head>
 	<body>
 		<div class="container">
 			<div class="panel panel-default" style="text-align: center;">
 				<div class="panel-heading" title="Admin Area, Access restricted"><h2>Control all VLC instances</h2></div>
 				<div class="panel-body">
-					<button id="controlPlay" type="button" class="btn btn-primary"><i class="fa fa-play"></i></button>
-					<button id="controlPause" type="button" class="btn btn-primary"><i class="fa fa-pause"></i></button>
-					<button id="controlStop" type="button" class="btn btn-primary"><i class="fa fa-stop"></i></button>
+					<button onclick="controlPlay()" type="button" class="btn btn-primary"><i class="fa fa-play"></i></button>
+					<button onclick="controlPause()" type="button" class="btn btn-primary"><i class="fa fa-pause"></i></button>
+					<button onclick="controlStop()" type="button" class="btn btn-primary"><i class="fa fa-stop"></i></button>
 					<br />
-					<button id="controlBackward" type="button" class="btn btn-primary"><i class="fa fa-step-backward"></i></button>
-					<button id="controlShuffle" type="button" class="btn btn-primary"><i class="fa fa-random" aria-hidden="true"></i></button>
-					<button id="controlShuffle" type="button" class="btn btn-primary"><i class="fa fa-repeat" aria-hidden="true"></i></button>
-					<button id="controlForward" type="button" class="btn btn-primary"><i class="fa fa-step-forward"></i></button>
+					<button onclick="controlBackward()" type="button" class="btn btn-primary"><i class="fa fa-step-backward"></i></button>
+					<button onclick="controlShuffle()" type="button" class="btn btn-primary"><i class="fa fa-random" aria-hidden="true"></i></button>
+					<button onclick="controlRepeat()" type="button" class="btn btn-primary"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+					<button onclick="controlForward()" type="button" class="btn btn-primary"><i class="fa fa-step-forward"></i></button>
 				</div>
 			</div>
 		</div>
+		
 	</body>
 </html>
