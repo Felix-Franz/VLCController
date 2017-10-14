@@ -1,11 +1,17 @@
 package backend.general.vlcHolder.impl;
 
+import backend.CONFIG;
 import backend.general.Factory;
+import backend.general.settings.impl.Settings;
 import backend.general.vlc.VLCCommand;
 import backend.general.vlc.VLC;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.apache.tomcat.jni.Time;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.concurrent.*;
 import java.util.logging.Level;
@@ -19,6 +25,23 @@ public class VLCHolder extends backend.general.vlcHolder.VLCHolder {
 
     protected VLCHolder(VLC[] vlcs){
         this.vlcs = vlcs;
+    }
+
+    protected VLCHolder(VLC[] vlcs, boolean saveVLCs){
+        this.vlcs = vlcs;
+        saveVLCs();
+    }
+
+    private void saveVLCs(){
+        try {
+            FileWriter writer = new FileWriter(CONFIG.VLC_CONFIG_PATH);
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            gson.toJson(vlcs, VLC[].class, writer);
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();        //ToDo handle exception
+        }
     }
 
     public void connect(){
