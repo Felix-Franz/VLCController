@@ -66,4 +66,20 @@ public class VLC {
     public String getName(){
         return name;
     }
+
+    /**
+     *
+     * @return host of VLC instance
+     */
+    public String getHost() {
+        return host;
+    }
+
+    /**
+     *
+     * @return port of vlc instance
+     */
+    public int getPort() {
+        return port;
+    }
 }

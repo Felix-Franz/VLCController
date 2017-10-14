@@ -1,5 +1,6 @@
 package backend.general.vlcHolder;
 
+import backend.general.vlc.VLC;
 import backend.general.vlc.VLCCommand;
 
 /**
@@ -24,4 +25,10 @@ public abstract class VLCHolder {
      * @param command
      */
     public abstract void runCommand(VLCCommand command);
+
+    /**
+     *
+     * @return all vlc instances
+     */
+    public abstract VLC[] getVLCInstances();
 }

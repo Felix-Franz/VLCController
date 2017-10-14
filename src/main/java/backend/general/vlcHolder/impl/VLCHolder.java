@@ -98,4 +98,8 @@ public class VLCHolder extends backend.general.vlcHolder.VLCHolder {
         }
         executorService.shutdown();
     }
+
+    public VLC[] getVLCInstances(){
+        return vlcs;
+    }
 }
