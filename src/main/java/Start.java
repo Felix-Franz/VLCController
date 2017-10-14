@@ -14,7 +14,7 @@ import java.util.logging.Level;
 public class Start {
 
     private static final String CONTEXT_PATH = ""; //run everything in a sub folder e.g. /demo
-    private static final String WEB_APP_LOCATION = "src/main/ressources/frontend.webapp/";
+    private static final String WEB_APP_LOCATION = "frontend.webapp/";
     private static final String WEB_APP_MOUNT = "/WEB-INF/classes";
     private static final String WEB_APP_CLASSES = "target/classes";
 
@@ -35,7 +35,7 @@ public class Start {
             DirResourceSet dirResourceSet = new DirResourceSet(resources, WEB_APP_MOUNT, pathToClasses, "/");
 
             resources.addPreResources(dirResourceSet);
-            context.setResources(resources);
+            //context.setResources(resources);      //ToDo remove!
 
             tomcat.start();
             tomcat.getServer().await();
