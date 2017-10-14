@@ -24,6 +24,9 @@ function controlStop(){
 function controlBackward(){
 	controlPOST("backward");
 }
+function controlFullscreen(){
+	controlPOST("fullscreen");
+}
 function controlShuffle(){
 	controlPOST("shuffle");
 }
