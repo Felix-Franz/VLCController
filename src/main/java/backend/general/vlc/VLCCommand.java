@@ -11,6 +11,7 @@ public enum VLCCommand {
     PAUSE("pause"),
     STOP("stop"),
     BACKWARD("prev"),
+    FULLSCREEN("fullscreen"),
     SHUFFLE("random"),
     REPEAT("loop"),
     FORWARD("next");

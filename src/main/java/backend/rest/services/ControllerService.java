@@ -82,6 +82,14 @@ public class ControllerService extends AbstractService {
     }
 
     @POST
+    @Path("fullscreen")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response fullscreenVLC(){
+        Factory.getVLCHolder().runCommand(VLCCommand.FULLSCREEN);
+        return createResponse();
+    }
+
+    @POST
     @Path("repeat")
     @Produces(MediaType.TEXT_PLAIN)
     public Response repeatVLC(){
