@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.felix-franz.projects.vlccontroller</groupId>
     <artifactId>vlccontroller</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>2.0.0-beta</version>
     <packaging>jar</packaging>
     <name>VLC Controller</name>
     <description>Control multiple instances of vlc simultaniousely</description>
@@ -28,6 +28,7 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+                    <appendAssemblyId>false</appendAssemblyId>
                 </configuration>
                 <executions>
                     <execution>
@@ -55,6 +56,10 @@
                                 <echo>copying frontend.webapp files....</echo>
                                 <copy todir="${basedir}/out/frontend.webapp" overwrite="true" flatten="true">
                                     <fileset dir="${basedir}/frontend.webapp"></fileset>
+                                </copy>
+                                <echo>copying starter files....</echo>
+                                <copy todir="${basedir}/out" overwrite="true" flatten="true">
+                                    <fileset dir="${basedir}/src/main/starter"></fileset>
                                 </copy>
                             </target>
                         </configuration>
