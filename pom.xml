@@ -19,6 +19,7 @@
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
+                    <outputDirectory>out</outputDirectory>
                     <archive>
                         <manifest>
                             <mainClass>Start</mainClass>
@@ -34,6 +35,31 @@
                         <phase>package</phase> <!-- bind to the packaging phase -->
                         <goals>
                             <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <target>
+                                <echo>copying conf files....</echo>
+                                <copy todir="${basedir}/out/conf" overwrite="true" flatten="true">
+                                    <fileset dir="${basedir}/conf"></fileset>
+                                </copy>
+                                <echo>copying frontend.webapp files....</echo>
+                                <copy todir="${basedir}/out/frontend.webapp" overwrite="true" flatten="true">
+                                    <fileset dir="${basedir}/frontend.webapp"></fileset>
+                                </copy>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
                         </goals>
                     </execution>
                 </executions>
