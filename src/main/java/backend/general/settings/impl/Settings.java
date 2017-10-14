@@ -1,6 +1,11 @@
 package backend.general.settings.impl;
 
-import java.util.logging.Level;
+import backend.CONFIG;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * Created by Felix on 08.10.2017.
@@ -8,11 +13,29 @@ import java.util.logging.Level;
 
 public class Settings extends backend.general.settings.Settings {
 
-    private String loggingLevel;
-    private int port;
-    private int maxVLCConnectionThreads;
+    private String loggingLevel = "INFO";
+    private int port = 8080;
+    private int maxVLCConnectionThreads = 10;
 
     protected Settings(){
+    }
+
+    protected Settings(boolean saveSettings){
+        if (saveSettings){
+            saveSettings();
+        }
+    }
+
+    private void saveSettings(){
+        try {
+            FileWriter writer = new FileWriter(CONFIG.SETTINGS_PATH);
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            gson.toJson(this, Settings.class, writer);
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();        //ToDo handle exception
+        }
     }
 
     @Override

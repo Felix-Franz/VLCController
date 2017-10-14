@@ -1,5 +1,6 @@
 package backend.general.vlcHolder.impl;
 
+import backend.CONFIG;
 import backend.general.vlc.VLC;
 import com.google.gson.Gson;
 
@@ -11,12 +12,10 @@ import java.io.FileReader;
  */
 public class VLCHolderBuilder implements backend.general.vlcHolder.VLCHolderBuilder {
 
-    private final static String VLC_PATH = "conf/vlc.json";
-
     @Override
     public backend.general.vlcHolder.VLCHolder build() {
         try {
-            FileReader reader = new FileReader(VLC_PATH);
+            FileReader reader = new FileReader(CONFIG.VLC_CONFIG_PATH);
             Gson gson = new Gson();
             VLC[] vlcs = gson.fromJson(reader, VLC[].class);
             return new VLCHolder(vlcs);
