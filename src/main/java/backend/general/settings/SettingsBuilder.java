@@ -6,7 +6,7 @@ package backend.general.settings;
 public interface SettingsBuilder {
 
     /**
-     * creates a settings object
+     * creates a settings object from config file
      *
      * @return Settings
      */

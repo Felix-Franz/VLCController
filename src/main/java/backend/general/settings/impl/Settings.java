@@ -17,15 +17,25 @@ public class Settings extends backend.general.settings.Settings {
     private int port = 8080;
     private int maxVLCConnectionThreads = 10;
 
+    /**
+     * creates a setting object
+     */
     protected Settings(){
     }
 
+    /**
+     * creates a setting object
+     * @param saveSettings true: save settings to config file
+     */
     protected Settings(boolean saveSettings){
         if (saveSettings){
             saveSettings();
         }
     }
 
+    /**
+     * saves settings to config file
+     */
     private void saveSettings(){
         try {
             FileWriter writer = new FileWriter(CONFIG.SETTINGS_PATH);

@@ -23,15 +23,28 @@ public class VLCHolder extends backend.general.vlcHolder.VLCHolder {
 
     private VLC[] vlcs;
 
+    /**
+     * creates a vlc holder
+     *
+     * @param vlcs vlc instances
+     */
     protected VLCHolder(VLC[] vlcs){
         this.vlcs = vlcs;
     }
 
+    /**
+     * creates a vlc hodler
+     * @param vlcs vlc instances
+     * @param saveVLCs true: save to config file
+     */
     protected VLCHolder(VLC[] vlcs, boolean saveVLCs){
         this.vlcs = vlcs;
         saveVLCs();
     }
 
+    /**
+     * save all vlcs to config file
+     */
     private void saveVLCs(){
         try {
             FileWriter writer = new FileWriter(CONFIG.VLC_CONFIG_PATH);
@@ -44,6 +57,9 @@ public class VLCHolder extends backend.general.vlcHolder.VLCHolder {
         }
     }
 
+    /**
+     * establishes all connections to vlc
+     */
     public void connect(){
         for (VLC vlc : vlcs){
             if (!vlc.connect())
@@ -51,6 +67,11 @@ public class VLCHolder extends backend.general.vlcHolder.VLCHolder {
         }
     }
 
+    /**
+     * send a command to all vlc instances
+     *
+     * @param command command type
+     */
     public void runCommand(VLCCommand command){
         Factory.getLogger().log(Level.INFO,"used command " + command + " on all vlc instances!");
 
