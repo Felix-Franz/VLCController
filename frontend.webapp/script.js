@@ -3,9 +3,10 @@ var path = "api/control/";
 
 function controlPOST(command){
 	$.post(path + command,
-        {
+        /*{
           client: "webapp"
-        },
+        }*/
+        null,
         function(data,status){
 			if (status != "success")
 				alert("Failed to connect to the api for executing command " + command);

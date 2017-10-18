@@ -1,9 +1,13 @@
 import backend.general.Factory;
+import backend.rest.core.Application;
+import backend.rest.services.DispatcherService;
 import org.apache.catalina.Context;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
+import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.servlet.ServletContainer;
 
 import java.io.File;
 import java.util.logging.Level;
@@ -26,16 +30,14 @@ public class Start {
 
     private static void startWebserver(){
         try {
+
             Tomcat tomcat = new Tomcat();
-            tomcat.setPort(8080);
+            tomcat.setPort(Factory.getSettings().getPort());
 
             Context context = tomcat.addWebapp(CONTEXT_PATH, new File(WEB_APP_LOCATION).getAbsolutePath());
-            String pathToClasses = new File(WEB_APP_CLASSES).getAbsolutePath();
-            WebResourceRoot resources = new StandardRoot(context);
-            DirResourceSet dirResourceSet = new DirResourceSet(resources, WEB_APP_MOUNT, pathToClasses, "/");
-
-            resources.addPreResources(dirResourceSet);
-            //context.setResources(resources);      //ToDo remove!
+            ServletContainer application = new ServletContainer(new ResourceConfig().register(DispatcherService.class));
+            tomcat.addServlet(context,"jersey-container-servlet", application);//ToDo okay?
+            context.findServletMapping("/");
 
             tomcat.start();
             tomcat.getServer().await();
