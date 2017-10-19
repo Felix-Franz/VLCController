@@ -18,10 +18,9 @@ public class Settings extends backend.general.settings.Settings {
     private int maxVLCConnectionThreads = 10;
 
     /**
-     * creates a setting object & saves new values to file
+     * creates a setting object
      */
     protected Settings(){
-        //saveSettings();
     }
 
     /**
