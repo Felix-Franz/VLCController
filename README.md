@@ -9,4 +9,5 @@ If you are interested in using the software read the wiki first or just go to th
 
 ## Using the Code
 
-Just [clone the repository](https://youtu.be/ptK9-CNms98) and import it into eclipse!
+Just clone the repository into [IntelliJ](https://www.jetbrains.com/idea/)!
+This project is using Maven!
