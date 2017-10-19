@@ -18,25 +18,16 @@ public class Settings extends backend.general.settings.Settings {
     private int maxVLCConnectionThreads = 10;
 
     /**
-     * creates a setting object
+     * creates a setting object & saves new values to file
      */
     protected Settings(){
-    }
-
-    /**
-     * creates a setting object
-     * @param saveSettings true: save settings to config file
-     */
-    protected Settings(boolean saveSettings){
-        if (saveSettings){
-            saveSettings();
-        }
+        //saveSettings();
     }
 
     /**
      * saves settings to config file
      */
-    private void saveSettings(){
+    protected void saveSettings(){
         try {
             FileWriter writer = new FileWriter(CONFIG.SETTINGS_PATH);
             Gson gson = new GsonBuilder().setPrettyPrinting().create();

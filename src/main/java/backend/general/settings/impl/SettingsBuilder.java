@@ -5,6 +5,7 @@ import backend.CONFIG;
 import backend.general.Factory;
 import backend.general.settings.Settings;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -24,10 +25,13 @@ public class SettingsBuilder implements backend.general.settings.SettingsBuilder
             Gson gson = new Gson();
             backend.general.settings.impl.Settings settings = gson.fromJson(reader, backend.general.settings.impl.Settings.class);
             reader.close();
+            settings.saveSettings();
             return settings;
         } catch (FileNotFoundException e) {
             Factory.getLogger().log(Level.WARNING, "No settings.json found, creating it!");
-            return new backend.general.settings.impl.Settings(true);
+            backend.general.settings.impl.Settings settings = new backend.general.settings.impl.Settings();
+            settings.saveSettings();
+            return settings;
         } catch (IOException e){
             e.printStackTrace();    //ToDo handle exception
             return null;
