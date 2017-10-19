@@ -50,16 +50,16 @@
                         <configuration>
                             <target>
                                 <echo>copying conf files....</echo>
-                                <copy todir="${basedir}/out/conf" overwrite="true" flatten="true">
+                                <copy todir="${basedir}/out/conf" overwrite="true" flatten="false">
                                     <fileset dir="${basedir}/conf"></fileset>
                                 </copy>
                                 <echo>copying frontend.webapp files....</echo>
-                                <copy todir="${basedir}/out/frontend.webapp" overwrite="true" flatten="true">
+                                <copy todir="${basedir}/out/frontend.webapp" overwrite="true" flatten="false">
                                     <fileset dir="${basedir}/frontend.webapp"></fileset>
                                 </copy>
                                 <echo>copying starter files....</echo>
                                 <copy todir="${basedir}/out" overwrite="true" flatten="true">
-                                    <fileset dir="${basedir}/src/main/starter"></fileset>
+                                    <fileset dir="${basedir}/src/main/starter/"></fileset>
                                 </copy>
                             </target>
                         </configuration>

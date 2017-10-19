@@ -24,7 +24,7 @@ public class Application extends ResourceConfig
 	{
 		super( );
 		registerClasses( getServiceClasses( ) );
-		packages( "org.glassfish.jersey.examples.linking" );
+		packages( "backend.rest.core" );
 		register( DeclarativeLinkingFeature.class );
 		register( MultiPartFeature.class );
 		register( CorsFilter.class );
