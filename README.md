@@ -3,8 +3,9 @@ A desktop software to control one or more instances of VLC media player simultan
 
 ## Using the software
 
-If you are interested in using the software just go to the releases:
-[Releases](//github.com/Felix-Franz/VLCController/releases)
+If you are interested in using the software read the wiki first or just go to the releases:
+* [Wiki](//github.com/Felix-Franz/VLCController/wiki/)
+* [Releases](//github.com/Felix-Franz/VLCController/releases)
 
 ## Using the Code
 
