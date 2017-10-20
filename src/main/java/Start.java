@@ -7,23 +7,25 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.logging.Level;
 
 /**
  * Created by Felix on 08.10.2017.
  */
 public class Start {
+    static Tomcat tomcat = new Tomcat();
 
     public static void main(String[] args) throws InterruptedException {
         Factory.getLogger().setLevel(Factory.getSettings().getLoggingLevel());
         Factory.getLogger().log(Level.INFO, "Starting webserver..");
+        addShutdownEvent();
         startWebserver();
     }
 
     private static void startWebserver(){
         try {
 
-            Tomcat tomcat = new Tomcat();
             tomcat.setPort(Factory.getSettings().getPort());
 
             Context context = tomcat.addWebapp(CONFIG.WEB_APP_CONTEXT_PATH, new File(CONFIG.WEB_APP_LOCATION).getAbsolutePath());
@@ -36,5 +38,37 @@ public class Start {
         } catch (Exception e){
             //ToDo handle exception
         }
+    }
+
+    private static void addShutdownEvent(){
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            Factory.getLogger().log(Level.INFO, "Shutdown webserver...");
+            tomcat.getServer().setShutdown(null);
+            Factory.getLogger().log(Level.INFO, "Done!");
+
+            try {
+                int closeTime = 5;
+                System.out.print("Closing window in " + closeTime + " seconds");
+
+                new Thread(() -> {
+                    try {
+                        System.in.read();
+                        System.exit(0);
+                    } catch (IOException e) {
+                        e.printStackTrace();    //ToDo handle exception
+                    }
+                }).start();
+
+                for (closeTime--;closeTime>=0; closeTime--){
+                    Thread.currentThread().sleep(1000);
+                    System.out.print("\rClosing window in " + closeTime + " seconds");
+                }
+                System.out.println("\nBye!");
+                Thread.currentThread().sleep(1000);
+                Runtime.getRuntime().halt(0);
+            } catch (InterruptedException e) {
+                e.printStackTrace();    //ToDo handle exception
+            }
+        }));
     }
 }
