@@ -21,10 +21,14 @@ public class VLCHolderBuilder implements backend.general.vlcHolder.VLCHolderBuil
             FileReader reader = new FileReader(CONFIG.VLC_CONFIG_PATH);
             Gson gson = new Gson();
             VLC[] vlcs = gson.fromJson(reader, VLC[].class);
-            return new VLCHolder(vlcs);
+            VLCHolder holder = new VLCHolder(vlcs);
+            holder.saveVLCs();
+            return holder;
         } catch (FileNotFoundException e) {
             Factory.getLogger().log(Level.WARNING, "No vlc.json found, creating it!");
-            return new VLCHolder(new VLC[0], true);
+            VLCHolder holder = new VLCHolder(new VLC[0], true);
+            holder.saveVLCs();
+            return holder;
         }
     }
 }

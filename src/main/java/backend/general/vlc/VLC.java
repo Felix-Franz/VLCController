@@ -7,10 +7,10 @@ import java.net.Socket;
  * Created by Felix on 09.10.2017.
  */
 public class VLC {
-    private String name;
-    private String host;
-    private int port;
-    private String password;
+    private String name = "LocalVLC";
+    private String host = "127.0.0.1";
+    private int port = 4212;
+    private String password = "pass";
 
     private Socket connection = null;
     private BufferedReader in = null;

@@ -45,7 +45,7 @@ public class VLCHolder extends backend.general.vlcHolder.VLCHolder {
     /**
      * save all vlcs to config file
      */
-    private void saveVLCs(){
+    protected void saveVLCs(){
         try {
             FileWriter writer = new FileWriter(CONFIG.VLC_CONFIG_PATH);
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
