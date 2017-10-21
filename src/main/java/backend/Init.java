@@ -3,8 +3,6 @@ package backend;
 import backend.general.Factory;
 import backend.utils.IPFinder;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.logging.Level;
 
 /**

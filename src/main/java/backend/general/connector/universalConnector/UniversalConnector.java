@@ -61,6 +61,17 @@ public class UniversalConnector implements AbstractConnector {
     }
 
     /**
+     * Get the response time of the player
+     * @return response time in ms (-1 if no connection)
+     */
+    public long getResponseTime(){
+        long start = System.currentTimeMillis();
+        if (connector.getState() == null) return -1;
+        long end = System.currentTimeMillis();
+        return end - start ;
+    }
+
+    /**
      *
      * @return Name of player instance
      */
