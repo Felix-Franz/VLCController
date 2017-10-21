@@ -53,6 +53,7 @@ public class VLCConnector implements AbstractConnector {
     @Override
     public boolean runCommand(Command command){
         connectIfNotConnected();
+        if (command == Command.PAUSE && getState() == PlayerState.PAUSED) return true;
         try {
             out.println(command.getCommand());
             out.flush();
