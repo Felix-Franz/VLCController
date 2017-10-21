@@ -1,88 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>VLCController</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-		<!-- Imports -->
+<head>
+	<title>VLCController</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<!-- jQuery library -->
-		<script src="resources/jquery3.2.1.min.js"></script>
+	<!-- Imports -->
 
-		<!-- bootstrap -->
-		<link rel="stylesheet" href="resources/bootstrap-3.3.7/css/bootstrap.min.css">
-		<script src="resources/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<!-- jQuery library -->
+	<script src="resources/jquery3.2.1.min.js"></script>
 
-		<!-- Font Awsome -->
-		<link rel="stylesheet" href="resources/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="resources/bootstrap-3.3.7/css/bootstrap.min.css">
+	<script src="resources/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 
-		<!-- Own stuff -->
-		<link rel="stylesheet" media="(max-width: 1023px)" href="mobile.css" />
-		<link rel="stylesheet" media="(min-width: 1024px)" href="desktop.css" />
-		<script src="script.js"></script >
-		
-	</head>
-	<body>
+	<!-- Font Awsome -->
+	<link rel="stylesheet" href="resources/font-awesome-4.7.0/css/font-awesome.min.css">
 
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">VLCController</a>
-			</div>
-			<div class="collapse navbar-collapse" id="navbar">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<!--
-					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Page 1-1</a></li>
-							<li><a href="#">Page 1-2</a></li>
-							<li><a href="#">Page 1-3</a></li>
-						</ul>
-					</li>
-					<li><a href="#">Page 2</a></li>
-					-->
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a target="_blank" href="https://www.felix-franz.com/about"><i class="fa fa-user-circle" aria-hidden="true"></i></i> Developer</a></li>
-					<li><a target="_blank" href="https://github.com/Felix-Franz/VLCController/wiki"><i class="fa fa-question" aria-hidden="true"></i> Help</a></li>
-				</ul>
-			</div>
+	<!-- bootstrap table -->
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+
+	<!-- Own stuff -->
+	<link rel="stylesheet" media="(max-width: 1023px)" href="mobile.css" />
+	<link rel="stylesheet" media="(min-width: 1024px)" href="desktop.css" />
+	<script src="script.js"></script >
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">VLCController</a>
 		</div>
-	</nav>
-
-
-		<div class="container">
-
+		<div class="collapse navbar-collapse" id="navbar">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<!--
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Page 1-1</a></li>
+                        <li><a href="#">Page 1-2</a></li>
+                        <li><a href="#">Page 1-3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Page 2</a></li>
+                -->
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a target="_blank" href="https://www.felix-franz.com/about"><i class="fa fa-user-circle" aria-hidden="true"></i></i> Developer</a></li>
+				<li><a target="_blank" href="https://github.com/Felix-Franz/VLCController/wiki"><i class="fa fa-question" aria-hidden="true"></i> Help</a></li>
+			</ul>
 		</div>
+	</div>
+</nav>
 
-		<div class="panel panel-default navbar-fixed-bottom" style="text-align: center; margin-bottom: 0px;">
-			<div class="panel-heading" title="control all instances of VLC Mediaplayer">
-				<a data-toggle="collapse" href="#control">
-					<h3>Control</h3>
-				</a>
-			</div>
-			<div id="control" class="panel-collapse collapse in">
-				<div class="panel-body">
-					<button onclick="controlPlay()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-play fa-lg"></i></button>
-					<button onclick="controlPause()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-pause fa-lg"></i></button>
-					<button onclick="controlStop()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-stop fa-lg"></i></button>
-					<br />
-					<button onclick="controlBackward()" id="controlBackward" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-step-backward"></i></button>
-					<button onclick="controlShuffle()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-random" aria-hidden="true"></i></button>
-					<button onclick="controlFullscreen()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-expand" aria-hidden="true"></i></button>
-					<button onclick="controlRepeat()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-repeat" aria-hidden="true"></i></button>
-					<button onclick="controlForward()" id="controlForward" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-step-forward"></i></button>
-				</div>
-			</div>
+
+<div class="container">
+	<h1 class="pull-left">Connected Devices</h1>
+	<table
+			id="connectorInfo"
+			class="table datatable"
+			data-sort-name="name"
+			data-sort-order="asc"
+			data-pagination="true"
+			data-page-list="[5, 10, 25, 50, 100]"
+			data-page-size="10"
+			data-show-pagination-switch="true"
+			data-show-columns="true"
+			data-sortable="true"
+			data-search="true"
+			data-show-refresh="true">
+		<thead>
+		<tr>
+			<th data-sortable="true" data-field="name">Name</th>
+			<th data-sortable="true" data-visible="false" data-field="host">Host</th>
+			<th data-sortable="true" data-visible="false" data-field="port">Port</th>
+			<th data-sortable="true" data-field="title">Title</th>
+			<th data-sortable="true" data-field="state">State</th>
+			<th data-sortable="true" data-field="volume">Volume</th>
+			<th data-sortable="true" data-field="responseTime">Response Time</th>
+		</tr>
+		</thead>
+	</table>
+	<script>
+				$('#connectorInfo').bootstrapTable({
+        url: path + 'instances'
+    });
+			</script>
+</div>
+
+<div class="panel panel-default navbar-fixed-bottom" style="text-align: center; margin-bottom: 0px;">
+	<div class="panel-heading" title="control all instances of VLC Mediaplayer">
+		<a data-toggle="collapse" href="#control">
+			<h3>Control</h3>
+		</a>
+	</div>
+	<div id="control" class="panel-collapse collapse in">
+		<div class="panel-body">
+			<button onclick="controlPlay()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-play fa-lg"></i></button>
+			<button onclick="controlPause()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-pause fa-lg"></i></button>
+			<button onclick="controlStop()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-stop fa-lg"></i></button>
+			<br />
+			<button onclick="controlBackward()" id="controlBackward" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-step-backward"></i></button>
+			<button onclick="controlShuffle()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-random" aria-hidden="true"></i></button>
+			<button onclick="controlFullscreen()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-expand" aria-hidden="true"></i></button>
+			<button onclick="controlRepeat()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+			<button onclick="controlForward()" id="controlForward" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-step-forward"></i></button>
 		</div>
+	</div>
+</div>
 
-		
-	</body>
+
+</body>
 </html>

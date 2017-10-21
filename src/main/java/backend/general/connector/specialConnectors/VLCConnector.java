@@ -46,13 +46,8 @@ public class VLCConnector implements AbstractConnector {
         return false;
     }
 
-    private void connectIfNotConnected(){
-        if (connection==null) connect();
-    }
-
     @Override
     public boolean runCommand(Command command){
-        connectIfNotConnected();
         if (command == Command.PAUSE && getState() == PlayerState.PAUSED) return true;
         try {
             out.println(command.getCommand());
@@ -73,12 +68,18 @@ public class VLCConnector implements AbstractConnector {
 
     @Override
     public int getVolume() {
-        return Integer.valueOf(new StringCutter(getRawState()).cut("( audio volume: ", " )"));
+        try {
+            return Integer.valueOf(new StringCutter(getRawState()).cut("( audio volume: ", " )"));
+        } catch (NumberFormatException e){
+            e.printStackTrace();    //ToDo handle Exception
+            return -1;
+        }
     }
 
     @Override
     public PlayerState getState() {
         String rawState = new StringCutter(getRawState()).cut("( state ", " )");
+        if (rawState == null) return PlayerState.UNDEFINED;
         switch (rawState){
             case "playing":
                 return PlayerState.PLAYING;
@@ -87,12 +88,11 @@ public class VLCConnector implements AbstractConnector {
             case "stopped":
                 return PlayerState.STOPPED;
             default:
-                return null;
+                return PlayerState.UNDEFINED;
         }
     }
 
     private String getRawState(){
-        connectIfNotConnected();
         String output = "";
         try {
             out.println("status");

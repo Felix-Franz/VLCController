@@ -6,7 +6,8 @@ package backend.general.connector.enums;
 public enum PlayerState {
     PLAYING("playing"),
     PAUSED("paused"),
-    STOPPED("stopped");
+    STOPPED("stopped"),
+    UNDEFINED("undefined");
 
     private String textState;
 

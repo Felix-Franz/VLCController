@@ -66,7 +66,7 @@ public class UniversalConnector implements AbstractConnector {
      */
     public long getResponseTime(){
         long start = System.currentTimeMillis();
-        if (connector.getState() == null) return -1;
+        if (connector.getState() == PlayerState.UNDEFINED) return -1;
         long end = System.currentTimeMillis();
         return end - start ;
     }
