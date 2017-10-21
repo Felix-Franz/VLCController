@@ -44,6 +44,13 @@ function responseTimeFormatter(value){
     return value;
 }
 
+function reconnectInstances(){
+    $.post(path + "instances/reconnect", null, function(data,status){
+        if (status != "success")
+            alert("Failed to connect to the api for executing command " + command);
+        });
+}
+
 function controlPOST(command){
 	$.post(path + "control/" + command,
         /*{
