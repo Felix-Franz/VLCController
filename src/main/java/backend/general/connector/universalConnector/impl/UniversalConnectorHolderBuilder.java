@@ -1,4 +1,4 @@
-package backend.general.connector.universalConnectorHolder.impl;
+package backend.general.connector.universalConnector.impl;
 
 import backend.CONFIG;
 import backend.general.Factory;
@@ -12,10 +12,10 @@ import java.util.logging.Level;
 /**
  * Created by Felix on 09.10.2017.
  */
-public class UniversalConnectorHolderBuilder implements backend.general.connector.universalConnectorHolder.UniversalConnectorHolderBuilder {
+public class UniversalConnectorHolderBuilder implements backend.general.connector.universalConnector.UniversalConnectorHolderBuilder {
 
     @Override
-    public backend.general.connector.universalConnectorHolder.UniversalConnectorHolder build() {
+    public backend.general.connector.universalConnector.UniversalConnectorHolder build() {
         try {
             Factory.getLogger().log(Level.INFO, "reading player.json");
             FileReader reader = new FileReader(CONFIG.VLC_CONFIG_PATH);

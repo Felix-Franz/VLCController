@@ -1,4 +1,4 @@
-package backend.general.connector.universalConnectorHolder.impl;
+package backend.general.connector.universalConnector.impl;
 
 import backend.CONFIG;
 import backend.general.Factory;
@@ -15,7 +15,7 @@ import java.util.logging.Level;
 /**
  * Created by Felix on 09.10.2017.
  */
-public class UniversalConnectorHolder extends backend.general.connector.universalConnectorHolder.UniversalConnectorHolder {
+public class UniversalConnectorHolder extends backend.general.connector.universalConnector.UniversalConnectorHolder {
 
     private UniversalConnector[] universalConnectors;
 

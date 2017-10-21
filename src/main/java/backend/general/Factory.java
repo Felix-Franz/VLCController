@@ -1,7 +1,7 @@
 package backend.general;
 
 import backend.general.settings.Settings;
-import backend.general.connector.universalConnectorHolder.UniversalConnectorHolder;
+import backend.general.connector.universalConnector.UniversalConnectorHolder;
 import backend.utils.Logger;
 
 /**

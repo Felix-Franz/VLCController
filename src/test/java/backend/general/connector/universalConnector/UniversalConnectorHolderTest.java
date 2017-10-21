@@ -1,4 +1,4 @@
-package backend.general.connector.universalConnectorHolder;
+package backend.general.connector.universalConnector;
 
 import backend.CONFIG;
 import backend.general.Factory;
