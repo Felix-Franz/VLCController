@@ -1,12 +1,14 @@
 package backend.general.connector.universalConnector;
 
+import backend.general.connector.AbstractConnector;
+
 import java.io.*;
 import java.net.Socket;
 
 /**
  * Created by Felix on 09.10.2017.
  */
-public class UniversalConnector {
+public class UniversalConnector implements AbstractConnector {
     private String name = "LocalVLC";
     private String host = "127.0.0.1";
     private int port = 4212;
@@ -20,11 +22,7 @@ public class UniversalConnector {
     protected UniversalConnector(){
     }
 
-    /**
-     * Connects to a UniversalConnector instance
-     *
-     * @return true: connection established, false: any exception
-     */
+    @Override
     public boolean connect(){
         try {
             connection = new Socket(host, port);
@@ -41,12 +39,7 @@ public class UniversalConnector {
         return false;
     }
 
-    /**
-     * Runs a command on this UniversalConnector instance
-     *
-     * @param command
-     * @return true: command was successful, false: any exception
-     */
+    @Override
     public boolean runCommand(Command command){
         try {
             out.println(command.getCommand());
@@ -61,7 +54,7 @@ public class UniversalConnector {
 
     /**
      *
-     * @return Name of UniversalConnector instance
+     * @return Name of player instance
      */
     public String getName(){
         return name;
@@ -69,7 +62,7 @@ public class UniversalConnector {
 
     /**
      *
-     * @return host of UniversalConnector instance
+     * @return host of player instance
      */
     public String getHost() {
         return host;
@@ -77,7 +70,7 @@ public class UniversalConnector {
 
     /**
      *
-     * @return port of universalConnector instance
+     * @return port of player instance
      */
     public int getPort() {
         return port;
