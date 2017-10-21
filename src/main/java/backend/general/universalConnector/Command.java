@@ -1,12 +1,12 @@
-package backend.general.vlc;
+package backend.general.universalConnector;
 
 /**
  * Created by Felix on 09.10.2017.
  */
 
-//VLCCommand.PLAY.getCommand() --> play
+//Command.PLAY.getCommand() --> play
 
-public enum VLCCommand {
+public enum Command {
     PLAY("play"),
     PAUSE("pause"),
     STOP("stop"),
@@ -18,7 +18,7 @@ public enum VLCCommand {
 
     private String value;
 
-    VLCCommand(String value){
+    Command(String value){
         this.value = value;
     }
 

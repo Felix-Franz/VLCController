@@ -1,4 +1,4 @@
-package backend.general.vlc;
+package backend.general.universalConnector;
 
 import java.io.*;
 import java.net.Socket;
@@ -6,7 +6,7 @@ import java.net.Socket;
 /**
  * Created by Felix on 09.10.2017.
  */
-public class VLC {
+public class UniversalConnector {
     private String name = "LocalVLC";
     private String host = "127.0.0.1";
     private int port = 4212;
@@ -17,11 +17,11 @@ public class VLC {
     private PrintWriter out = null;
 
 
-    protected VLC(){
+    protected UniversalConnector(){
     }
 
     /**
-     * Connects to a VLC instance
+     * Connects to a UniversalConnector instance
      *
      * @return true: connection established, false: any exception
      */
@@ -42,12 +42,12 @@ public class VLC {
     }
 
     /**
-     * Runs a command on this VLC instance
+     * Runs a command on this UniversalConnector instance
      *
      * @param command
      * @return true: command was successful, false: any exception
      */
-    public boolean runCommand(VLCCommand command){
+    public boolean runCommand(Command command){
         try {
             out.println(command.getCommand());
             out.flush();
@@ -61,7 +61,7 @@ public class VLC {
 
     /**
      *
-     * @return Name of VLC instance
+     * @return Name of UniversalConnector instance
      */
     public String getName(){
         return name;
@@ -69,7 +69,7 @@ public class VLC {
 
     /**
      *
-     * @return host of VLC instance
+     * @return host of UniversalConnector instance
      */
     public String getHost() {
         return host;
@@ -77,7 +77,7 @@ public class VLC {
 
     /**
      *
-     * @return port of vlc instance
+     * @return port of universalConnector instance
      */
     public int getPort() {
         return port;

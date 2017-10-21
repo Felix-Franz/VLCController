@@ -20,7 +20,7 @@ public class DispatcherService extends AbstractService {
     public Response showInfo(){
         return Response.
                 ok("Visit https://github.com/Felix-Franz/VLCController for more information!")
-                .link(uriInfo.getAbsolutePathBuilder().path("control").build(), "controle vlc instances")
+                .link(uriInfo.getAbsolutePathBuilder().path("control").build(), "controle universalConnector instances")
                 .build();
     }
 }

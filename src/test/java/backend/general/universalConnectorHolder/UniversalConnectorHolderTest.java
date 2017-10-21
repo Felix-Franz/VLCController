@@ -1,4 +1,4 @@
-package backend.general.vlcHolder;
+package backend.general.universalConnectorHolder;
 
 import backend.CONFIG;
 import backend.general.Factory;
@@ -12,7 +12,7 @@ import java.util.Scanner;
 /**
  * Created by Felix on 14.10.2017.
  */
-public class VLCHolderTest {
+public class UniversalConnectorHolderTest {
 
     @Test
     public void testName() throws FileNotFoundException {
