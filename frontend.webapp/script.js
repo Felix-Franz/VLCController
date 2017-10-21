@@ -25,6 +25,23 @@ function onInit(){
     })
 }
 
+function stateFormatter(value){
+    if (value=="undefined")
+        return "not connected"
+    return value;
+}
+function volumeFormatter(value){
+    if (value==-1){
+        return "-"
+    }
+    return value;
+}
+function responseTimeFormatter(value){
+    if (value==-1)
+        return "&infin;"
+    return value;
+}
+
 function controlPOST(command){
 	$.post(path + "control/" + command,
         /*{
@@ -36,7 +53,6 @@ function controlPOST(command){
 				alert("Failed to connect to the api for executing command " + command);
         });
 }
-
 function controlPlay(){
 	controlPOST("play");
 }

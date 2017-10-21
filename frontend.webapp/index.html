@@ -44,7 +44,7 @@
                 -->
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a target="_blank" href="https://www.felix-franz.com/about"><i class="fa fa-user-circle" aria-hidden="true"></i></i> Developer</a></li>
+				<li><a target="_blank" href="https://www.felix-franz.com/"><i class="fa fa-user-circle" aria-hidden="true"></i></i> Developer</a></li>
 				<li><a target="_blank" href="https://github.com/Felix-Franz/VLCController/wiki"><i class="fa fa-question" aria-hidden="true"></i> Help</a></li>
 			</ul>
 		</div>
@@ -69,13 +69,13 @@
 			data-show-refresh="true">
 		<thead>
 		<tr>
-			<th data-sortable="true" data-field="name">Name</th>
-			<th data-sortable="true" data-visible="false" data-field="host">Host</th>
-			<th data-sortable="true" data-visible="false" data-field="port">Port</th>
-			<th data-sortable="true" data-field="title">Title</th>
-			<th data-sortable="true" data-field="state">State</th>
-			<th data-sortable="true" data-field="volume">Volume</th>
-			<th data-sortable="true" data-field="responseTime">Response Time</th>
+			<th data-sortable="true" data-field="name" title="name of player instance">Name</th>
+			<th data-sortable="true" data-visible="false" data-field="host" title="IP or Host Address of the player instance">Host</th>
+			<th data-sortable="true" data-visible="false" data-field="port" title="port  of the player instance">Port</th>
+			<th data-sortable="true" data-field="title" title="current title">Title</th>
+			<th data-sortable="true" data-field="state" data-formatter="stateFormatter" title="state  of the player instance">State</th>
+			<th data-sortable="true" data-field="volume" data-formatter="volumeFormatter" title="volume  of the player instance">Volume</th>
+			<th data-sortable="true" data-field="responseTime" data-formatter="responseTimeFormatter" title="response time of the player instance (in ms)">Response Time</th>
 		</tr>
 		</thead>
 	</table>
