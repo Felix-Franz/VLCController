@@ -5,5 +5,6 @@ package backend.general.connector.enums;
  */
 public enum PlayerState {
     PLAYING,
-    PAUSED
+    PAUSED,
+    STOPPED
 }

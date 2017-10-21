@@ -18,6 +18,7 @@ public class StringCutter {
      * @return cutted string
      */
     public String cut(String begin, String end){
+        if (input.indexOf(begin) == -1) return null;
         int startIndex = input.indexOf(begin) + begin.length();
         int endIndex = input.indexOf(end, startIndex);
         return input.substring(startIndex, endIndex);

@@ -66,7 +66,9 @@ public class VLCConnector implements AbstractConnector {
 
     @Override
     public String getTitle() {
-        return new StringCutter(getRawState()).cut("( new input: ", " )");
+        String title =  new StringCutter(getRawState()).cut("( new input: ", " )");
+        if (title == null) return "no title";
+        return title;
     }
 
     @Override
@@ -82,6 +84,8 @@ public class VLCConnector implements AbstractConnector {
                 return PlayerState.PLAYING;
             case "paused":
                 return PlayerState.PAUSED;
+            case "stopped":
+                return PlayerState.STOPPED;
             default:
                 return null;
         }
@@ -95,7 +99,8 @@ public class VLCConnector implements AbstractConnector {
             out.flush();
             output+=in.readLine();
             output+=in.readLine();
-            output+=in.readLine();
+            if (output.contains("new input"))       //if nothing is in playlist this line is missing
+                output+=in.readLine();
         } catch (Exception e) {
             e.printStackTrace();    //ToDo handle exception
         }
