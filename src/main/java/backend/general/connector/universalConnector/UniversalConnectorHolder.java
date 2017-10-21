@@ -21,6 +21,11 @@ public abstract class UniversalConnectorHolder {
     public abstract void connect();
 
     /**
+     * Disconnects all UniversalConnector instances
+     */
+    public abstract void disconnect();
+
+    /**
      * Runs a command on all UniversalConnector instances
      * @param command
      */

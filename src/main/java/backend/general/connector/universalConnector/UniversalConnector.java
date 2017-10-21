@@ -37,6 +37,12 @@ public class UniversalConnector implements AbstractConnector {
     }
 
     @Override
+    public void disconnect() {
+        createInstanceOnFirstRun();
+        connector.disconnect();
+    }
+
+    @Override
     public boolean runCommand(Command command){
         createInstanceOnFirstRun();
         return connector.runCommand(command);

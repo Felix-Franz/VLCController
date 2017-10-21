@@ -53,13 +53,18 @@ public class UniversalConnectorHolder extends backend.general.connector.universa
         }
     }
 
-    /**
-     * establishes all connections to universalConnector
-     */
+    @Override
     public void connect(){
         for (UniversalConnector universalConnector : universalConnectors){
             if (!universalConnector.connect())
                 Factory.getLogger().log(Level.WARNING, "Could not connect to " + universalConnector.getName());
+        }
+    }
+
+    @Override
+    public void disconnect(){
+        for (UniversalConnector universalConnector : universalConnectors) {
+            universalConnector.disconnect();
         }
     }
 

@@ -32,6 +32,7 @@ public class VLCConnector implements AbstractConnector {
     @Override
     public boolean connect(){
         try {
+            disconnect();
             connection = new Socket(host, port);
             in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             out = new PrintWriter(new OutputStreamWriter(connection.getOutputStream()));
@@ -44,6 +45,15 @@ public class VLCConnector implements AbstractConnector {
             e.printStackTrace();    //ToDo handle exception
         }
         return false;
+    }
+
+    @Override
+    public void disconnect() {
+        if (connection!=null) try {
+            connection.close();
+        } catch (IOException e) {
+            e.printStackTrace();        //ToDo handle exception
+        }
     }
 
     @Override

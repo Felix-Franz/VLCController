@@ -15,6 +15,11 @@ public interface AbstractConnector {
     public boolean connect();
 
     /**
+     * Disconnects a Player instance
+     */
+    public void disconnect();
+
+    /**
      * Runs a command on this player instance
      *
      * @param command
