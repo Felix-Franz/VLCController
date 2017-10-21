@@ -1,4 +1,4 @@
-package backend.general.connector.universalConnector;
+package backend.general.connector.enums;
 
 /**
  * Created by Felix on 09.10.2017.

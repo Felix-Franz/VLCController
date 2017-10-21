@@ -1,7 +1,7 @@
 package backend.rest.services;
 
 import backend.general.Factory;
-import backend.general.connector.universalConnector.Command;
+import backend.general.connector.enums.Command;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;

@@ -1,7 +1,7 @@
 package backend.general.connector.specialConnectors;
 
 import backend.general.connector.AbstractConnector;
-import backend.general.connector.universalConnector.Command;
+import backend.general.connector.enums.Command;
 
 import java.io.*;
 import java.net.Socket;

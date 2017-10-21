@@ -1,6 +1,7 @@
 package backend.general.connector.universalConnector;
 
 import backend.general.connector.AbstractConnector;
+import backend.general.connector.enums.Command;
 import backend.general.connector.specialConnectors.VLCConnector;
 
 /**

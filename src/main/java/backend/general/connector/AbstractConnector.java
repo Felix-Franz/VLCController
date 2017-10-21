@@ -1,9 +1,6 @@
 package backend.general.connector;
 
-import backend.general.connector.universalConnector.Command;
-
-import java.io.*;
-import java.net.Socket;
+import backend.general.connector.enums.Command;
 
 /**
  * Created by Felix on 21.10.2017.

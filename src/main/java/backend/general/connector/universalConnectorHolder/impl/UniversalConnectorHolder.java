@@ -2,7 +2,7 @@ package backend.general.connector.universalConnectorHolder.impl;
 
 import backend.CONFIG;
 import backend.general.Factory;
-import backend.general.connector.universalConnector.Command;
+import backend.general.connector.enums.Command;
 import backend.general.connector.universalConnector.UniversalConnector;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
