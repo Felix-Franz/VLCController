@@ -6,6 +6,8 @@ function onInit(){
         url: path + 'instances'
     });
     //make place for footer
+    $('#contend').css('margin-top', $('#nav').css('height'));
+    //make place for footer
     $('#contend').css('margin-bottom', $('#control').css('height'));
 
     $('#collapseControl').on('show.bs.collapse', function () {
@@ -55,9 +57,15 @@ function controlPOST(command){
 }
 function controlPlay(){
 	controlPOST("play");
+    $("#controlPlay").fadeOut(100, function(){
+        $("#controlPause").fadeIn(100)
+    });
 }
 function controlPause(){
 	controlPOST("pause");
+	$("#controlPause").fadeOut(100, function(){
+            $("#controlPlay").fadeIn(100)
+        });
 }
 function controlStop(){
 	controlPOST("stop");

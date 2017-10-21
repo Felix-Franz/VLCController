@@ -18,7 +18,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top" id="nav">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
@@ -90,15 +90,15 @@
 		</div>
 		<div id="collapseControl" class="panel-collapse collapse">
 			<div class="panel-body">
-				<button onclick="controlPlay()" type="button" class="btn btn-primary btn-lg controlbtn" title="plays a title on all media players"><i class="fa fa-play fa-lg"></i></button>
-				<button onclick="controlPause()" type="button" class="btn btn-primary btn-lg controlbtn" title="pauses all media players"><i class="fa fa-pause fa-lg"></i></button>
+				<button onclick="controlBackward()" id="controlBackward" type="button" class="btn btn-primary btn-lg controlbtn" title="plays previouse title"><i class="fa fa-step-backward fa-lg"></i></button>
+				<button onclick="controlPlay()" type="button" id="controlPlay" class="btn btn-primary btn-lg controlbtn" title="plays a title on all media players"><i class="fa fa-play fa-lg"></i></button>
+				<button onclick="controlPause()" type="button" id="controlPause" class="btn btn-primary btn-lg controlbtn" title="pauses all media players" style="display: none;"><i class="fa fa-pause fa-lg"></i></button>
 				<button onclick="controlStop()" type="button" class="btn btn-primary btn-lg controlbtn" title="stops all media players"><i class="fa fa-stop fa-lg"></i></button>
+				<button onclick="controlForward()" id="controlForward" type="button" class="btn btn-primary btn-lg controlbtn" title="plays next title"><i class="fa fa-step-forward fa-lg"></i></button>
 				<br />
-				<button onclick="controlBackward()" id="controlBackward" type="button" class="btn btn-primary btn-lg controlbtn" title="plays previouse title"><i class="fa fa-step-backward"></i></button>
-				<button onclick="controlShuffle()" type="button" class="btn btn-primary btn-lg controlbtn" title="toggles shuffle on all media players"><i class="fa fa-random" aria-hidden="true"></i></button>
-				<button onclick="controlFullscreen()" type="button" class="btn btn-primary btn-lg controlbtn" title="toggles fullscreen on all media players"><i class="fa fa-expand" aria-hidden="true"></i></button>
-				<button onclick="controlRepeat()" type="button" class="btn btn-primary btn-lg controlbtn" title="toggles repeat on all media players"><i class="fa fa-repeat" aria-hidden="true"></i></button>
-				<button onclick="controlForward()" id="controlForward" type="button" class="btn btn-primary btn-lg controlbtn" title="plays next title"><i class="fa fa-step-forward"></i></button>
+				<button onclick="controlShuffle()" type="button" class="btn btn-primary btn-lg controlbtn" title="toggles shuffle on all media players"><i class="fa fa-random fa-lg" aria-hidden="true"></i></button>
+				<button onclick="controlFullscreen()" type="button" class="btn btn-primary btn-lg controlbtn" title="toggles fullscreen on all media players"><i class="fa fa-expand fa-lg" aria-hidden="true"></i></button>
+				<button onclick="controlRepeat()" type="button" class="btn btn-primary btn-lg controlbtn" title="toggles repeat on all media players"><i class="fa fa-repeat fa-lg" aria-hidden="true"></i></button>
 			</div>
 		</div>
 	</div>
