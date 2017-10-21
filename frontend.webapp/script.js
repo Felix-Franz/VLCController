@@ -1,8 +1,11 @@
-var path = "api/control/";
+var path = "api/";
 
+function init(){
+
+}
 
 function controlPOST(command){
-	$.post(path + command,
+	$.post(path + "control/" + command,
         /*{
           client: "webapp"
         }*/
@@ -37,3 +40,6 @@ function controlRepeat(){
 function controlForward(){
 	controlPOST("forward");
 }
+
+
+init();
