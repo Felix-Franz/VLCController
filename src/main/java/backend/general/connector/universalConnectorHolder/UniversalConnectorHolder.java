@@ -1,8 +1,8 @@
-package backend.general.universalConnectorHolder;
+package backend.general.connector.universalConnectorHolder;
 
-import backend.general.universalConnector.Command;
-import backend.general.universalConnectorHolder.impl.UniversalConnectorHolderBuilder;
-import backend.general.universalConnector.UniversalConnector;
+import backend.general.connector.universalConnector.Command;
+import backend.general.connector.universalConnectorHolder.impl.UniversalConnectorHolderBuilder;
+import backend.general.connector.universalConnector.UniversalConnector;
 
 /**
  * Created by Felix on 09.10.2017.

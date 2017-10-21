@@ -1,8 +1,8 @@
-package backend.general.universalConnectorHolder.impl;
+package backend.general.connector.universalConnectorHolder.impl;
 
 import backend.CONFIG;
 import backend.general.Factory;
-import backend.general.universalConnector.UniversalConnector;
+import backend.general.connector.universalConnector.UniversalConnector;
 import com.google.gson.Gson;
 
 import java.io.FileNotFoundException;
@@ -12,10 +12,10 @@ import java.util.logging.Level;
 /**
  * Created by Felix on 09.10.2017.
  */
-public class UniversalConnectorHolderBuilder implements backend.general.universalConnectorHolder.UniversalConnectorHolderBuilder {
+public class UniversalConnectorHolderBuilder implements backend.general.connector.universalConnectorHolder.UniversalConnectorHolderBuilder {
 
     @Override
-    public backend.general.universalConnectorHolder.UniversalConnectorHolder build() {
+    public backend.general.connector.universalConnectorHolder.UniversalConnectorHolder build() {
         try {
             Factory.getLogger().log(Level.INFO, "reading player.json");
             FileReader reader = new FileReader(CONFIG.VLC_CONFIG_PATH);

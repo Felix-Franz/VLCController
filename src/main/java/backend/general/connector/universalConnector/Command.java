@@ -1,4 +1,4 @@
-package backend.general.universalConnector;
+package backend.general.connector.universalConnector;
 
 /**
  * Created by Felix on 09.10.2017.

@@ -1,4 +1,4 @@
-package backend.general;
+package backend.utils;
 
 import java.util.logging.Level;
 

@@ -1,4 +1,4 @@
-package backend.general.universalConnectorHolder;
+package backend.general.connector.universalConnectorHolder;
 
 /**
  * Created by Felix on 09.10.2017.

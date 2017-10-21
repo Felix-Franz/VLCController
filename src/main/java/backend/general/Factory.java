@@ -1,7 +1,8 @@
 package backend.general;
 
 import backend.general.settings.Settings;
-import backend.general.universalConnectorHolder.UniversalConnectorHolder;
+import backend.general.connector.universalConnectorHolder.UniversalConnectorHolder;
+import backend.utils.Logger;
 
 /**
  * Created by Felix on 08.10.2017.

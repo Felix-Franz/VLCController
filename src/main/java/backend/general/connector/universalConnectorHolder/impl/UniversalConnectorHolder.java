@@ -1,9 +1,9 @@
-package backend.general.universalConnectorHolder.impl;
+package backend.general.connector.universalConnectorHolder.impl;
 
 import backend.CONFIG;
 import backend.general.Factory;
-import backend.general.universalConnector.Command;
-import backend.general.universalConnector.UniversalConnector;
+import backend.general.connector.universalConnector.Command;
+import backend.general.connector.universalConnector.UniversalConnector;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -15,7 +15,7 @@ import java.util.logging.Level;
 /**
  * Created by Felix on 09.10.2017.
  */
-public class UniversalConnectorHolder extends backend.general.universalConnectorHolder.UniversalConnectorHolder {
+public class UniversalConnectorHolder extends backend.general.connector.universalConnectorHolder.UniversalConnectorHolder {
 
     private UniversalConnector[] universalConnectors;
 

@@ -1,4 +1,4 @@
-package backend.general.universalConnector;
+package backend.general.connector.universalConnector;
 
 import java.io.*;
 import java.net.Socket;
