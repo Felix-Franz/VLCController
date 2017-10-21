@@ -95,7 +95,7 @@ public class UniversalConnectorHolder extends backend.general.connector.universa
         executorService.shutdown();
     }
 
-    public UniversalConnector[] getVLCInstances(){
+    public UniversalConnector[] getUniversalConnectorInstances(){
         return universalConnectors;
     }
 }

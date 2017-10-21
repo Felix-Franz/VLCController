@@ -1,4 +1,4 @@
-package backend.rest.wrapper;
+package backend.rest.wrapper.ConnectorInfoWrapper;
 
 /**
  * Created by Felix on 21.10.2017.

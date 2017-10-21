@@ -30,5 +30,5 @@ public abstract class UniversalConnectorHolder {
      *
      * @return all universalConnector instances
      */
-    public abstract UniversalConnector[] getVLCInstances();
+    public abstract UniversalConnector[] getUniversalConnectorInstances();
 }

@@ -1,9 +1,6 @@
-package backend.rest.wrapper;
+package backend.rest.wrapper.ConnectorInfoWrapper;
 
-import backend.general.connector.AbstractConnector;
 import backend.general.connector.universalConnector.UniversalConnector;
-
-import java.util.ArrayList;
 
 /**
  * Created by Felix on 21.10.2017.
