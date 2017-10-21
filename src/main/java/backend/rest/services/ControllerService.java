@@ -24,6 +24,7 @@ public class ControllerService extends AbstractService {
                 .build();
     }
 
+    //GET http://127.0.0.1:8080/api/control
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public Response getInformation(){

@@ -3,6 +3,7 @@ package backend.rest.core;
 import backend.Init;
 import backend.rest.services.ControllerService;
 import backend.rest.services.DispatcherService;
+import backend.rest.services.InstancesService;
 import com.owlike.genson.GensonBuilder;
 import com.owlike.genson.ext.jaxrs.GensonJaxRSFeature;
 import org.glassfish.jersey.linking.DeclarativeLinkingFeature;
@@ -49,6 +50,7 @@ public class Application extends ResourceConfig
 
 		returnValue.add(DispatcherService.class);
 		returnValue.add(ControllerService.class);
+		returnValue.add(InstancesService.class);
 
 		return returnValue;
 	}

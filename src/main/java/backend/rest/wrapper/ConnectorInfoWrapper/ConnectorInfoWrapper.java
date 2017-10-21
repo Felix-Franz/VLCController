@@ -23,4 +23,32 @@ public class ConnectorInfoWrapper {
         this.volume = volume;
         this.responseTime = responseTime;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public long getResponseTime() {
+        return responseTime;
+    }
 }
