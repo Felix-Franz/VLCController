@@ -5,29 +5,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Imports -->
-
-	<!-- jQuery library -->
-	<script src="resources/jquery3.2.1.min.js"></script>
-
 	<!-- bootstrap -->
 	<link rel="stylesheet" href="resources/bootstrap-3.3.7/css/bootstrap.min.css">
-	<script src="resources/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-
 	<!-- Font Awsome -->
 	<link rel="stylesheet" href="resources/font-awesome-4.7.0/css/font-awesome.min.css">
-
 	<!-- bootstrap table -->
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
-	<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
-
+	<link rel="stylesheet" href="resources/bootstrap-table-1.11.1/bootstrap-table.min.css">
 	<!-- Own stuff -->
+	<link rel="stylesheet" href="style.css" />
 	<link rel="stylesheet" media="(max-width: 1023px)" href="mobile.css" />
 	<link rel="stylesheet" media="(min-width: 1024px)" href="desktop.css" />
-	<script src="script.js"></script >
 
 </head>
 <body>
-
 <nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -62,7 +52,7 @@
 </nav>
 
 
-<div class="container">
+<div class="container" id="contend">
 	<h1 class="pull-left">Connected Devices</h1>
 	<table
 			id="connectorInfo"
@@ -89,34 +79,40 @@
 		</tr>
 		</thead>
 	</table>
-	<script>
-				$('#connectorInfo').bootstrapTable({
-        url: path + 'instances'
-    });
-			</script>
 </div>
 
-<div class="panel panel-default navbar-fixed-bottom" style="text-align: center; margin-bottom: 0px;">
-	<div class="panel-heading" title="control all instances of VLC Mediaplayer">
-		<a data-toggle="collapse" href="#control">
-			<h3>Control</h3>
-		</a>
-	</div>
-	<div id="control" class="panel-collapse collapse in">
-		<div class="panel-body">
-			<button onclick="controlPlay()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-play fa-lg"></i></button>
-			<button onclick="controlPause()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-pause fa-lg"></i></button>
-			<button onclick="controlStop()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-stop fa-lg"></i></button>
-			<br />
-			<button onclick="controlBackward()" id="controlBackward" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-step-backward"></i></button>
-			<button onclick="controlShuffle()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-random" aria-hidden="true"></i></button>
-			<button onclick="controlFullscreen()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-expand" aria-hidden="true"></i></button>
-			<button onclick="controlRepeat()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-repeat" aria-hidden="true"></i></button>
-			<button onclick="controlForward()" id="controlForward" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-step-forward"></i></button>
+<div class="panel-group" id="control">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#control" href="#collapseControl">Control</a>
+			</h4>
+		</div>
+		<div id="collapseControl" class="panel-collapse collapse">
+			<div class="panel-body">
+				<button onclick="controlPlay()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-play fa-lg"></i></button>
+				<button onclick="controlPause()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-pause fa-lg"></i></button>
+				<button onclick="controlStop()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-stop fa-lg"></i></button>
+				<br />
+				<button onclick="controlBackward()" id="controlBackward" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-step-backward"></i></button>
+				<button onclick="controlShuffle()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-random" aria-hidden="true"></i></button>
+				<button onclick="controlFullscreen()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-expand" aria-hidden="true"></i></button>
+				<button onclick="controlRepeat()" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+				<button onclick="controlForward()" id="controlForward" type="button" class="btn btn-primary btn-lg controlbtn"><i class="fa fa-step-forward"></i></button>
+			</div>
 		</div>
 	</div>
 </div>
 
-
+<!-- Imports -->
+<!-- jQuery library -->
+<script src="resources/jquery3.2.1.min.js"></script>
+<script src="resources/jquery.color-2.1.2.min.js"></script>
+<!-- bootstrap -->
+<script src="resources/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<!-- bootstrap table -->
+<script src="resources/bootstrap-table-1.11.1/bootstrap-table.min.js"></script>
+<!-- Own stuff -->
+<script language="javascript" type="text/javascript" src="script.js"></script >
 </body>
 </html>

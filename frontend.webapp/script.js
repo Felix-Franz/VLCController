@@ -1,7 +1,28 @@
 var path = "api/";
 
-function init(){
+function onInit(){
+    //load table
+    $('#connectorInfo').bootstrapTable({
+        url: path + 'instances'
+    });
+    //make place for footer
+    $('#contend').css('margin-bottom', $('#control').css('height'));
 
+    $('#collapseControl').on('show.bs.collapse', function () {
+        $('.panel-heading').animate({
+            backgroundColor: "#515151"
+        }, 500, function (){
+            $('#contend').animate({'margin-bottom': $('#control').css('height')}, 500);
+        });
+    })
+
+    $('#collapseControl').on('hide.bs.collapse', function () {
+        $('.panel-heading').animate({
+            backgroundColor: "#00B4FF"
+        }, 500, function (){
+            $('#contend').animate({'margin-bottom': $('#control').css('height')}, 500);
+        });
+    })
 }
 
 function controlPOST(command){
@@ -41,5 +62,4 @@ function controlForward(){
 	controlPOST("forward");
 }
 
-
-init();
+onInit();
