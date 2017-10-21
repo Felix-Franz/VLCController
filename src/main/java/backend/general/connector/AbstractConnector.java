@@ -1,6 +1,7 @@
 package backend.general.connector;
 
 import backend.general.connector.enums.Command;
+import backend.general.connector.enums.PlayerState;
 
 /**
  * Created by Felix on 21.10.2017.
@@ -20,4 +21,23 @@ public interface AbstractConnector {
      * @return true: command was successful, false: any exception
      */
     public boolean runCommand(Command command);
+
+    /**
+     * displays the current title
+     *
+     * @return current title
+     */
+    public String getTitle();
+
+    /**
+     * gets volume of instance
+     * @return volume
+     */
+    public int getVolume();
+
+    /**
+     * gets state
+     * @return
+     */
+    public PlayerState getState();
 }

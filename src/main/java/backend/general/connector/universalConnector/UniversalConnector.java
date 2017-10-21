@@ -2,6 +2,7 @@ package backend.general.connector.universalConnector;
 
 import backend.general.connector.AbstractConnector;
 import backend.general.connector.enums.Command;
+import backend.general.connector.enums.PlayerState;
 import backend.general.connector.specialConnectors.VLCConnector;
 
 /**
@@ -39,6 +40,24 @@ public class UniversalConnector implements AbstractConnector {
     public boolean runCommand(Command command){
         createInstanceOnFirstRun();
         return connector.runCommand(command);
+    }
+
+    @Override
+    public String getTitle() {
+        createInstanceOnFirstRun();
+        return connector.getTitle();
+    }
+
+    @Override
+    public int getVolume() {
+        createInstanceOnFirstRun();
+        return connector.getVolume();
+    }
+
+    @Override
+    public PlayerState getState() {
+        createInstanceOnFirstRun();
+        return connector.getState();
     }
 
     /**

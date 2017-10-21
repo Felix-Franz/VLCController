@@ -2,6 +2,8 @@ package backend.general.connector.specialConnectors;
 
 import backend.general.connector.AbstractConnector;
 import backend.general.connector.enums.Command;
+import backend.general.connector.enums.PlayerState;
+import backend.utils.StringCutter;
 
 import java.io.*;
 import java.net.Socket;
@@ -44,8 +46,13 @@ public class VLCConnector implements AbstractConnector {
         return false;
     }
 
+    private void connectIfNotConnected(){
+        if (connection==null) connect();
+    }
+
     @Override
     public boolean runCommand(Command command){
+        connectIfNotConnected();
         try {
             out.println(command.getCommand());
             out.flush();
@@ -54,7 +61,43 @@ public class VLCConnector implements AbstractConnector {
             e.printStackTrace();
         }
         return false;
-
     }
 
+    @Override
+    public String getTitle() {
+        return new StringCutter(getRawState()).cut("( new input: ", " )");
+    }
+
+    @Override
+    public int getVolume() {
+        return Integer.valueOf(new StringCutter(getRawState()).cut("( audio volume: ", " )"));
+    }
+
+    @Override
+    public PlayerState getState() {
+        String rawState = new StringCutter(getRawState()).cut("( state ", " )");
+        switch (rawState){
+            case "playing":
+                return PlayerState.PLAYING;
+            case "paused":
+                return PlayerState.PAUSED;
+            default:
+                return null;
+        }
+    }
+
+    private String getRawState(){
+        connectIfNotConnected();
+        String output = "";
+        try {
+            out.println("status");
+            out.flush();
+            output+=in.readLine();
+            output+=in.readLine();
+            output+=in.readLine();
+        } catch (Exception e) {
+            e.printStackTrace();    //ToDo handle exception
+        }
+        return output;
+    }
 }
