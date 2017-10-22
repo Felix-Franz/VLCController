@@ -13,7 +13,7 @@ public class Factory {
         return Settings.getInstance();
     }
 
-    public static UniversalConnectorHolder getVLCHolder(){
+    public static UniversalConnectorHolder getUniversalConnectorHolder(){
         return UniversalConnectorHolder.getInstance();
     }
 

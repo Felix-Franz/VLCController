@@ -7,8 +7,6 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,7 +50,7 @@ public class Start {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             Factory.getLogger().log(Level.INFO, "Shutdown webserver & player connections...");
             tomcat.getServer().setShutdown(null);
-            Factory.getVLCHolder().disconnect();
+            Factory.getUniversalConnectorHolder().disconnect();
             Factory.getLogger().log(Level.INFO, "Done!");
 
             try {

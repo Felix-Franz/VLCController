@@ -20,7 +20,7 @@ public class UniversalConnectorHolderTest {
         int startIndex = content.indexOf("\"name\": \"") + "\"name\": \"".length();
         int endIndex = content.indexOf("\",", startIndex);
         String name = content.substring(startIndex, endIndex);
-        Assert.assertEquals(name, Factory.getVLCHolder().getUniversalConnectorInstances()[0].getName());
+        Assert.assertEquals(name, Factory.getUniversalConnectorHolder().getUniversalConnectorInstances()[0].getName());
     }
 
     @Test
@@ -30,6 +30,6 @@ public class UniversalConnectorHolderTest {
         int endIndex = content.indexOf(",", startIndex);
         String rawPort = content.substring(startIndex, endIndex);
         int port = Integer.valueOf(rawPort);
-        Assert.assertEquals(port, Factory.getVLCHolder().getUniversalConnectorInstances()[0].getPort());
+        Assert.assertEquals(port, Factory.getUniversalConnectorHolder().getUniversalConnectorInstances()[0].getPort());
     }
 }

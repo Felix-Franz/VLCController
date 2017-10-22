@@ -23,7 +23,7 @@ public class InstancesService extends AbstractService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getInstances(){
 
-        ConnectorInfoWrapper[] wrapper = ConnectorInfoWrapperBuilder.createAllAutomatically(Factory.getVLCHolder().getUniversalConnectorInstances());
+        ConnectorInfoWrapper[] wrapper = ConnectorInfoWrapperBuilder.createAllAutomatically(Factory.getUniversalConnectorHolder().getUniversalConnectorInstances());
         return Response.ok(wrapper)
                 .link(uriInfo.getAbsolutePathBuilder().replacePath("api").build(), "start point of the api")
                 .link(uriInfo.getAbsolutePathBuilder().path("reconnect").build(), "reconnects all instances")
@@ -34,7 +34,7 @@ public class InstancesService extends AbstractService {
     @Path("reconnect")
     @Produces(MediaType.TEXT_PLAIN)
     public Response playVLC(){
-        Factory.getVLCHolder().connect();
+        Factory.getUniversalConnectorHolder().connect();
         return Response
                 .ok("Visit https://github.com/Felix-Franz/VLCController for more information!")
                 .link(uriInfo.getAbsolutePathBuilder().replacePath("api").build(), "start point of the api")

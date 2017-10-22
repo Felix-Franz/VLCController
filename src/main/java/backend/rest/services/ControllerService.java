@@ -46,7 +46,7 @@ public class ControllerService extends AbstractService {
     @Path("play")
     @Produces(MediaType.TEXT_PLAIN)
     public Response playVLC(){
-        Factory.getVLCHolder().runCommand(Command.PLAY);
+        Factory.getUniversalConnectorHolder().runCommand(Command.PLAY);
         return createResponse();
     }
 
@@ -54,7 +54,7 @@ public class ControllerService extends AbstractService {
     @Path("pause")
     @Produces(MediaType.TEXT_PLAIN)
     public Response pauseVLC(){
-        Factory.getVLCHolder().runCommand(Command.PAUSE);
+        Factory.getUniversalConnectorHolder().runCommand(Command.PAUSE);
         return createResponse();
     }
 
@@ -62,7 +62,7 @@ public class ControllerService extends AbstractService {
     @Path("stop")
     @Produces(MediaType.TEXT_PLAIN)
     public Response stopVLC(){
-        Factory.getVLCHolder().runCommand(Command.STOP);
+        Factory.getUniversalConnectorHolder().runCommand(Command.STOP);
         return createResponse();
     }
 
@@ -70,7 +70,7 @@ public class ControllerService extends AbstractService {
     @Path("backward")
     @Produces(MediaType.TEXT_PLAIN)
     public Response backwardVLC(){
-        Factory.getVLCHolder().runCommand(Command.BACKWARD);
+        Factory.getUniversalConnectorHolder().runCommand(Command.BACKWARD);
         return createResponse();
     }
 
@@ -78,7 +78,7 @@ public class ControllerService extends AbstractService {
     @Path("shuffle")
     @Produces(MediaType.TEXT_PLAIN)
     public Response shuffleVLC(){
-        Factory.getVLCHolder().runCommand(Command.SHUFFLE);
+        Factory.getUniversalConnectorHolder().runCommand(Command.SHUFFLE);
         return createResponse();
     }
 
@@ -86,7 +86,7 @@ public class ControllerService extends AbstractService {
     @Path("fullscreen")
     @Produces(MediaType.TEXT_PLAIN)
     public Response fullscreenVLC(){
-        Factory.getVLCHolder().runCommand(Command.FULLSCREEN);
+        Factory.getUniversalConnectorHolder().runCommand(Command.FULLSCREEN);
         return createResponse();
     }
 
@@ -94,7 +94,7 @@ public class ControllerService extends AbstractService {
     @Path("repeat")
     @Produces(MediaType.TEXT_PLAIN)
     public Response repeatVLC(){
-        Factory.getVLCHolder().runCommand(Command.REPEAT);
+        Factory.getUniversalConnectorHolder().runCommand(Command.REPEAT);
         return createResponse();
     }
 
@@ -102,7 +102,7 @@ public class ControllerService extends AbstractService {
     @Path("forward")
     @Produces(MediaType.TEXT_PLAIN)
     public Response forwardVLC(){
-        Factory.getVLCHolder().runCommand(Command.FORWARD);
+        Factory.getUniversalConnectorHolder().runCommand(Command.FORWARD);
         return createResponse();
     }
 

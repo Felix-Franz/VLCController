@@ -12,7 +12,7 @@ public class Init implements Runnable{
     @Override
     public void run() {
         Factory.getLogger().setLevel(Factory.getSettings().getLoggingLevel());
-        Factory.getVLCHolder().connect();
+        Factory.getUniversalConnectorHolder().connect();
 
         String ips = new IPFinder().addPort(Factory.getSettings().getPort()).toString();
         Factory.getLogger().log(Level.INFO, "You can access the webapp using one of following IP-Addresses: " + ips);
