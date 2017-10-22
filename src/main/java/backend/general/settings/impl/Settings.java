@@ -1,11 +1,14 @@
 package backend.general.settings.impl;
 
 import backend.CONFIG;
+import backend.general.Factory;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.sun.istack.internal.logging.Logger;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
 
 /**
  * Created by Felix on 08.10.2017.
@@ -41,8 +44,30 @@ public class Settings extends backend.general.settings.Settings {
     }
 
     @Override
-    public String getLoggingLevel() {
-        return loggingLevel;
+    public Level getLoggingLevel() {
+        switch (loggingLevel){
+            case "OFF":
+                return Level.OFF;
+            case "SEVERE":
+                return Level.SEVERE;
+            case "WARNING":
+                return Level.WARNING;
+            case "INFO":
+                return Level.INFO;
+            case "CONFIG":
+                return Level.CONFIG;
+            case "FINE":
+                return Level.FINE;
+            case "FINER":
+                return Level.FINER;
+            case "FINEST":
+                return Level.FINEST;
+            case "All":
+                return Level.ALL;
+            default:
+                Factory.getLogger().log(Level.WARNING, "Wrong loggingLevel in settings.json! use INFO as default level");
+                return Level.INFO;
+        }
     }
 
     @Override

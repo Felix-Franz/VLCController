@@ -40,46 +40,6 @@ public class Logger {
     }
 
     /**
-     * sets log level, which messages will be logged
-     *
-     * @param level OFF, SEVERE (highest), WARNING, INFO, CONFIG, FINE, FINER,FINEST (lowest), ALL
-     */
-    public void setLevel(String level){
-        switch (level){
-            case "OFF":
-                setLevel(Level.OFF);
-                break;
-            case "SEVERE":
-                setLevel(Level.SEVERE);
-                break;
-            case "WARNING":
-                setLevel(Level.WARNING);
-                break;
-            case "INFO":
-                setLevel(Level.INFO);
-                break;
-            case "CONFIG":
-                setLevel(Level.CONFIG);
-                break;
-            case "FINE":
-                setLevel(Level.FINE);
-                break;
-            case "FINER":
-                setLevel(Level.FINER);
-                break;
-            case "FINEST":
-                setLevel(Level.FINEST);
-                break;
-            case "All":
-                setLevel(Level.ALL);
-                break;
-                default:
-                    setLevel(Level.INFO);
-                    log(Level.WARNING, "Wrong loggingLevel in settings.json! use INFO as default level");
-        }
-    }
-
-    /**
      * creates a log
      * @param level log level
      * @param message log message
