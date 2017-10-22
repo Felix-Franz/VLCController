@@ -1,11 +1,13 @@
 package backend.general.connector.specialConnectors;
 
+import backend.general.Factory;
 import backend.general.connector.AbstractConnector;
 import backend.general.connector.enums.Command;
 import backend.general.connector.enums.PlayerState;
 import backend.utils.StringCutter;
 
 import java.io.*;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 
 /**
@@ -33,6 +35,9 @@ public class VLCConnector implements AbstractConnector {
     public boolean connect(){
         try {
             disconnect();
+            connection = new Socket();
+            connection.setSoTimeout(Factory.getSettings().getConnectorTimeout());
+            connection.connect(new InetSocketAddress(host, port), Factory.getSettings().getConnectorTimeout());
             connection = new Socket(host, port);
             in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             out = new PrintWriter(new OutputStreamWriter(connection.getOutputStream()));

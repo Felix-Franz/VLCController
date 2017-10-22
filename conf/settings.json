@@ -1,6 +1,7 @@
 {
   "loggingLevel": "INFO",
   "port": 8080,
+  "connectorTimeout": 1000,
   "maxVLCConnectionThreads": 10,
   "shutdownTime": 30
 }

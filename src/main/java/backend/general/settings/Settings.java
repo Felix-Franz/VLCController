@@ -15,6 +15,7 @@ public abstract class Settings {
 
     public abstract String getLoggingLevel();
     public abstract int getPort();
+    public abstract int getConnectorTimeout();
     public abstract int getMaxVLCConnectionThreads();
     public abstract int getShutdownTime();
 
