@@ -8,7 +8,10 @@ import org.glassfish.jersey.servlet.ServletContainer;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by Felix on 08.10.2017.
@@ -26,6 +29,11 @@ public class Start {
     private static void startWebserver(){
         try {
 
+            //set tomcat logging level
+            Handler[] handlers = Logger.getLogger("").getHandlers();
+            handlers[0].setLevel(Factory.getSettings().getLoggingLevel());
+
+            //start tomcat
             tomcat.setPort(Factory.getSettings().getPort());
 
             Context context = tomcat.addWebapp(CONFIG.WEB_APP_CONTEXT_PATH, new File(CONFIG.WEB_APP_LOCATION).getAbsolutePath());
