@@ -33,13 +33,14 @@ public class Settings extends backend.general.settings.Settings {
      */
     protected void saveSettings(){
         try {
+            Factory.getLogger().log(Level.INFO, "writing settings to file!");
             FileWriter writer = new FileWriter(CONFIG.SETTINGS_PATH);
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             gson.toJson(this, Settings.class, writer);
             writer.flush();
             writer.close();
         } catch (IOException e) {
-            e.printStackTrace();        //ToDo handle exception
+            Factory.getLogger().log(Level.WARNING, "Could not save settings file!");
         }
     }
 

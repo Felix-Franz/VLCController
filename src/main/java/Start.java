@@ -38,34 +38,26 @@ public class Start {
 
             Context context = tomcat.addWebapp(CONFIG.WEB_APP_CONTEXT_PATH, new File(CONFIG.WEB_APP_LOCATION).getAbsolutePath());
             ServletContainer application = new ServletContainer(new ResourceConfig().register(DispatcherService.class));
-            tomcat.addServlet(context,"jersey-container-servlet", application);//ToDo okay?
+            tomcat.addServlet(context,"jersey-container-servlet", application);
             context.findServletMapping("/");
 
             tomcat.start();
             tomcat.getServer().await();
         } catch (Exception e){
-            //ToDo handle exception
+            Factory.getLogger().log(Level.SEVERE, "Failed to start Tomcat, try to restart this software.");
         }
     }
 
     private static void addShutdownEvent(){
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            Factory.getLogger().log(Level.INFO, "Shutdown webserver...");
+            Factory.getLogger().log(Level.INFO, "Shutdown webserver & player connections...");
             tomcat.getServer().setShutdown(null);
+            Factory.getVLCHolder().disconnect();
             Factory.getLogger().log(Level.INFO, "Done!");
 
             try {
                 int closeTime = Factory.getSettings().getShutdownTime();
                 System.out.print("Closing window in " + closeTime + " seconds");
-
-                new Thread(() -> {
-                    try {
-                        System.in.read();
-                        System.exit(0);
-                    } catch (IOException e) {
-                        e.printStackTrace();    //ToDo handle exception
-                    }
-                }).start();
 
                 for (closeTime--;closeTime>=0; closeTime--){
                     Thread.currentThread().sleep(1000);
@@ -75,7 +67,8 @@ public class Start {
                 Thread.currentThread().sleep(1000);
                 Runtime.getRuntime().halt(0);
             } catch (InterruptedException e) {
-                e.printStackTrace();    //ToDo handle exception
+                //die quietly :D
+                Runtime.getRuntime().halt(0);
             }
         }));
     }

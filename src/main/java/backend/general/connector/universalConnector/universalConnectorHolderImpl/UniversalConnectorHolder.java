@@ -29,7 +29,7 @@ public class UniversalConnectorHolder extends backend.general.connector.universa
     }
 
     /**
-     * creates a universalConnector hodler
+     * creates a universalConnector holder
      * @param universalConnectors universalConnector instances
      * @param saveVLCs true: save to config file
      */
@@ -43,26 +43,28 @@ public class UniversalConnectorHolder extends backend.general.connector.universa
      */
     protected void saveVLCs(){
         try {
+            Factory.getLogger().log(Level.INFO, "writing player configuration to file!");
             FileWriter writer = new FileWriter(CONFIG.VLC_CONFIG_PATH);
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             gson.toJson(universalConnectors, UniversalConnector[].class, writer);
             writer.flush();
             writer.close();
         } catch (IOException e) {
-            e.printStackTrace();        //ToDo handle exception
+            Factory.getLogger().log(Level.WARNING, "Could not save player configuration file!");
         }
     }
 
     @Override
     public void connect(){
+        Factory.getLogger().log(Level.INFO, "Connecting to all player Instances...");
         for (UniversalConnector universalConnector : universalConnectors){
-            if (!universalConnector.connect())
-                Factory.getLogger().log(Level.WARNING, "Could not connect to " + universalConnector.getName());
+            universalConnector.connect();
         }
     }
 
     @Override
     public void disconnect(){
+        Factory.getLogger().log(Level.INFO, "Disconnecting from all player Instances...");
         for (UniversalConnector universalConnector : universalConnectors) {
             universalConnector.disconnect();
         }
@@ -74,7 +76,7 @@ public class UniversalConnectorHolder extends backend.general.connector.universa
      * @param command command type
      */
     public void runCommand(Command command){
-        Factory.getLogger().log(Level.INFO,"used command " + command + " on all universalConnector instances!");
+        Factory.getLogger().log(Level.INFO,"run command " + command + " on all universalConnector instances!");
 
         ExecutorService executorService = Executors.newFixedThreadPool(Factory.getSettings().getMaxVLCConnectionThreads());
         long executeTime = System.currentTimeMillis() + 100;
@@ -88,7 +90,7 @@ public class UniversalConnectorHolder extends backend.general.connector.universa
                         try {
                             Thread.currentThread().sleep((executeTime - System.currentTimeMillis()) / 2);
                         } catch (InterruptedException e) {
-                            e.printStackTrace();        //ToDo handle exception
+                            Factory.getLogger().log(Level.WARNING, "Could not run command " + command + "!");
                         }
                     }
                     if (!universalConnector.runCommand(command))

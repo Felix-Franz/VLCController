@@ -21,7 +21,7 @@ public class IPFinder {
             }
             formatIPv6();
         } catch (UnknownHostException e) {
-            e.printStackTrace();    //ToDo handle Exception
+            Factory.getLogger().log(Level.WARNING, "Could not determine IP- & Host-Addresses!");
         }
     }
 

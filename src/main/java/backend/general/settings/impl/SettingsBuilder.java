@@ -33,7 +33,7 @@ public class SettingsBuilder implements backend.general.settings.SettingsBuilder
             settings.saveSettings();
             return settings;
         } catch (IOException e){
-            e.printStackTrace();    //ToDo handle exception
+            Factory.getLogger().log(Level.WARNING,"Could not access settings configuration file!");
             return null;
         }
     }

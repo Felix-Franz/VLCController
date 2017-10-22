@@ -9,6 +9,7 @@ import backend.utils.StringCutter;
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.util.logging.Level;
 
 /**
  * Created by Felix on 21.10.2017.
@@ -47,18 +48,21 @@ public class VLCConnector implements AbstractConnector {
             in.readLine();
             if (in.readLine().equals("Welcome, Master")) return true;
         } catch (IOException e) {
-            e.printStackTrace();    //ToDo handle exception
+            Factory.getLogger().log(Level.WARNING, "Could not connect to VLC Media Player " + name + ". Please check your configuration!");
+            return false;
         }
+        Factory.getLogger().log(Level.WARNING, "Failed to log in to VLC Media Player " + name + ". Wrong password!");
         return false;
     }
 
     @Override
     public void disconnect() {
-        if (connection!=null) try {
-            connection.close();
-        } catch (IOException e) {
-            e.printStackTrace();        //ToDo handle exception
-        }
+        if (connection!=null)
+            try {
+                connection.close();
+            } catch (IOException e) {
+                Factory.getLogger().log(Level.WARNING, "Could not disconnect from " + name + ".");
+            }
     }
 
     @Override
@@ -86,7 +90,6 @@ public class VLCConnector implements AbstractConnector {
         try {
             return Integer.valueOf(new StringCutter(getRawState()).cut("( audio volume: ", " )"));
         } catch (NumberFormatException e){
-            e.printStackTrace();    //ToDo handle Exception
             return -1;
         }
     }
@@ -117,7 +120,7 @@ public class VLCConnector implements AbstractConnector {
             if (output.contains("new input"))       //if nothing is in playlist this line is missing
                 output+=in.readLine();
         } catch (Exception e) {
-            e.printStackTrace();    //ToDo handle exception
+            // return empty output
         }
         return output;
     }
