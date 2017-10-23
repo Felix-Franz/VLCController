@@ -1,5 +1,6 @@
 package backend.rest.core;
 
+import backend.CONFIG;
 import backend.Init;
 import backend.rest.services.ControllerService;
 import backend.rest.services.DispatcherService;
@@ -18,7 +19,7 @@ import java.util.Set;
 /**
  * Created by braunpet on 24.04.17.
  */
-@ApplicationPath( "api" )
+@ApplicationPath(CONFIG.WEB_APP_API_PATH)
 public class Application extends ResourceConfig
 {
 	public Application( )

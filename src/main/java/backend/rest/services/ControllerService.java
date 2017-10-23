@@ -1,5 +1,6 @@
 package backend.rest.services;
 
+import backend.CONFIG;
 import backend.general.Factory;
 import backend.general.connector.enums.Command;
 
@@ -20,7 +21,7 @@ public class ControllerService extends AbstractService {
     private Response createResponse(){
         return Response
                 .ok("Visit https://github.com/Felix-Franz/VLCController for more information!")
-                .link(uriInfo.getAbsolutePathBuilder().replacePath("api/control").build(), "controle universalConnector instances")
+                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/control").build(), "controle universalConnector instances")
                 .build();
     }
 
@@ -30,7 +31,7 @@ public class ControllerService extends AbstractService {
     public Response getInformation(){
         return Response
                 .ok("Visit https://github.com/Felix-Franz/VLCController for more information!")
-                .link(uriInfo.getAbsolutePathBuilder().replacePath("api").build(), "start point of the api")
+                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH).build(), "start point of the api")
                 .link(uriInfo.getAbsolutePathBuilder().path("play").build(), "plays media on all universalConnector instances")
                 .link(uriInfo.getAbsolutePathBuilder().path("pause").build(), "pauses playing media on all universalConnector instances")
                 .link(uriInfo.getAbsolutePathBuilder().path("stop").build(), "stops playing media on all universalConnector instances")
