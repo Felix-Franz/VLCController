@@ -4,7 +4,6 @@ import backend.CONFIG;
 import backend.general.Factory;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.sun.istack.internal.logging.Logger;
 
 import java.io.FileWriter;
 import java.io.IOException;
