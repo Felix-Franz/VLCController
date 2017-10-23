@@ -13,8 +13,10 @@ public abstract class Settings {
         return instance;
     }
 
-    public abstract String getLoggingLevel();
+    public abstract Level getLoggingLevel();
     public abstract int getPort();
+    public abstract int getConnectorTimeout();
     public abstract int getMaxVLCConnectionThreads();
+    public abstract int getShutdownTime();
 
 }

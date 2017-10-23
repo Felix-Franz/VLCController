@@ -1,7 +1,8 @@
 package backend.rest.services;
 
+import backend.CONFIG;
 import backend.general.Factory;
-import backend.general.vlc.VLCCommand;
+import backend.general.connector.enums.Command;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -20,23 +21,24 @@ public class ControllerService extends AbstractService {
     private Response createResponse(){
         return Response
                 .ok("Visit https://github.com/Felix-Franz/VLCController for more information!")
-                .link(uriInfo.getAbsolutePathBuilder().replacePath("api/control").build(), "controle vlc instances")
+                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/control").build(), "controle universalConnector instances")
                 .build();
     }
 
+    //GET http://127.0.0.1:8080/api/control
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public Response getInformation(){
         return Response
                 .ok("Visit https://github.com/Felix-Franz/VLCController for more information!")
-                .link(uriInfo.getAbsolutePathBuilder().replacePath("api").build(), "start point of the api")
-                .link(uriInfo.getAbsolutePathBuilder().path("play").build(), "plays media on all vlc instances")
-                .link(uriInfo.getAbsolutePathBuilder().path("pause").build(), "pauses playing media on all vlc instances")
-                .link(uriInfo.getAbsolutePathBuilder().path("stop").build(), "stops playing media on all vlc instances")
-                .link(uriInfo.getAbsolutePathBuilder().path("backward").build(), "plays the previous item of the playlist on all vlc instances")
-                .link(uriInfo.getAbsolutePathBuilder().path("shuffle").build(), "toggles shuffle on all vlc instances")
-                .link(uriInfo.getAbsolutePathBuilder().path("repeat").build(), "toggles repeat the playlist on all vlc instances")
-                .link(uriInfo.getAbsolutePathBuilder().path("forward").build(), "plays the next item of the playlist on all vlc instances")
+                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH).build(), "start point of the api")
+                .link(uriInfo.getAbsolutePathBuilder().path("play").build(), "plays media on all universalConnector instances")
+                .link(uriInfo.getAbsolutePathBuilder().path("pause").build(), "pauses playing media on all universalConnector instances")
+                .link(uriInfo.getAbsolutePathBuilder().path("stop").build(), "stops playing media on all universalConnector instances")
+                .link(uriInfo.getAbsolutePathBuilder().path("backward").build(), "plays the previous item of the playlist on all universalConnector instances")
+                .link(uriInfo.getAbsolutePathBuilder().path("shuffle").build(), "toggles shuffle on all universalConnector instances")
+                .link(uriInfo.getAbsolutePathBuilder().path("repeat").build(), "toggles repeat the playlist on all universalConnector instances")
+                .link(uriInfo.getAbsolutePathBuilder().path("forward").build(), "plays the next item of the playlist on all universalConnector instances")
                 .build();
     }
 
@@ -45,7 +47,7 @@ public class ControllerService extends AbstractService {
     @Path("play")
     @Produces(MediaType.TEXT_PLAIN)
     public Response playVLC(){
-        Factory.getVLCHolder().runCommand(VLCCommand.PLAY);
+        Factory.getUniversalConnectorHolder().runCommand(Command.PLAY);
         return createResponse();
     }
 
@@ -53,7 +55,7 @@ public class ControllerService extends AbstractService {
     @Path("pause")
     @Produces(MediaType.TEXT_PLAIN)
     public Response pauseVLC(){
-        Factory.getVLCHolder().runCommand(VLCCommand.PAUSE);
+        Factory.getUniversalConnectorHolder().runCommand(Command.PAUSE);
         return createResponse();
     }
 
@@ -61,7 +63,7 @@ public class ControllerService extends AbstractService {
     @Path("stop")
     @Produces(MediaType.TEXT_PLAIN)
     public Response stopVLC(){
-        Factory.getVLCHolder().runCommand(VLCCommand.STOP);
+        Factory.getUniversalConnectorHolder().runCommand(Command.STOP);
         return createResponse();
     }
 
@@ -69,7 +71,7 @@ public class ControllerService extends AbstractService {
     @Path("backward")
     @Produces(MediaType.TEXT_PLAIN)
     public Response backwardVLC(){
-        Factory.getVLCHolder().runCommand(VLCCommand.BACKWARD);
+        Factory.getUniversalConnectorHolder().runCommand(Command.BACKWARD);
         return createResponse();
     }
 
@@ -77,7 +79,7 @@ public class ControllerService extends AbstractService {
     @Path("shuffle")
     @Produces(MediaType.TEXT_PLAIN)
     public Response shuffleVLC(){
-        Factory.getVLCHolder().runCommand(VLCCommand.SHUFFLE);
+        Factory.getUniversalConnectorHolder().runCommand(Command.SHUFFLE);
         return createResponse();
     }
 
@@ -85,7 +87,7 @@ public class ControllerService extends AbstractService {
     @Path("fullscreen")
     @Produces(MediaType.TEXT_PLAIN)
     public Response fullscreenVLC(){
-        Factory.getVLCHolder().runCommand(VLCCommand.FULLSCREEN);
+        Factory.getUniversalConnectorHolder().runCommand(Command.FULLSCREEN);
         return createResponse();
     }
 
@@ -93,7 +95,7 @@ public class ControllerService extends AbstractService {
     @Path("repeat")
     @Produces(MediaType.TEXT_PLAIN)
     public Response repeatVLC(){
-        Factory.getVLCHolder().runCommand(VLCCommand.REPEAT);
+        Factory.getUniversalConnectorHolder().runCommand(Command.REPEAT);
         return createResponse();
     }
 
@@ -101,7 +103,7 @@ public class ControllerService extends AbstractService {
     @Path("forward")
     @Produces(MediaType.TEXT_PLAIN)
     public Response forwardVLC(){
-        Factory.getVLCHolder().runCommand(VLCCommand.FORWARD);
+        Factory.getUniversalConnectorHolder().runCommand(Command.FORWARD);
         return createResponse();
     }
 

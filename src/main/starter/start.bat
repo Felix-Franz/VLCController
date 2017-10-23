@@ -1,6 +1,4 @@
 @ echo off
-title VLCController
+title VLCController Starter
 
-java -jar vlccontroller-2.0.0-beta.jar
-
-timeout 30
+start "VLCController" java -jar vlccontroller-2.0.0-beta.jar

@@ -15,12 +15,14 @@ import javax.ws.rs.core.UriInfo;
 @Path("")
 public class DispatcherService extends AbstractService {
 
+    //GET http://127.0.0.1:8080/api
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public Response showInfo(){
         return Response.
                 ok("Visit https://github.com/Felix-Franz/VLCController for more information!")
-                .link(uriInfo.getAbsolutePathBuilder().path("control").build(), "controle vlc instances")
+                .link(uriInfo.getAbsolutePathBuilder().path("control").build(), "controle universalConnector instances")
+                .link(uriInfo.getAbsolutePathBuilder().path("instances").build(), "get all instance info")
                 .build();
     }
 }
