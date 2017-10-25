@@ -39,6 +39,13 @@ public class IPFinder {
         return this;
     }
 
+    public String[] getIps(){
+        String[] out = new String[ips.length];
+        for (int i=0; i<ips.length; i++)
+            out[i] = "http://" + ips[i];
+        return out;
+    }
+
     @Override
     public String toString() {
         if (ips.length==0) return "";

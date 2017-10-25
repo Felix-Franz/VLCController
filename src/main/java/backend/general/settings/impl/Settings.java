@@ -18,6 +18,7 @@ public class Settings extends backend.general.settings.Settings {
     private String loggingLevel = "INFO";
     private int port = 8080;
     private int connectorTimeout = 1000;
+    private boolean openBrowserOnStart = true;
     private int maxVLCConnectionThreads = 10;
     private int shutdownTime = 30;
 
@@ -78,6 +79,11 @@ public class Settings extends backend.general.settings.Settings {
     @Override
     public int getConnectorTimeout() {
         return connectorTimeout;
+    }
+
+    @Override
+    public boolean getOpenBrowserOnStart() {
+        return false;
     }
 
     @Override

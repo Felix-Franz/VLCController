@@ -16,6 +16,7 @@ public abstract class Settings {
     public abstract Level getLoggingLevel();
     public abstract int getPort();
     public abstract int getConnectorTimeout();
+    public abstract boolean getOpenBrowserOnStart();
     public abstract int getMaxVLCConnectionThreads();
     public abstract int getShutdownTime();
 

@@ -3,6 +3,10 @@ package backend;
 import backend.general.Factory;
 import backend.utils.IPFinder;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.logging.Level;
 
 /**
@@ -14,7 +18,29 @@ public class Init implements Runnable{
         Factory.getLogger().setLevel(Factory.getSettings().getLoggingLevel());
         Factory.getUniversalConnectorHolder().connect();
 
-        String ips = new IPFinder().addPort(Factory.getSettings().getPort()).toString();
-        Factory.getLogger().log(Level.INFO, "You can access the webapp using one of following IP-Addresses: " + ips);
+        runUserStartup();
+    }
+
+    private void runUserStartup(){
+        try {
+            Thread.currentThread().sleep(3000);
+            IPFinder finder = new IPFinder().addPort(Factory.getSettings().getPort());
+            String[] ips = finder.getIps();
+            String ipString = finder.toString();
+            if (ips.length<1) {
+                Factory.getLogger().log(Level.WARNING, "Could not get local host address!");
+                return;
+            }
+            Factory.getLogger().log(Level.INFO, "You can access the webapp using one of following IP-Addresses: " + ipString);
+            if(Desktop.isDesktopSupported()){
+                Factory.getLogger().log(Level.INFO, "Starting Webbrowser..");
+                Desktop.getDesktop().browse(new URI(ips[0]));
+            } else {
+                Factory.getLogger().log(Level.WARNING, "Could not open Browser");
+            }
+
+        } catch (InterruptedException | URISyntaxException | IOException e) {
+            Factory.getLogger().log(Level.WARNING, "Could not display host addresses or open Browser");
+        }
     }
 }
