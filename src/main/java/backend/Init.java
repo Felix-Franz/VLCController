@@ -23,7 +23,7 @@ public class Init implements Runnable{
 
     private void runUserStartup(){
         try {
-            Thread.currentThread().sleep(3000);
+            Thread.currentThread().sleep(2000);
             IPFinder finder = new IPFinder().addPort(Factory.getSettings().getPort());
             String[] ips = finder.getIps();
             String ipString = finder.toString();
@@ -32,10 +32,10 @@ public class Init implements Runnable{
                 return;
             }
             Factory.getLogger().log(Level.INFO, "You can access the webapp using one of following IP-Addresses: " + ipString);
-            if(Desktop.isDesktopSupported()){
+            if(Factory.getSettings().getOpenBrowserOnStart() && Desktop.isDesktopSupported()){
                 Factory.getLogger().log(Level.INFO, "Starting Webbrowser..");
                 Desktop.getDesktop().browse(new URI(ips[0]));
-            } else {
+            } else if (Factory.getSettings().getOpenBrowserOnStart()) {
                 Factory.getLogger().log(Level.WARNING, "Could not open Browser");
             }
 

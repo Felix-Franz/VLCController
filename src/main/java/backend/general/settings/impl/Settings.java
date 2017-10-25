@@ -83,7 +83,7 @@ public class Settings extends backend.general.settings.Settings {
 
     @Override
     public boolean getOpenBrowserOnStart() {
-        return false;
+        return openBrowserOnStart;
     }
 
     @Override
