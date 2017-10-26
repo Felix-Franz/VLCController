@@ -24,7 +24,7 @@ public class Init implements Runnable{
     private void runUserStartup(){
         try {
             Thread.currentThread().sleep(2000);
-            IPFinder finder = new IPFinder().addPort(Factory.getSettings().getPort());
+            IPFinder finder = new IPFinder().addSettingsPort();
             String[] ips = finder.getIps();
             String ipString = finder.toString();
             if (ips.length<1) {
