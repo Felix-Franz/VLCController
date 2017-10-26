@@ -1,24 +1,32 @@
-function onInit(){
-    //make place for footer
-    $('#contend').css('margin-top', $('#nav').css('height'));
-    //make place for footer
-    $('#contend').css('margin-bottom', $('#control').css('height'));
+function onInitDesign(){
+    //update menu onclick
+    $(".nav li").on("click", function() {
+    console.log("test")
+        $(".content").toggleClass("active");
+        $(".nav li").removeClass("active");
+        $(this).addClass("active");
+    });
 
+    //make place for footer
+    $('#content').css('margin-top', $('#nav').css('height'));
+    //make place for footer
+    $('#content').css('margin-bottom', $('#control').css('height'));
+
+    //attach control bar color change
     $('#collapseControl').on('show.bs.collapse', function () {
         $('.panel-heading').animate({
             backgroundColor: "#515151"
         }, 500, function (){
-            $('#contend').animate({'margin-bottom': $('#control').css('height')}, 500);
+            $('#content').animate({'margin-bottom': $('#control').css('height')}, 500);
         });
-    })
-
+    });
     $('#collapseControl').on('hide.bs.collapse', function () {
         $('.panel-heading').animate({
             backgroundColor: "#00B4FF"
         }, 500, function (){
-            $('#contend').animate({'margin-bottom': $('#control').css('height')}, 500);
+            $('#content').animate({'margin-bottom': $('#control').css('height')}, 500);
         });
-    })
+    });
 }
 
-onInit();
+onInitDesign();

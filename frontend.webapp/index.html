@@ -42,7 +42,8 @@
 		</div>
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
+				<li class="active"><a href="#" title="Home">Home</a></li>
+				<li><a href="#" title="Connect other devices like your cellphone to this Website!">Connect to Server</a></li>
 				<!--
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
@@ -67,33 +68,39 @@
 </nav>
 
 
-<div class="container" id="contend">
-	<h1 class="pull-left">Connected Devices</h1>
-	<table
-			id="connectorInfo"
-			class="table datatable"
-			data-sort-name="name"
-			data-sort-order="asc"
-			data-pagination="true"
-			data-page-list="[5, 10, 25, 50, 100]"
-			data-page-size="10"
-			data-show-pagination-switch="true"
-			data-show-columns="true"
-			data-sortable="true"
-			data-search="true"
-			data-show-refresh="true">
-		<thead>
-		<tr>
-			<th data-sortable="true" data-field="name" title="name of player instance">Name</th>
-			<th data-sortable="true" data-visible="false" data-field="host" title="IP or Host Address of the player instance">Host</th>
-			<th data-sortable="true" data-visible="false" data-field="port" title="port  of the player instance">Port</th>
-			<th data-sortable="true" data-field="title" title="current title">Title</th>
-			<th data-sortable="true" data-field="state" data-formatter="stateFormatter" title="state  of the player instance">State</th>
-			<th data-sortable="true" data-field="volume" data-formatter="volumeFormatter" title="volume  of the player instance">Volume</th>
-			<th data-sortable="true" data-field="responseTime" data-formatter="responseTimeFormatter" title="response time of the player instance (in ms)">Response Time</th>
-		</tr>
-		</thead>
-	</table>
+<div class="container" id="content">
+
+	<div id="instancesInfo" class="active content">
+		<h1 class="pull-left">Connected Devices</h1>
+		<table
+				id="connectorInfo"
+				class="table datatable"
+				data-sort-name="name"
+				data-sort-order="asc"
+				data-pagination="true"
+				data-page-list="[5, 10, 25, 50, 100]"
+				data-page-size="10"
+				data-show-pagination-switch="true"
+				data-show-columns="true"
+				data-sortable="true"
+				data-search="true"
+				data-show-refresh="true">
+			<thead>
+			<tr>
+				<th data-sortable="true" data-field="name" title="name of player instance">Name</th>
+				<th data-sortable="true" data-visible="false" data-field="host" title="IP or Host Address of the player instance">Host</th>
+				<th data-sortable="true" data-visible="false" data-field="port" title="port  of the player instance">Port</th>
+				<th data-sortable="true" data-field="title" title="current title">Title</th>
+				<th data-sortable="true" data-field="state" data-formatter="stateFormatter" title="state  of the player instance">State</th>
+				<th data-sortable="true" data-field="volume" data-formatter="volumeFormatter" title="volume  of the player instance">Volume</th>
+				<th data-sortable="true" data-field="responseTime" data-formatter="responseTimeFormatter" title="response time of the player instance (in ms)">Response Time</th>
+			</tr>
+			</thead>
+		</table>
+	</div>
+	<div id="connectToServer" class="content">
+		<h1>Connect to this Server</h1>
+	</div>
 </div>
 
 <div class="panel-group" id="control">

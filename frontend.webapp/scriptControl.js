@@ -56,5 +56,3 @@ function controlRepeat(){
 function controlForward(){
 	controlPOST("forward");
 }
-
-onInit();
