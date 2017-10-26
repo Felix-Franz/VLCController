@@ -3,6 +3,7 @@ package backend.rest.services;
 import backend.CONFIG;
 import backend.rest.wrapper.ServerHostWrapper.ServerHostWrapperBuilder;
 import backend.utils.IPFinder;
+import backend.utils.QRGenerator;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -42,12 +43,14 @@ public class ServerService extends AbstractService {
     //GET http://127.0.0.1:8080/api/server/host/0
     @GET
     @Path("host/{qr}")
-    //@Produces(MediaType.)
+    @Produces("image/png")
     public Response getHostQR(@PathParam("qr") int qr){
         String[] ips = new IPFinder().addSettingsPort().getIps();
         if ( qr < 0 || qr >= ips.length) return Response.status(404)
                 .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/server/host").build(), "get host information")
                 .build();
-        return Response.ok().build();
+        return Response.ok(new QRGenerator(ips[qr]).create())
+                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/server/host").build(), "get host information")
+                .build();
     }
 }
