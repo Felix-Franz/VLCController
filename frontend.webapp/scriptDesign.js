@@ -1,7 +1,6 @@
 function onInitDesign(){
     //update menu onclick
     $(".nav li").on("click", function() {
-    console.log("test")
         $(".content").toggleClass("active");
         $(".nav li").removeClass("active");
         $(this).addClass("active");
