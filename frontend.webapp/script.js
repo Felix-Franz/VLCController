@@ -46,9 +46,15 @@ function responseTimeFormatter(value){
 
 function reconnectInstances(){
     $.post(path + "instances/reconnect", null, function(data,status){
-        if (status != "success")
+        if (status == "success")
+            reloadConnectorInfoTable(); //ToDo wheather it will be ran to early like with commands
+        else
             alert("Failed to connect to the api for executing command " + command);
         });
+}
+
+function reloadConnectorInfoTable(){
+    $('#connectorInfo').bootstrapTable('refresh');
 }
 
 function controlPOST(command){
@@ -58,7 +64,11 @@ function controlPOST(command){
         }*/
         null,
         function(data,status){
-			if (status != "success")
+			if (status == "success")
+                setTimeout(function() {
+			        reloadConnectorInfoTable();
+                }, 500);
+			else
 				alert("Failed to connect to the api for executing command " + command);
         });
 }
