@@ -1,5 +1,6 @@
 package backend.utils;
 
+import backend.CONFIG;
 import backend.general.Factory;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -19,8 +20,6 @@ import java.util.logging.Level;
  */
 public class QRGenerator {
     String rawQR;
-    int width = 180;
-    int height = 180;
 
     public QRGenerator(String rawQR) {
         this.rawQR = rawQR + "/";
@@ -39,7 +38,7 @@ public class QRGenerator {
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
         Map<EncodeHintType, Object> hints = new EnumMap<EncodeHintType, Object>(EncodeHintType.class);
         hints.put(EncodeHintType.MARGIN, 0);
-        BitMatrix bitMatrix = qrCodeWriter.encode(rawQR, BarcodeFormat.QR_CODE, width, height, hints);
+        BitMatrix bitMatrix = qrCodeWriter.encode(rawQR, BarcodeFormat.QR_CODE, CONFIG.QR_WIDTH, CONFIG.QR_HEIGHT, hints);
         return bitMatrix;
     }
 
