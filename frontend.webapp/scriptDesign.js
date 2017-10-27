@@ -1,7 +1,6 @@
 function onInitDesign(){
     //update menu onclick
     $(".nav li").on("click", function() {
-        $(".content").toggleClass("active");
         $(".nav li").removeClass("active");
         $(this).addClass("active");
     });
@@ -26,6 +25,11 @@ function onInitDesign(){
             $('#content').animate({'margin-bottom': $('#control').css('height')}, 500);
         });
     });
+}
+
+function openPage(pageId){
+	$(".content").removeClass("active");
+	$("#" + pageId).addClass("active");
 }
 
 onInitDesign();
