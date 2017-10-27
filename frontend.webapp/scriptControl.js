@@ -7,10 +7,6 @@ function reconnectInstances(){
         });
 }
 
-function reloadConnectorInfoTable(){
-    $('#connectorInfo').bootstrapTable('refresh');
-}
-
 function controlPOST(command){
 	$.post(path + "control/" + command,
         /*{

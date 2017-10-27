@@ -1,4 +1,4 @@
-function onInit(){
+function onInitInstances(){
     //load table
     $('#connectorInfo').bootstrapTable({
         url: path + 'instances'
@@ -22,4 +22,8 @@ function responseTimeFormatter(value){
     return value;
 }
 
-onInit();
+function reloadConnectorInfoTable(){
+    $('#connectorInfo').bootstrapTable('refresh');
+}
+
+onInitInstances();
