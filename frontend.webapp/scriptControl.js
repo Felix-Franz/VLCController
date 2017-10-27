@@ -1,10 +1,15 @@
 function reconnectInstances(){
-    $.post(path + "instances/reconnect", null, function(data,status){
-        if (status == "success")
+    $.ajax({
+        type: "POST",
+        url: path + "instances/reconnect",
+        data: null,
+        success: function(data){
             reloadConnectorInfoTable();
-        else
-            alert("Failed to connect to the api for executing command " + command);
-        });
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+            notifyBackendConnectionError();
+        }
+    });
 }
 
 function controlPOST(command){
