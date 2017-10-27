@@ -5,6 +5,10 @@ function reconnectInstances(){
         data: null,
         success: function(data){
             reloadConnectorInfoTable();
+            toastr.info('All players got reconnected', 'Reconnected players', {
+                    timeOut: 3000,
+                    closeButton: true
+                });
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
             notifyBackendConnectionError();
