@@ -14,7 +14,6 @@ function loadHost(){
 
 function buildHost(host){
 	var content = "";
-	console.log(host.length);
 	for (var i=0; i<host.length; i++){
 		content+=
 		'<div class = "col-sm-6 col-md-4">'
