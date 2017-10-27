@@ -25,6 +25,10 @@ function onInitDesign(){
             $('#content').animate({'margin-bottom': $('#control').css('height')}, 500);
         });
     });
+    //
+    $("#navbar").on('click', function(){
+        $("#navbar").collapse('hide');
+    })
 }
 
 function openPage(pageId){
