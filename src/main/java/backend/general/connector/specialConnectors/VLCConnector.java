@@ -188,7 +188,7 @@ public class VLCConnector implements AbstractConnector {
             String title = in.readLine().replace("> ", "");
             if (!title.equals("")) return title;
         } catch (Exception e) {
-            Factory.getLogger().log(Level.WARNING, "Logger " + name + " could not read the actual title!");
+            Factory.getLogger().log(Level.WARNING, "Connector " + name + " could not read the actual title!");
         }
         return "no title";
     }
@@ -202,7 +202,7 @@ public class VLCConnector implements AbstractConnector {
             int volume = Integer.valueOf(rawVolume);
             return volume*100/256;
         } catch (Exception e) {
-            Factory.getLogger().log(Level.WARNING, "Logger " + name + " could not read the actual title!");
+            Factory.getLogger().log(Level.WARNING, "Connector " + name + " could not read the actual volume!");
         }
         return -1;
     }

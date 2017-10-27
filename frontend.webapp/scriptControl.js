@@ -1,7 +1,7 @@
 function reconnectInstances(){
     $.post(path + "instances/reconnect", null, function(data,status){
         if (status == "success")
-            reloadConnectorInfoTable(); //ToDo wheather it will be ran to early like with commands
+            reloadConnectorInfoTable();
         else
             alert("Failed to connect to the api for executing command " + command);
         });
