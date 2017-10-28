@@ -54,6 +54,7 @@ public class Start {
             Factory.getLogger().log(Level.INFO, "Done!");
 
             try {
+                Thread.sleep(1000);
                 int closeTime = Factory.getSettings().getShutdownTime();
                 System.out.print("Closing window in " + closeTime + " seconds");
 
