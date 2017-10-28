@@ -1,0 +1,14 @@
+.controlbtn {
+    padding: 4%;
+    padding-left: 6%;
+    padding-right: 6%;
+    margin-top: 3%;
+}
+
+#controlBackward {
+    margin-right: 3%;
+}
+
+#controlForward {
+    margin-left: 3%;
+}
