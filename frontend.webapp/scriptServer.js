@@ -1,15 +1,16 @@
 function loadHost(){
-	$.get(path + "server/host/",
-        /*{
-          client: "webapp"
-        }*/
-        null,
-        function(data,status){
-			if (status == "success")
-                buildHost(data)
-			else
-				alert("Failed to connect load host addresses!");
-        });
+    $("#connectToServerConent").html('<center><div class="loader"></div><p>loading</p></center>');
+    $.ajax({
+        type: "GET",
+        url: path + "server/host/",
+        data: null,
+        success: function(data){
+            buildHost(data);
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+            notifyBackendConnectionError();
+        }
+    });
 }
 
 function buildHost(host){
