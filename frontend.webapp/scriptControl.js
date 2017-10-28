@@ -17,19 +17,19 @@ function reconnectInstances(){
 }
 
 function controlPOST(command){
-	$.post(path + "control/" + command,
-        /*{
-          client: "webapp"
-        }*/
-        null,
-        function(data,status){
-			if (status == "success")
-                setTimeout(function() {
-			        reloadConnectorInfoTable();
-                }, 500);
-			else
-				alert("Failed to connect to the api for executing command " + command);
-        });
+    $.ajax({
+        type: "POST",
+        url: path + "control/" + command,
+        data: null,
+        success: function(data){
+            setTimeout(function() {
+                reloadConnectorInfoTable();
+            }, 500);
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+            notifyBackendConnectionError();
+        }
+    });
 }
 function controlPlay(){
 	controlPOST("play");
