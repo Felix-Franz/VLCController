@@ -31,6 +31,7 @@ public class InstancesService extends AbstractService {
                 .build();
     }
 
+    //POST http://127.0.0.1:8080/api/instances/reconnect
     @POST
     @Path("reconnect")
     @Produces(MediaType.TEXT_PLAIN)

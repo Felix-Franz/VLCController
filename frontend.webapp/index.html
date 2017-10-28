@@ -5,15 +5,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- favicon -->
-	<link rel="apple-touch-icon" sizes="180x180" href="/resources/favicon/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon/favicon-16x16.png">
-	<link rel="manifest" href="/resources/favicon/manifest.json">
-	<link rel="mask-icon" href="/resources/favicon/safari-pinned-tab.svg" color="#00b4ff">
-	<link rel="shortcut icon" href="/resources/favicon/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="resources/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="resources/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="resources/favicon/favicon-16x16.png">
+	<link rel="manifest" href="resources/favicon/manifest.json">
+	<link rel="mask-icon" href="resources/favicon/safari-pinned-tab.svg" color="#00b4ff">
+	<link rel="shortcut icon" href="resources/favicon/favicon.ico">
 	<meta name="apple-mobile-web-app-title" content="VLCController">
 	<meta name="application-name" content="VLCController">
-	<meta name="msapplication-config" content="/resources/favicon/browserconfig.xml">
+	<meta name="msapplication-config" content="resources/favicon/browserconfig.xml">
 	<meta name="theme-color" content="#00b4ff">
 
 	<!-- Imports -->
@@ -23,6 +23,8 @@
 	<link rel="stylesheet" href="resources/font-awesome-4.7.0/css/font-awesome.min.css">
 	<!-- bootstrap table -->
 	<link rel="stylesheet" href="resources/bootstrap-table-1.11.1/bootstrap-table.min.css">
+	<!-- Toastr -->
+	<link rel="stylesheet" href="resources/toastr-2.1.3/toastr.min.css">
 	<!-- Own stuff -->
 	<link rel="stylesheet" href="style.css" />
 	<link rel="stylesheet" media="(max-width: 1023px)" href="mobile.css" />
@@ -42,7 +44,8 @@
 		</div>
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
+				<li class="active"><a href="#" onclick="openPage('instancesInfo')" title="Home">Home</a></li>
+				<li><a href="#" onclick="loadHost(); openPage('connectToServer');" title="Connect other devices like your cellphone to this Website!">Connect to Server</a></li>
 				<!--
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
@@ -55,7 +58,9 @@
                 <li><a href="#">Page 2</a></li>
                 -->
 			</ul>
-			<button class="btn btn-primary navbar-btn" title="reconnect all vlc instances" onclick="reconnectInstances()">Reconnect</button>
+			<div class="btn-group">
+				<button class="btn btn-primary navbar-btn" title="reconnect all vlc instances" onclick="reconnectInstances()">Reconnect</button>
+			</div>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a target="_blank" href="https://www.felix-franz.com/"><i class="fa fa-user-circle" aria-hidden="true"></i></i> Developer</a></li>
 				<li><a target="_blank" href="https://github.com/Felix-Franz/VLCController/wiki"><i class="fa fa-question" aria-hidden="true"></i> Help</a></li>
@@ -65,33 +70,41 @@
 </nav>
 
 
-<div class="container" id="contend">
-	<h1 class="pull-left">Connected Devices</h1>
-	<table
-			id="connectorInfo"
-			class="table datatable"
-			data-sort-name="name"
-			data-sort-order="asc"
-			data-pagination="true"
-			data-page-list="[5, 10, 25, 50, 100]"
-			data-page-size="10"
-			data-show-pagination-switch="true"
-			data-show-columns="true"
-			data-sortable="true"
-			data-search="true"
-			data-show-refresh="true">
-		<thead>
-		<tr>
-			<th data-sortable="true" data-field="name" title="name of player instance">Name</th>
-			<th data-sortable="true" data-visible="false" data-field="host" title="IP or Host Address of the player instance">Host</th>
-			<th data-sortable="true" data-visible="false" data-field="port" title="port  of the player instance">Port</th>
-			<th data-sortable="true" data-field="title" title="current title">Title</th>
-			<th data-sortable="true" data-field="state" data-formatter="stateFormatter" title="state  of the player instance">State</th>
-			<th data-sortable="true" data-field="volume" data-formatter="volumeFormatter" title="volume  of the player instance">Volume</th>
-			<th data-sortable="true" data-field="responseTime" data-formatter="responseTimeFormatter" title="response time of the player instance (in ms)">Response Time</th>
-		</tr>
-		</thead>
-	</table>
+<div class="container" id="content">
+
+	<div id="instancesInfo" class="active content">
+		<h1 class="pull-left">Connected Devices</h1>
+		<table
+				id="connectorInfo"
+				class="table datatable"
+				data-sort-name="name"
+				data-sort-order="asc"
+				data-pagination="true"
+				data-page-list="[5, 10, 25, 50, 100]"
+				data-page-size="10"
+				data-show-pagination-switch="true"
+				data-show-columns="true"
+				data-sortable="true"
+				data-search="true"
+				data-show-refresh="true">
+			<thead>
+			<tr>
+				<th data-sortable="true" data-field="name" title="name of player instance">Name</th>
+				<th data-sortable="true" data-visible="false" data-field="host" title="IP or Host Address of the player instance">Host</th>
+				<th data-sortable="true" data-visible="false" data-field="port" title="port  of the player instance">Port</th>
+				<th data-sortable="true" data-field="title" title="current title">Title</th>
+				<th data-sortable="true" data-field="state" data-formatter="stateFormatter" title="state  of the player instance">State</th>
+				<th data-sortable="true" data-field="volume" data-formatter="volumeFormatter" title="volume  of the player instance">Volume</th>
+				<th data-sortable="true" data-field="responseTime" data-formatter="responseTimeFormatter" title="response time of the player instance (in ms)">Response Time</th>
+			</tr>
+			</thead>
+		</table>
+	</div>
+	<div id="connectToServer" class="content">
+		<h1>Connect to this Server</h1>
+		<p>Scan the QR-Code or use the host address to connect to this web page.</p>
+		<div id="connectToServerConent" class="row"><!-- to be filled with qr & host address --></div>
+	</div>
 </div>
 
 <div class="panel-group" id="control">
@@ -125,7 +138,13 @@
 <script src="resources/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <!-- bootstrap table -->
 <script src="resources/bootstrap-table-1.11.1/bootstrap-table.min.js"></script>
+<!-- Toastr -->
+<script src="resources/toastr-2.1.3/toastr.min.js"></script>
 <!-- Own stuff -->
-<script language="javascript" type="text/javascript" src="script.js"></script >
+<script language="javascript" type="text/javascript" src="scriptMain.js"></script>
+<script language="javascript" type="text/javascript" src="scriptDesign.js"></script>
+<script language="javascript" type="text/javascript" src="scriptControl.js"></script>
+<script language="javascript" type="text/javascript" src="scriptInstances.js"></script>
+<script language="javascript" type="text/javascript" src="scriptServer.js"></script>
 </body>
 </html>
