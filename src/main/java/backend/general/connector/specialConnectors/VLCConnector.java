@@ -213,10 +213,8 @@ public class VLCConnector implements AbstractConnector {
         try {
             out.println("status");
             out.flush();
-            output+=in.readLine();
-            output+=in.readLine();
-            if (output.contains("new input"))       //if nothing is in playlist this line is missing
-                output+=in.readLine();
+            while (!output.contains("state"))
+                output = in.readLine();
         } catch (Exception e) {
             // empty output
         }
