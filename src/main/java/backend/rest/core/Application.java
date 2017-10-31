@@ -50,7 +50,6 @@ public class Application extends ResourceConfig
 		returnValue.add(DispatcherService.class);
 		returnValue.add(ControllerService.class);
 		returnValue.add(InstancesService.class);
-		returnValue.add(SpecialInstanceService.class);
 		returnValue.add(ServerService.class);
 
 		return returnValue;

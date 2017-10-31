@@ -5,10 +5,7 @@ import backend.general.Factory;
 import backend.rest.wrapper.ConnectorInfoWrapper.ConnectorInfoWrapper;
 import backend.rest.wrapper.ConnectorInfoWrapper.ConnectorInfoWrapperBuilder;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -27,6 +24,7 @@ public class InstancesService extends AbstractService {
         ConnectorInfoWrapper[] wrapper = ConnectorInfoWrapperBuilder.createAllAutomatically(Factory.getUniversalConnectorHolder().getUniversalConnectorInstances());
         return Response.ok(wrapper)
                 .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH).build(), "start point of the api")
+                .link(uriInfo.getAbsolutePathBuilder().path("{name}").build(), "get a special instance")
                 .link(uriInfo.getAbsolutePathBuilder().path("reconnect").build(), "reconnects all instances")
                 .build();
     }
@@ -39,6 +37,19 @@ public class InstancesService extends AbstractService {
         Factory.getUniversalConnectorHolder().connect();
         return Response
                 .ok("Visit https://github.com/Felix-Franz/VLCController for more information!")
+                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH).build(), "start point of the api")
+                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/instances").build(), "get all instance information")
+                .build();
+    }
+
+    ///////////////////////////////////////////////////// Special instances
+
+    @GET
+    @Path("{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getInstance(@PathParam("name") String name){
+        return Response
+                .ok(ConnectorInfoWrapperBuilder.createAutomatically(Factory.getUniversalConnectorHolder().getUniversalConnectorInstance(name)))
                 .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH).build(), "start point of the api")
                 .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/instances").build(), "get all instance information")
                 .build();
