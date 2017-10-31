@@ -15,7 +15,7 @@ function onInitControl(){
 				$("#controlVolumeNumber").html(slideEvt.value.newValue);
 			},
 			error: function(XMLHttpRequest, textStatus, errorThrown){
-				notifyBackendConnectionError();
+				notifyBackendConnectionError("Cloud not update volume!");
 			}
 		});
 	});
@@ -35,7 +35,7 @@ function reconnectInstances(){
                 });
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
-            notifyBackendConnectionError();
+            notifyBackendConnectionError("Could not reconnect instances!");
         }
     });
 }
@@ -51,7 +51,7 @@ function controlPOST(command){
             }, 500);
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
-            notifyBackendConnectionError();
+            notifyBackendConnectionError("Could not run command " + command + "!");
         }
     });
 }
