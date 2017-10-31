@@ -1,3 +1,27 @@
+function onInitControl(){
+	//build slider
+	$('#controlVolumeSlider').slider({
+		formatter: function(value) {
+			return 'volume: ' + value;
+		}
+	}).on('change', function(slideEvt){
+	    console.log(slideEvt.value.newValue);
+		$.ajax({
+			type: "POST",
+			url: path + "control/volume",
+			contentType: 'text/plain',
+			data: slideEvt.value.newValue + "",
+			success: function(data){
+				$("#controlVolumeNumber").html(slideEvt.value.newValue);
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown){
+				notifyBackendConnectionError();
+			}
+		});
+	});
+}
+onInitControl();
+
 function reconnectInstances(){
     $.ajax({
         type: "POST",

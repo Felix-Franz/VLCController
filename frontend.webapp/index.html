@@ -128,6 +128,13 @@
 				<button onclick="controlPOST('shuffle');" type="button" class="btn btn-primary btn-lg controlbtn" title="toggles shuffle on all media players"><i class="fa fa-random fa-lg" aria-hidden="true"></i></button>
 				<button onclick="controlPOST('fullscreen');" type="button" class="btn btn-primary btn-lg controlbtn" title="toggles fullscreen on all media players"><i class="fa fa-expand fa-lg" aria-hidden="true"></i></button>
 				<button onclick="controlPOST('repeat');" type="button" class="btn btn-primary btn-lg controlbtn" title="toggles repeat on all media players"><i class="fa fa-repeat fa-lg" aria-hidden="true"></i></button>
+				<button onclick="$('#controlVolume').slideToggle();" type="button" class="btn btn-primary btn-lg controlbtn" title="toggles volume menu"><i class="fa fa-volume-down fa-lg" aria-hidden="true"></i></button>
+				<br />
+				<div id="controlVolume" class="controlbtn" style="display: none;">
+					<span style="margin-right: 1em;">Volume:  </span>
+					<input id="controlVolumeSlider" data-slider-id='controlVolumeSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="100" style="width: 13em;"/>
+					<span id="controlVolumeNumber" style="margin-left: 10px;">100</span>
+				</div>
 			</div>
 		</div>
 	</div>
