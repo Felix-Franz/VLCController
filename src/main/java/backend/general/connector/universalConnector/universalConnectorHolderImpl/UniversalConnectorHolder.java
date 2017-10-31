@@ -78,6 +78,13 @@ public class UniversalConnectorHolder extends backend.general.connector.universa
     public void runCommand(Command command){
         Factory.getLogger().log(Level.INFO,"run command " + command + " on all universalConnector instances!");
 
+        //single instance
+        if (Factory.getSettings().getMaxVLCConnectionThreads() == 0){
+            for (UniversalConnector universalConnector : universalConnectors)
+                universalConnector.runCommand(command);
+            return;
+        }
+
         ExecutorService executorService = Executors.newFixedThreadPool(Factory.getSettings().getMaxVLCConnectionThreads());
         long executeTime = System.currentTimeMillis() + 100;
 
