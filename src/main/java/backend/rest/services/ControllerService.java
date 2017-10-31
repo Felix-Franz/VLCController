@@ -42,6 +42,15 @@ public class ControllerService extends AbstractService {
                 .build();
     }
 
+    //POST http://127.0.0.1:8080/api/control/backward
+    @POST
+    @Path("backward")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response backwardVLC(){
+        Factory.getUniversalConnectorHolder().runCommand(Command.BACKWARD);
+        return createResponse();
+    }
+
     //POST http://127.0.0.1:8080/api/control/play
     @POST
     @Path("play")
@@ -51,6 +60,7 @@ public class ControllerService extends AbstractService {
         return createResponse();
     }
 
+    //POST http://127.0.0.1:8080/api/control/pause
     @POST
     @Path("pause")
     @Produces(MediaType.TEXT_PLAIN)
@@ -59,6 +69,7 @@ public class ControllerService extends AbstractService {
         return createResponse();
     }
 
+    //POST http://127.0.0.1:8080/api/control/stop
     @POST
     @Path("stop")
     @Produces(MediaType.TEXT_PLAIN)
@@ -67,14 +78,25 @@ public class ControllerService extends AbstractService {
         return createResponse();
     }
 
+    //POST http://127.0.0.1:8080/api/control/reset
     @POST
-    @Path("backward")
+    @Path("reset")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response backwardVLC(){
-        Factory.getUniversalConnectorHolder().runCommand(Command.BACKWARD);
+    public Response resetVLC(){
+        Factory.getUniversalConnectorHolder().runCommand(Command.RESET);
         return createResponse();
     }
 
+    //POST http://127.0.0.1:8080/api/control/forward
+    @POST
+    @Path("forward")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response forwardVLC(){
+        Factory.getUniversalConnectorHolder().runCommand(Command.FORWARD);
+        return createResponse();
+    }
+
+    //POST http://127.0.0.1:8080/api/control/shuffle
     @POST
     @Path("shuffle")
     @Produces(MediaType.TEXT_PLAIN)
@@ -83,6 +105,7 @@ public class ControllerService extends AbstractService {
         return createResponse();
     }
 
+    //POST http://127.0.0.1:8080/api/control/fullscreen
     @POST
     @Path("fullscreen")
     @Produces(MediaType.TEXT_PLAIN)
@@ -91,19 +114,12 @@ public class ControllerService extends AbstractService {
         return createResponse();
     }
 
+    //POST http://127.0.0.1:8080/api/control/repeat
     @POST
     @Path("repeat")
     @Produces(MediaType.TEXT_PLAIN)
     public Response repeatVLC(){
         Factory.getUniversalConnectorHolder().runCommand(Command.REPEAT);
-        return createResponse();
-    }
-
-    @POST
-    @Path("forward")
-    @Produces(MediaType.TEXT_PLAIN)
-    public Response forwardVLC(){
-        Factory.getUniversalConnectorHolder().runCommand(Command.FORWARD);
         return createResponse();
     }
 

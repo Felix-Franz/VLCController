@@ -43,21 +43,3 @@ function controlPause(){
             $("#controlPlay").fadeIn(100)
         });
 }
-function controlStop(){
-	controlPOST("stop");
-}
-function controlBackward(){
-	controlPOST("backward");
-}
-function controlFullscreen(){
-	controlPOST("fullscreen");
-}
-function controlShuffle(){
-	controlPOST("shuffle");
-}
-function controlRepeat(){
-	controlPOST("repeat");
-}
-function controlForward(){
-	controlPOST("forward");
-}

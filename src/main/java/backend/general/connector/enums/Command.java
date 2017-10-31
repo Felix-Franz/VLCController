@@ -7,14 +7,15 @@ package backend.general.connector.enums;
 //Command.PLAY.getCommand() --> play
 
 public enum Command {
+    BACKWARD("prev"),
     PLAY("play"),
     PAUSE("pause"),
     STOP("stop"),
-    BACKWARD("prev"),
+    FORWARD("next"),
     FULLSCREEN("fullscreen"),
     SHUFFLE("random"),
     REPEAT("loop"),
-    FORWARD("next");
+    RESET("seek 0");
 
     private String value;
 
