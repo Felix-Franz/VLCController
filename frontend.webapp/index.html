@@ -91,6 +91,7 @@
 				data-show-refresh="true">
 			<thead>
 			<tr>
+				<th data-field="name" data-formatter="buttonsFormatter"></th>
 				<th data-sortable="true" data-field="name" title="name of player instance">Name</th>
 				<th data-sortable="true" data-visible="false" data-field="host" title="IP or Host Address of the player instance">Host</th>
 				<th data-sortable="true" data-visible="false" data-field="port" title="port  of the player instance">Port</th>
@@ -101,6 +102,23 @@
 			</tr>
 			</thead>
 		</table>
+		<div id="instanceDetail" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Modal Header</h4>
+					</div>
+					<div class="modal-body">
+						<p>Some text in the modal.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
 	</div>
 	<div id="connectToServer" class="content">
 		<h1>Connect to this Server</h1>

@@ -8,6 +8,9 @@ function onInitInstances(){
     });
 }
 
+function buttonsFormatter(value){
+    return '<button onclick="$(\'#instanceDetail\').modal();" type="button" class="btn btn-primary" title="change ' + value + '"><i class="fa fa-pencil" ></i></button>';
+}
 function stateFormatter(value){
     if (value=="undefined")
         return "not connected"
