@@ -105,4 +105,10 @@ public class UniversalConnectorHolder extends backend.general.connector.universa
     public UniversalConnector[] getUniversalConnectorInstances(){
         return universalConnectors;
     }
+
+    @Override
+    public void setVolume(int volume) {
+        for (UniversalConnector connector : universalConnectors)
+            connector.setVolume(volume);
+    }
 }

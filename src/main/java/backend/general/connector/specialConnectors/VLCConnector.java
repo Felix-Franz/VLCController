@@ -232,4 +232,14 @@ public class VLCConnector implements AbstractConnector {
                 return PlayerState.UNDEFINED;
         }
     }
+
+    @Override
+    public void setVolume(int volume) {
+        try{
+            out.println("volume " + volume*256/100);
+            out.flush();
+        } catch (Exception e) {
+            Factory.getLogger().log(Level.WARNING, "Connector " + name + " could not set volume to " + volume + "!");
+        }
+    }
 }

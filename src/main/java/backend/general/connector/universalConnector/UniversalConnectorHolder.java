@@ -36,4 +36,9 @@ public abstract class UniversalConnectorHolder {
      * @return all universalConnector instances
      */
     public abstract UniversalConnector[] getUniversalConnectorInstances();
+
+    /**
+     * sets the volume of all instances
+     */
+    public abstract void setVolume(int volume);
 }

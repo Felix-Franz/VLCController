@@ -4,10 +4,7 @@ import backend.CONFIG;
 import backend.general.Factory;
 import backend.general.connector.enums.Command;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -120,6 +117,16 @@ public class ControllerService extends AbstractService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response repeatVLC(){
         Factory.getUniversalConnectorHolder().runCommand(Command.REPEAT);
+        return createResponse();
+    }
+
+    //POST http://127.0.0.1:8080/api/control/volume
+    @POST
+    @Path("volume")
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response volumeVLC(int volume){
+        Factory.getUniversalConnectorHolder().setVolume(volume);
         return createResponse();
     }
 

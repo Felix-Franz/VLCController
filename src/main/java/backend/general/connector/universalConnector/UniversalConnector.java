@@ -66,6 +66,11 @@ public class UniversalConnector implements AbstractConnector {
         return connector.getState();
     }
 
+    @Override
+    public void setVolume(int volume) {
+        connector.setVolume(volume);
+    }
+
     /**
      * Get the response time of the player
      * @return response time in ms (-1 if no connection)
