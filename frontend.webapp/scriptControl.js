@@ -64,6 +64,12 @@ function controlPlay(){
 function controlPause(){
 	controlPOST("pause");
 	$("#controlPause").fadeOut(100, function(){
-            $("#controlPlay").fadeIn(100)
-        });
+        $("#controlPlay").fadeIn(100)
+    });
+}
+function controlStop(){
+    controlPOST('stop');
+    $("#controlPause").fadeOut(100, function(){
+        $("#controlPlay").fadeIn(100)
+    });
 }
