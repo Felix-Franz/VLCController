@@ -32,6 +32,13 @@ public abstract class UniversalConnectorHolder {
     public abstract void runCommand(Command command);
 
     /**
+     * get UniversalConnector instance by name
+     * @param name of the instance
+     * @return the instance
+     */
+    public abstract UniversalConnector getUniversalConnectorInstance(String name);
+
+    /**
      *
      * @return all universalConnector instances
      */

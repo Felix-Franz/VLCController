@@ -109,6 +109,14 @@ public class UniversalConnectorHolder extends backend.general.connector.universa
         executorService.shutdown();
     }
 
+    @Override
+    public UniversalConnector getUniversalConnectorInstance(String name) {
+        for (UniversalConnector instance : universalConnectors)
+            if (instance.getName().equals(name))
+                return instance;
+        return null;
+    }
+
     public UniversalConnector[] getUniversalConnectorInstances(){
         return universalConnectors;
     }
