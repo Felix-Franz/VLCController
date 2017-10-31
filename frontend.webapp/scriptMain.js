@@ -9,8 +9,9 @@ window.setInterval(function(){
 function notifyBackendConnectionError(detailMessage){
     var message = 'Could not connect to backend!<br />Try to restart the server!';
     if (detailMessage != undefined){
-        message += "<br /> Detail: " + detailMessage
+        message += "<br />Detail: " + detailMessage
     }
+    console.error(message.replace(/<br \/>/g, "\n"));
     toastr.error(message, 'Connection failed', {
         timeOut: 5000,
         closeButton: true,
