@@ -1,5 +1,6 @@
 {
     "name": "VLCController",
+	"short_name": "VLCController"
     "icons": [
         {
             "src": "/resources/favicon/android-chrome-192x192.png",
@@ -14,5 +15,6 @@
     ],
     "theme_color": "#00b4ff",
     "background_color": "#00b4ff",
-    "display": "standalone"
+    "display": "standalone",
+	"start_url": "index.html"
 }
