@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 /**
  * Created by Felix on 31.10.2017.
  */
-@Path("instances/{name}")
+@Path("instances/single/{name}")
 public class SpecialInstanceService extends AbstractService {
 
     //GET http://127.0.0.1:8080/api/instances/<instanceName>
@@ -23,7 +23,14 @@ public class SpecialInstanceService extends AbstractService {
                 .ok(ConnectorInfoWrapperBuilder.createAutomatically(Factory.getUniversalConnectorHolder().getUniversalConnectorInstance(name)))
                 .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH).build(), "start point of the api")
                 .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/instances").build(), "get all instance information")
-                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/instances/<playerName>/volume").build(), "change volume")
+                .link(uriInfo.getAbsolutePathBuilder().path("play").build(), "plays media on this universalConnector instance")
+                .link(uriInfo.getAbsolutePathBuilder().path("pause").build(), "pauses playing media on this universalConnector instance")
+                .link(uriInfo.getAbsolutePathBuilder().path("stop").build(), "stops playing media on this universalConnector instance")
+                .link(uriInfo.getAbsolutePathBuilder().path("backward").build(), "plays the previous item of the playlist on this universalConnector instance")
+                .link(uriInfo.getAbsolutePathBuilder().path("shuffle").build(), "toggles shuffle on this universalConnector instance")
+                .link(uriInfo.getAbsolutePathBuilder().path("repeat").build(), "toggles repeat the playlist on this universalConnector instance")
+                .link(uriInfo.getAbsolutePathBuilder().path("forward").build(), "plays the next item of the playlist on this universalConnector instance")
+                .link(uriInfo.getAbsolutePathBuilder().path("volume").build(), "change volume")
                 .build();
     }
 
@@ -32,7 +39,7 @@ public class SpecialInstanceService extends AbstractService {
                 .ok("Visit https://github.com/Felix-Franz/VLCController for more information!")
                 .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH).build(), "start point of the api")
                 .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/instances").build(), "get all instance information")
-                .link(uriInfo.getAbsolutePathBuilder().path("<playerName>").build(), "get a special instance")
+                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/instances/single/<playername").build(), "get a special instance")
                 .build();
     }
 

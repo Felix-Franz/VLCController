@@ -38,7 +38,7 @@ function reloadConnectorInfoTable(){
 function getInstance(name, onLoad){
     $.ajax({
         type: "GET",
-        url: path + "instances/" + name,
+        url: path + "instances/single/" + name,
         data: null,
         success: function (data){onLoad(data)},
         error: function(XMLHttpRequest, textStatus, errorThrown){
@@ -80,7 +80,7 @@ function loadInstanceControl(name){
         	}).on('change', function(slideEvt){
         		$.ajax({
         			type: "POST",
-        			url: path + "instances/" + data.name + "/volume",
+        			url: path + "instances/single/" + data.name + "/volume",
         			contentType: 'text/plain',
         			data: slideEvt.value.newValue + "",
         			success: function(data){
@@ -97,7 +97,7 @@ function loadInstanceControl(name){
 function instanceControlPOST(name, command){
     $.ajax({
         type: "POST",
-        url: path + "instances/" + name + "/" + command,
+        url: path + "instances/single/" + name + "/" + command,
         data: null,
         success: function(data){
             setTimeout(function() {

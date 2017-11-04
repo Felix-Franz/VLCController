@@ -36,6 +36,7 @@ public class ControllerService extends AbstractService {
                 .link(uriInfo.getAbsolutePathBuilder().path("shuffle").build(), "toggles shuffle on all universalConnector instances")
                 .link(uriInfo.getAbsolutePathBuilder().path("repeat").build(), "toggles repeat the playlist on all universalConnector instances")
                 .link(uriInfo.getAbsolutePathBuilder().path("forward").build(), "plays the next item of the playlist on all universalConnector instances")
+                .link(uriInfo.getAbsolutePathBuilder().path("volume").build(), "change volume")
                 .build();
     }
 
