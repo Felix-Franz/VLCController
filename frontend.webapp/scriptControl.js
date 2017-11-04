@@ -5,7 +5,6 @@ function onInitControl(){
 			return 'volume: ' + value;
 		}
 	}).on('change', function(slideEvt){
-	    console.log(slideEvt.value.newValue);
 		$.ajax({
 			type: "POST",
 			url: path + "control/volume",
