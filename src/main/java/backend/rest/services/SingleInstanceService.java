@@ -13,7 +13,7 @@ import javax.ws.rs.core.Response;
  * Created by Felix on 31.10.2017.
  */
 @Path("instances/single/{name}")
-public class SpecialInstanceService extends AbstractService {
+public class SingleInstanceService extends AbstractService {
 
     //GET http://127.0.0.1:8080/api/instances/<instanceName>
     @GET
