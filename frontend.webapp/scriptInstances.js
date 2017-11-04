@@ -8,8 +8,12 @@ function onInitInstances(){
     });
 }
 
-function buttonsFormatter(value){
-    return '<button onclick="$(\'#instanceDetail\').modal();" type="button" class="btn btn-primary" title="change ' + value + '"><i class="fa fa-pencil" ></i></button>';
+function buttonsFormatter(value, row){
+    console.log(row);
+    console.log(row.state != undefined)
+    var settingsButton = '<button onclick="" type="button" class="btn btn-primary" title="edit ' + row.name + '"><i class="fa fa-pencil" ></i></button>';
+    var controlButton = ( row.state != "undefined" ? '<button onclick="$(\'#instanceDetail\').modal();" type="button" class="btn btn-primary" title="control ' + row.name + '"><i class="fa fa-gamepad" ></i></button>' : '');
+    return '<div class="btn-group">' + settingsButton + controlButton + '</div>'
 }
 function stateFormatter(value){
     if (value=="undefined")
