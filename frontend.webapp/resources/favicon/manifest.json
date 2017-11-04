@@ -1,6 +1,6 @@
 {
-	"name": "VLCController",
-	"short_name": "VLCController",
+	"name": "VLC Controller",
+	"short_name": "VLCC",
 	"icons": [
 		{
 			"src": "/resources/favicon/android-chrome-192x192.png",
@@ -16,5 +16,5 @@
 	"theme_color": "#00b4ff",
 	"background_color": "#00b4ff",
 	"display": "standalone",
-	"start_url": "index.html"
+	"start_url": "/"
 }
