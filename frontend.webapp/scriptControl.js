@@ -1,6 +1,6 @@
 function onInitControl(){
 	//build slider
-	$('#controlVolumeSlider').slider({
+	model.control.volumeSlider = $('#controlVolumeSlider').slider({
 		formatter: function(value) {
 			return 'volume: ' + value;
 		}
@@ -19,7 +19,6 @@ function onInitControl(){
 		});
 	});
 }
-onInitControl();
 
 function reconnectInstances(){
     $.ajax({
@@ -71,4 +70,19 @@ function controlStop(){
     $("#controlPause").fadeOut(100, function(){
         $("#controlPlay").fadeIn(100)
     });
+}
+
+function updateControlVolume(){
+    $.ajax({
+            type: "GET",
+            url: path + "control/volume",
+            data: null,
+            success: function (data){
+                $("#controlVolumeNumber").html(data);
+	model.control.volumeSlider.slider('setValue', data);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                notifyBackendConnectionError("Could not run load master volume!");
+            }
+        });
 }

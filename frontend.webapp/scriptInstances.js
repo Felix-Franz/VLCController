@@ -127,5 +127,3 @@ function instanceControlStop(name){
         $("#instanceControlPlay").fadeIn(100)
     });
 }
-
-onInitInstances();
