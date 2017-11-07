@@ -48,4 +48,10 @@ public abstract class UniversalConnectorHolder {
      * sets the volume of all instances
      */
     public abstract void setVolume(int volume);
+
+    /**
+     *
+     * @return master volume
+     */
+    public abstract int getVolume();
 }

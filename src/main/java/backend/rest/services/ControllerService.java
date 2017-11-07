@@ -131,4 +131,15 @@ public class ControllerService extends AbstractService {
         return createResponse();
     }
 
+    //GET http://127.0.0.1:8080/api/control/volume
+    @GET
+    @Path("volume")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response getVolumeVLC(){
+        return Response
+                .ok(Factory.getUniversalConnectorHolder().getVolume())
+                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/control").build(), "controle universalConnector instances")
+                .build();
+    }
+
 }

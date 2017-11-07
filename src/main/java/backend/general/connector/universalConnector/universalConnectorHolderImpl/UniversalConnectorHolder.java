@@ -18,6 +18,7 @@ import java.util.logging.Level;
 public class UniversalConnectorHolder extends backend.general.connector.universalConnector.UniversalConnectorHolder {
 
     private UniversalConnector[] universalConnectors;
+    private int volume = 100;
 
     /**
      * creates a universalConnector holder
@@ -123,7 +124,13 @@ public class UniversalConnectorHolder extends backend.general.connector.universa
 
     @Override
     public void setVolume(int volume) {
+        this.volume = volume;
         for (UniversalConnector connector : universalConnectors)
             connector.setVolume(volume);
+    }
+
+    @Override
+    public int getVolume() {
+        return this.volume;
     }
 }
