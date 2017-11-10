@@ -1,8 +1,8 @@
 package backend.general.connector.universalConnector.Impl;
 
-import backend.general.connector.AbstractConnector;
 import backend.general.connector.enums.Command;
 import backend.general.connector.enums.PlayerState;
+import backend.general.connector.specialConnectors.AbstractSpecialConnector;
 import backend.general.connector.specialConnectors.VLCConnector;
 
 /**
@@ -14,7 +14,7 @@ public class UniversalConnector implements backend.general.connector.universalCo
     private int port = 4212;
     private String password = "pass";
 
-    private transient AbstractConnector connector;
+    private transient AbstractSpecialConnector connector;
     private transient boolean firstRun = true;
 
     protected UniversalConnector(){

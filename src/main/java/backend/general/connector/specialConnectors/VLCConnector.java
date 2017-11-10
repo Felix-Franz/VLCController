@@ -116,7 +116,7 @@ import java.util.logging.Level;
 +----[ end of help ]
 
  */
-public class VLCConnector implements AbstractConnector {
+public class VLCConnector implements AbstractSpecialConnector {
 
     private String name;
     private String host;
