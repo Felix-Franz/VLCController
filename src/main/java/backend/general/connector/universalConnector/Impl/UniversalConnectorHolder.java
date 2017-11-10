@@ -1,9 +1,10 @@
-package backend.general.connector.universalConnector.universalConnectorHolderImpl;
+package backend.general.connector.universalConnector.Impl;
 
 import backend.CONFIG;
 import backend.general.Factory;
 import backend.general.connector.enums.Command;
 import backend.general.connector.universalConnector.UniversalConnector;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -17,7 +18,7 @@ import java.util.logging.Level;
  */
 public class UniversalConnectorHolder extends backend.general.connector.universalConnector.UniversalConnectorHolder {
 
-    private UniversalConnector[] universalConnectors;
+    private backend.general.connector.universalConnector.UniversalConnector[] universalConnectors;
     private int volume = 100;
 
     /**

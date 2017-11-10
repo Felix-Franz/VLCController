@@ -1,7 +1,7 @@
 package backend.general.connector.universalConnector;
 
 import backend.general.connector.enums.Command;
-import backend.general.connector.universalConnector.universalConnectorHolderImpl.UniversalConnectorHolderBuilder;
+import backend.general.connector.universalConnector.Impl.UniversalConnectorHolderBuilder;
 
 /**
  * Created by Felix on 09.10.2017.
