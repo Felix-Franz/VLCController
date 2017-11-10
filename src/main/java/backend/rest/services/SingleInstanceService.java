@@ -134,6 +134,19 @@ public class SingleInstanceService extends AbstractService {
         return createPOSTResponse();
     }
 
+    //GET http://127.0.0.1:8080/api/instances/<instanceName>/state
+    @GET
+    @Path("state")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response getInstanceState(@PathParam("name") String name){
+        return Response
+                .ok(Factory.getUniversalConnectorHolder().getUniversalConnectorInstance(name).getState().toString())
+                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH).build(), "start point of the api")
+                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/instances").build(), "get all instance information")
+                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/instances/single/<playername").build(), "get a special instance")
+                .build();
+    }
+
     //GET http://127.0.0.1:8080/api/instances/<instanceName>/volume
     @GET
     @Path("volume")
