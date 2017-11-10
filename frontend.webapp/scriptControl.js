@@ -72,6 +72,29 @@ function controlStop(){
     });
 }
 
+function updateControlPlayPause(){
+	$.ajax({
+        type: "GET",
+        url: path + "control/state",
+        data: null,
+        success: function (data){
+            if (data == "playing"){
+                var hide = "#controlPlay";
+                var show = "#controlPause";
+            }else{
+                var hide = "#controlPause";
+                var show = "#controlPlay";
+            }
+            $(hide).fadeOut(100, function(){
+                $(show).fadeIn(100)
+            });
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+            notifyBackendConnectionError("Could not run load master state!");
+        }
+    });
+}
+
 function updateControlVolume(){
     $.ajax({
             type: "GET",

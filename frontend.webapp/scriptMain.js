@@ -32,6 +32,7 @@ function onInitMain(){
 
 function updateAll(){
     reloadConnectorInfoTable();
+    updateControlPlayPause();
     updateControlVolume();
     updateInstanceVolume();
 }
