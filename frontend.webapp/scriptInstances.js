@@ -93,6 +93,7 @@ function loadInstanceControl(name){
         	});
         model.instance.name = data.name;
         model.instance.shown = true;
+        updateInstancePlayPause();
         updateInstanceVolume();
         $('#instanceControl').modal();
     });
@@ -131,6 +132,31 @@ function instanceControlStop(name){
     });
 }
 
+function updateInstancePlayPause(){
+    if (model.instance.shown){
+        $.ajax({
+            type: "GET",
+            url: path + "instances/single/" + model.instance.name + "/state",
+            data: null,
+            success: function (data){
+                if (data == "playing"){
+                    var hide = "#instanceControlPlay";
+                    var show = "#instanceControlPause";
+                }else{
+                    var hide = "#instanceControlPause";
+                    var show = "#instanceControlPlay";
+                }
+                $(hide).fadeOut(100, function(){
+                    $(show).fadeIn(100)
+                });
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                notifyBackendConnectionError("Could not run load state of " + model.instance.name + "!");
+            }
+        });
+    }
+}
+
 function updateInstanceVolume(){
     if (model.instance.shown){
         $.ajax({
@@ -142,7 +168,7 @@ function updateInstanceVolume(){
                     model.instance.volumeSlider.slider('setValue', data);
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown){
-                    notifyBackendConnectionError("Could not run load instance volume!");
+                    notifyBackendConnectionError("Could not load volume of " + model.instance.name + "!");
                 }
             });
     }

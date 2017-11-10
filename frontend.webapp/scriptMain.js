@@ -34,6 +34,7 @@ function updateAll(){
     reloadConnectorInfoTable();
     updateControlPlayPause();
     updateControlVolume();
+    updateInstancePlayPause();
     updateInstanceVolume();
 }
 

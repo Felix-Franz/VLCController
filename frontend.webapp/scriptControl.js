@@ -90,7 +90,7 @@ function updateControlPlayPause(){
             });
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
-            notifyBackendConnectionError("Could not run load master state!");
+            notifyBackendConnectionError("Could not load master state!");
         }
     });
 }
@@ -105,7 +105,7 @@ function updateControlVolume(){
 	            model.control.volumeSlider.slider('setValue', data);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown){
-                notifyBackendConnectionError("Could not run load master volume!");
+                notifyBackendConnectionError("Could not load master volume!");
             }
         });
 }
