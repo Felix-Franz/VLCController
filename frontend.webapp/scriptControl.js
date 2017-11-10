@@ -79,7 +79,7 @@ function updateControlVolume(){
             data: null,
             success: function (data){
                 $("#controlVolumeNumber").html(data);
-	model.control.volumeSlider.slider('setValue', data);
+	            model.control.volumeSlider.slider('setValue', data);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown){
                 notifyBackendConnectionError("Could not run load master volume!");

@@ -73,7 +73,7 @@ function loadInstanceControl(name){
             + '</div>';
         $("#instanceControlBody").html(title + state + responseTime + controls);
         //build slider
-        	$('#instanceControlVolumeSlider').slider({
+        	model.instance.volumeSlider =$('#instanceControlVolumeSlider').slider({
         		formatter: function(value) {
         			return 'volume: ' + value;
         		}
@@ -91,6 +91,9 @@ function loadInstanceControl(name){
         			}
         		});
         	});
+        model.instance.name = data.name;
+        model.instance.shown = true;
+        updateInstanceVolume();
         $('#instanceControl').modal();
     });
 }
@@ -126,4 +129,21 @@ function instanceControlStop(name){
     $("#instanceControlPause").fadeOut(100, function(){
         $("#instanceControlPlay").fadeIn(100)
     });
+}
+
+function updateInstanceVolume(){
+    if (model.instance.shown){
+        $.ajax({
+                type: "GET",
+                url: path + "instances/single/" + model.instance.name + "/volume",
+                data: null,
+                success: function (data){
+                    $("#instanceControlVolumeNumber").html(data);
+                    model.instance.volumeSlider.slider('setValue', data);
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown){
+                    notifyBackendConnectionError("Could not run load instance volume!");
+                }
+            });
+    }
 }

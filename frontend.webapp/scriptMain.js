@@ -8,6 +8,11 @@ var settings = {
 var model = {
     control: {
         volumeSlider: null
+    },
+    instance: {
+        shown: false,
+        name: null,
+        volumeSlider: null
     }
 };
 
@@ -28,6 +33,7 @@ function onInitMain(){
 function updateAll(){
     reloadConnectorInfoTable();
     updateControlVolume();
+    updateInstanceVolume();
 }
 
 function notifyBackendConnectionError(detailMessage){
