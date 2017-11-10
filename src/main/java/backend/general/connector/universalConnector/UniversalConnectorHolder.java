@@ -1,6 +1,7 @@
 package backend.general.connector.universalConnector;
 
 import backend.general.connector.enums.Command;
+import backend.general.connector.enums.PlayerState;
 import backend.general.connector.universalConnector.Impl.UniversalConnectorHolderBuilder;
 
 /**
@@ -43,6 +44,12 @@ public abstract class UniversalConnectorHolder {
      * @return all universalConnector instances
      */
     public abstract UniversalConnector[] getUniversalConnectorInstances();
+
+    /**
+     *
+     * @return master state
+     */
+    public abstract PlayerState getState();
 
     /**
      * sets the volume of all instances

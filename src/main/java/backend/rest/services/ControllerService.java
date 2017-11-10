@@ -37,6 +37,7 @@ public class ControllerService extends AbstractService {
                 .link(uriInfo.getAbsolutePathBuilder().path("repeat").build(), "toggles repeat the playlist on all universalConnector instances")
                 .link(uriInfo.getAbsolutePathBuilder().path("forward").build(), "plays the next item of the playlist on all universalConnector instances")
                 .link(uriInfo.getAbsolutePathBuilder().path("volume").build(), "change volume")
+                .link(uriInfo.getAbsolutePathBuilder().path("state").build(), "get master state")
                 .build();
     }
 
@@ -131,11 +132,22 @@ public class ControllerService extends AbstractService {
         return createResponse();
     }
 
+    //GET http://127.0.0.1:8080/api/control/state
+    @GET
+    @Path("state")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response getState(){
+        return Response
+                .ok(Factory.getUniversalConnectorHolder().getState().toString())
+                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/control").build(), "controle universalConnector instances")
+                .build();
+    }
+
     //GET http://127.0.0.1:8080/api/control/volume
     @GET
     @Path("volume")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response getVolumeVLC(){
+    public Response getVolume(){
         return Response
                 .ok(Factory.getUniversalConnectorHolder().getVolume())
                 .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/control").build(), "controle universalConnector instances")
