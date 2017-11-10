@@ -133,4 +133,17 @@ public class SingleInstanceService extends AbstractService {
         Factory.getUniversalConnectorHolder().getUniversalConnectorInstance(name).setVolume(volume);
         return createPOSTResponse();
     }
+
+    //GET http://127.0.0.1:8080/api/instances/<instanceName>/volume
+    @GET
+    @Path("volume")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response getInstanceVolume(@PathParam("name") String name){
+        return Response
+                .ok(Factory.getUniversalConnectorHolder().getUniversalConnectorInstance(name).getVolume())
+                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH).build(), "start point of the api")
+                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/instances").build(), "get all instance information")
+                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/instances/single/<playername").build(), "get a special instance")
+                .build();
+    }
 }

@@ -15,6 +15,7 @@ public class IPFinder {
     public IPFinder(){
         try {
             InetAddress[] localAddress = InetAddress.getAllByName(InetAddress.getLocalHost().getCanonicalHostName());
+            //ToDo handle no ip found
             ips = new String[localAddress.length];
             for (int i=0; i<localAddress.length; i++){
                 ips[i] = localAddress[i].getHostAddress();
