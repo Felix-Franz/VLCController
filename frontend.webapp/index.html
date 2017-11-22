@@ -23,6 +23,8 @@
 	<link rel="stylesheet" href="resources/font-awesome-4.7.0/css/font-awesome.min.css">
 	<!-- bootstrap table -->
 	<link rel="stylesheet" href="resources/bootstrap-table-1.11.1/bootstrap-table.min.css">
+	<!-- bootstrap slider -->
+	<link rel="stylesheet" href="resources/bootstrap-slider-9.9.0/css/bootstrap-slider.min.css">
 	<!-- Toastr -->
 	<link rel="stylesheet" href="resources/toastr-2.1.3/toastr.min.css">
 	<!-- Own stuff -->
@@ -89,6 +91,7 @@
 				data-show-refresh="true">
 			<thead>
 			<tr>
+				<th data-formatter="buttonsFormatter"></th>
 				<th data-sortable="true" data-field="name" title="name of player instance">Name</th>
 				<th data-sortable="true" data-visible="false" data-field="host" title="IP or Host Address of the player instance">Host</th>
 				<th data-sortable="true" data-visible="false" data-field="port" title="port  of the player instance">Port</th>
@@ -99,6 +102,21 @@
 			</tr>
 			</thead>
 		</table>
+		<div id="instanceControl" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" onclick="model.instance.shown=false">&times;</button>
+						<h4 class="modal-title" id="instanceControlHeader"></h4>
+					</div>
+					<div class="modal-body" id="instanceControlBody"></div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal" onclick="model.instance.shown=false">Close</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
 	</div>
 	<div id="connectToServer" class="content">
 		<h1>Connect to this Server</h1>
@@ -116,15 +134,23 @@
 		</div>
 		<div id="collapseControl" class="panel-collapse collapse">
 			<div class="panel-body">
-				<button onclick="controlBackward()" id="controlBackward" type="button" class="btn btn-primary btn-lg controlbtn" title="plays previouse title"><i class="fa fa-step-backward fa-lg"></i></button>
+				<button onclick="controlPOST('backward');" type="button" class="btn btn-primary btn-lg controlbtn controlBackward" title="plays previouse title"><i class="fa fa-step-backward fa-lg"></i></button>
 				<button onclick="controlPlay()" type="button" id="controlPlay" class="btn btn-primary btn-lg controlbtn" title="plays a title on all media players"><i class="fa fa-play fa-lg"></i></button>
 				<button onclick="controlPause()" type="button" id="controlPause" class="btn btn-primary btn-lg controlbtn" title="pauses all media players" style="display: none;"><i class="fa fa-pause fa-lg"></i></button>
-				<button onclick="controlStop()" type="button" class="btn btn-primary btn-lg controlbtn" title="stops all media players"><i class="fa fa-stop fa-lg"></i></button>
-				<button onclick="controlForward()" id="controlForward" type="button" class="btn btn-primary btn-lg controlbtn" title="plays next title"><i class="fa fa-step-forward fa-lg"></i></button>
+				<button onclick="controlStop();" type="button" class="btn btn-primary btn-lg controlbtn" title="stops all media players"><i class="fa fa-stop fa-lg"></i></button>
+				<button onclick="controlPOST('forward');" type="button" class="btn btn-primary btn-lg controlbtn controlForward" title="plays next title"><i class="fa fa-step-forward fa-lg"></i></button>
 				<br />
-				<button onclick="controlShuffle()" type="button" class="btn btn-primary btn-lg controlbtn" title="toggles shuffle on all media players"><i class="fa fa-random fa-lg" aria-hidden="true"></i></button>
-				<button onclick="controlFullscreen()" type="button" class="btn btn-primary btn-lg controlbtn" title="toggles fullscreen on all media players"><i class="fa fa-expand fa-lg" aria-hidden="true"></i></button>
-				<button onclick="controlRepeat()" type="button" class="btn btn-primary btn-lg controlbtn" title="toggles repeat on all media players"><i class="fa fa-repeat fa-lg" aria-hidden="true"></i></button>
+				<button onclick="controlPOST('reset');" type="button" class="btn btn-primary btn-lg controlbtn" title="restart current title"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+				<button onclick="controlPOST('shuffle');" type="button" class="btn btn-primary btn-lg controlbtn" title="toggles shuffle on all media players"><i class="fa fa-random" aria-hidden="true"></i></button>
+				<button onclick="controlPOST('fullscreen');" type="button" class="btn btn-primary btn-lg controlbtn" title="toggles fullscreen on all media players"><i class="fa fa-expand" aria-hidden="true"></i></button>
+				<button onclick="controlPOST('repeat');" type="button" class="btn btn-primary btn-lg controlbtn" title="toggles repeat on all media players"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+				<button onclick="$('#controlVolume').slideToggle();" type="button" class="btn btn-primary btn-lg controlbtn" title="toggles volume menu"><i class="fa fa-volume-down" aria-hidden="true"></i></button>
+				<br />
+				<div id="controlVolume" class="controlbtn" style="display: none;">
+					<span style="margin-right: 1em;">Volume:  </span>
+					<input id="controlVolumeSlider" data-slider-id='controlVolumeSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="100" style="width: 13em;"/>
+					<span id="controlVolumeNumber" style="margin-left: 10px;">100</span>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -138,13 +164,15 @@
 <script src="resources/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <!-- bootstrap table -->
 <script src="resources/bootstrap-table-1.11.1/bootstrap-table.min.js"></script>
+<!-- bootstrap slider -->
+<script src="resources/bootstrap-slider-9.9.0/bootstrap-slider.min.js"></script>
 <!-- Toastr -->
 <script src="resources/toastr-2.1.3/toastr.min.js"></script>
 <!-- Own stuff -->
-<script language="javascript" type="text/javascript" src="scriptMain.js"></script>
 <script language="javascript" type="text/javascript" src="scriptDesign.js"></script>
 <script language="javascript" type="text/javascript" src="scriptControl.js"></script>
 <script language="javascript" type="text/javascript" src="scriptInstances.js"></script>
 <script language="javascript" type="text/javascript" src="scriptServer.js"></script>
+<script language="javascript" type="text/javascript" src="scriptMain.js"></script>
 </body>
 </html>

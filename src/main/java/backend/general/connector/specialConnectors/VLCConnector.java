@@ -116,7 +116,7 @@ import java.util.logging.Level;
 +----[ end of help ]
 
  */
-public class VLCConnector implements AbstractConnector {
+public class VLCConnector implements AbstractSpecialConnector {
 
     private String name;
     private String host;
@@ -213,10 +213,8 @@ public class VLCConnector implements AbstractConnector {
         try {
             out.println("status");
             out.flush();
-            output+=in.readLine();
-            output+=in.readLine();
-            if (output.contains("new input"))       //if nothing is in playlist this line is missing
-                output+=in.readLine();
+            while (!output.contains("state"))
+                output = in.readLine();
         } catch (Exception e) {
             // empty output
         }
@@ -232,6 +230,16 @@ public class VLCConnector implements AbstractConnector {
                 return PlayerState.STOPPED;
             default:
                 return PlayerState.UNDEFINED;
+        }
+    }
+
+    @Override
+    public void setVolume(int volume) {
+        try{
+            out.println("volume " + volume*256/100);
+            out.flush();
+        } catch (Exception e) {
+            Factory.getLogger().log(Level.WARNING, "Connector " + name + " could not set volume to " + volume + "!");
         }
     }
 }

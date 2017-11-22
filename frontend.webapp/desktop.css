@@ -5,10 +5,10 @@
   	margin-top: 1em;
 }
 
-#controlBackward {
+.controlBackward {
 	margin-right: 1em;
 }
 
-#controlForward {
+.controlForward {
 	margin-left: 1em;
 }

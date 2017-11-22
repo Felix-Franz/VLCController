@@ -8,7 +8,7 @@ function loadHost(){
             buildHost(data);
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
-            notifyBackendConnectionError();
+            notifyBackendConnectionError("Could not get host address!")
         }
     });
 }

@@ -56,7 +56,7 @@ public class Start {
             try {
                 Thread.sleep(1000);
                 int closeTime = Factory.getSettings().getShutdownTime();
-                System.out.print("Closing window in " + closeTime + " seconds");
+                System.out.print("\nClosing window in " + closeTime + " seconds");
 
                 for (closeTime--;closeTime>=0; closeTime--){
                     Thread.currentThread().sleep(1000);

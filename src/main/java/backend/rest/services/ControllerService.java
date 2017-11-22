@@ -4,10 +4,7 @@ import backend.CONFIG;
 import backend.general.Factory;
 import backend.general.connector.enums.Command;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -39,7 +36,18 @@ public class ControllerService extends AbstractService {
                 .link(uriInfo.getAbsolutePathBuilder().path("shuffle").build(), "toggles shuffle on all universalConnector instances")
                 .link(uriInfo.getAbsolutePathBuilder().path("repeat").build(), "toggles repeat the playlist on all universalConnector instances")
                 .link(uriInfo.getAbsolutePathBuilder().path("forward").build(), "plays the next item of the playlist on all universalConnector instances")
+                .link(uriInfo.getAbsolutePathBuilder().path("volume").build(), "change volume")
+                .link(uriInfo.getAbsolutePathBuilder().path("state").build(), "get master state")
                 .build();
+    }
+
+    //POST http://127.0.0.1:8080/api/control/backward
+    @POST
+    @Path("backward")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response backwardVLC(){
+        Factory.getUniversalConnectorHolder().runCommand(Command.BACKWARD);
+        return createResponse();
     }
 
     //POST http://127.0.0.1:8080/api/control/play
@@ -51,6 +59,7 @@ public class ControllerService extends AbstractService {
         return createResponse();
     }
 
+    //POST http://127.0.0.1:8080/api/control/pause
     @POST
     @Path("pause")
     @Produces(MediaType.TEXT_PLAIN)
@@ -59,6 +68,7 @@ public class ControllerService extends AbstractService {
         return createResponse();
     }
 
+    //POST http://127.0.0.1:8080/api/control/stop
     @POST
     @Path("stop")
     @Produces(MediaType.TEXT_PLAIN)
@@ -67,14 +77,25 @@ public class ControllerService extends AbstractService {
         return createResponse();
     }
 
+    //POST http://127.0.0.1:8080/api/control/reset
     @POST
-    @Path("backward")
+    @Path("reset")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response backwardVLC(){
-        Factory.getUniversalConnectorHolder().runCommand(Command.BACKWARD);
+    public Response resetVLC(){
+        Factory.getUniversalConnectorHolder().runCommand(Command.RESET);
         return createResponse();
     }
 
+    //POST http://127.0.0.1:8080/api/control/forward
+    @POST
+    @Path("forward")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response forwardVLC(){
+        Factory.getUniversalConnectorHolder().runCommand(Command.FORWARD);
+        return createResponse();
+    }
+
+    //POST http://127.0.0.1:8080/api/control/shuffle
     @POST
     @Path("shuffle")
     @Produces(MediaType.TEXT_PLAIN)
@@ -83,6 +104,7 @@ public class ControllerService extends AbstractService {
         return createResponse();
     }
 
+    //POST http://127.0.0.1:8080/api/control/fullscreen
     @POST
     @Path("fullscreen")
     @Produces(MediaType.TEXT_PLAIN)
@@ -91,6 +113,7 @@ public class ControllerService extends AbstractService {
         return createResponse();
     }
 
+    //POST http://127.0.0.1:8080/api/control/repeat
     @POST
     @Path("repeat")
     @Produces(MediaType.TEXT_PLAIN)
@@ -99,12 +122,36 @@ public class ControllerService extends AbstractService {
         return createResponse();
     }
 
+    //POST http://127.0.0.1:8080/api/control/volume
     @POST
-    @Path("forward")
+    @Path("volume")
+    @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.TEXT_PLAIN)
-    public Response forwardVLC(){
-        Factory.getUniversalConnectorHolder().runCommand(Command.FORWARD);
+    public Response volumeVLC(int volume){
+        Factory.getUniversalConnectorHolder().setVolume(volume);
         return createResponse();
+    }
+
+    //GET http://127.0.0.1:8080/api/control/state
+    @GET
+    @Path("state")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response getState(){
+        return Response
+                .ok(Factory.getUniversalConnectorHolder().getState().toString())
+                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/control").build(), "controle universalConnector instances")
+                .build();
+    }
+
+    //GET http://127.0.0.1:8080/api/control/volume
+    @GET
+    @Path("volume")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response getVolume(){
+        return Response
+                .ok(Factory.getUniversalConnectorHolder().getVolume())
+                .link(uriInfo.getAbsolutePathBuilder().replacePath(CONFIG.WEB_APP_API_PATH + "/control").build(), "controle universalConnector instances")
+                .build();
     }
 
 }
