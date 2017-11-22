@@ -1,4 +1,3 @@
 # !/bin/bash
 
-java -jar vlccontroller-2.0.0.jar
-
+java -jar vlccontroller-2.1.0.jar

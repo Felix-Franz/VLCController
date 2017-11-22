@@ -45,4 +45,9 @@ public interface AbstractConnector {
      * @return
      */
     public PlayerState getState();
+
+    /**
+     * sets volume
+     */
+    public void setVolume(int volume);
 }

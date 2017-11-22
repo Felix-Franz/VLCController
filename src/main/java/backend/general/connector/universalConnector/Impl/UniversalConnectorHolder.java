@@ -1,9 +1,11 @@
-package backend.general.connector.universalConnector.universalConnectorHolderImpl;
+package backend.general.connector.universalConnector.Impl;
 
 import backend.CONFIG;
 import backend.general.Factory;
 import backend.general.connector.enums.Command;
+import backend.general.connector.enums.PlayerState;
 import backend.general.connector.universalConnector.UniversalConnector;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -17,7 +19,10 @@ import java.util.logging.Level;
  */
 public class UniversalConnectorHolder extends backend.general.connector.universalConnector.UniversalConnectorHolder {
 
-    private UniversalConnector[] universalConnectors;
+    private backend.general.connector.universalConnector.UniversalConnector[] universalConnectors;
+
+    private PlayerState state = PlayerState.STOPPED;
+    private int volume = 100;
 
     /**
      * creates a universalConnector holder
@@ -70,13 +75,28 @@ public class UniversalConnectorHolder extends backend.general.connector.universa
         }
     }
 
-    /**
-     * send a command to all universalConnector instances
-     *
-     * @param command command type
-     */
     public void runCommand(Command command){
         Factory.getLogger().log(Level.INFO,"run command " + command + " on all universalConnector instances!");
+
+        //update master config (for outputs)
+        switch (command){
+            case PLAY:
+                this.state = PlayerState.PLAYING;
+                break;
+            case PAUSE:
+                this.state = PlayerState.PAUSED;
+                break;
+            case STOP:
+                this.state = PlayerState.STOPPED;
+                break;
+        }
+
+        //single instance
+        if (Factory.getSettings().getMaxVLCConnectionThreads() == 0){
+            for (UniversalConnector universalConnector : universalConnectors)
+                universalConnector.runCommand(command);
+            return;
+        }
 
         ExecutorService executorService = Executors.newFixedThreadPool(Factory.getSettings().getMaxVLCConnectionThreads());
         long executeTime = System.currentTimeMillis() + 100;
@@ -102,7 +122,33 @@ public class UniversalConnectorHolder extends backend.general.connector.universa
         executorService.shutdown();
     }
 
+    @Override
+    public UniversalConnector getUniversalConnectorInstance(String name) {
+        for (UniversalConnector instance : universalConnectors)
+            if (instance.getName().equals(name))
+                return instance;
+        return null;
+    }
+
+    @Override
     public UniversalConnector[] getUniversalConnectorInstances(){
         return universalConnectors;
+    }
+
+    @Override
+    public PlayerState getState() {
+        return state;
+    }
+
+    @Override
+    public void setVolume(int volume) {
+        this.volume = volume;
+        for (UniversalConnector connector : universalConnectors)
+            connector.setVolume(volume);
+    }
+
+    @Override
+    public int getVolume() {
+        return this.volume;
     }
 }

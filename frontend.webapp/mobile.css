@@ -5,10 +5,10 @@
     margin-top: 3%;
 }
 
-#controlBackward {
+.controlBackward {
     margin-right: 3%;
 }
 
-#controlForward {
+.controlForward {
     margin-left: 3%;
 }

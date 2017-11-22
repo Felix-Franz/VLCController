@@ -35,5 +35,3 @@ function openPage(pageId){
 	$(".content").removeClass("active");
 	$("#" + pageId).addClass("active");
 }
-
-onInitDesign();

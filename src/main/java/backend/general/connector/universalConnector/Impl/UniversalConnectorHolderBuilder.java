@@ -1,9 +1,9 @@
-package backend.general.connector.universalConnector.universalConnectorHolderImpl;
+package backend.general.connector.universalConnector.Impl;
 
 import backend.CONFIG;
 import backend.general.Factory;
-import backend.general.connector.universalConnector.UniversalConnector;
 import com.google.gson.Gson;
+import backend.general.connector.universalConnector.UniversalConnector;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -20,7 +20,7 @@ public class UniversalConnectorHolderBuilder implements backend.general.connecto
             Factory.getLogger().log(Level.INFO, "reading player.json");
             FileReader reader = new FileReader(CONFIG.VLC_CONFIG_PATH);
             Gson gson = new Gson();
-            UniversalConnector[] universalConnectors = gson.fromJson(reader, UniversalConnector[].class);
+            UniversalConnector[] universalConnectors = gson.fromJson(reader, backend.general.connector.universalConnector.Impl.UniversalConnector[].class);
             UniversalConnectorHolder holder = new UniversalConnectorHolder(universalConnectors);
             holder.saveVLCs();
             return holder;
